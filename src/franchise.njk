@@ -1,12 +1,14 @@
 ---
 title: "Franchise — Yellow Bee"
-description: "Bring Yellow Bee to your community. Submit a franchise inquiry and start a conversation with our team."
+description: "Bring Yellow Bee to your community. Join Seattle's fastest-growing modern Asian convenience market concept."
 permalink: /franchise/index.html
 tickerItems:
-  - "Franchise Inquiries Open"
+  - "Franchise Inquiries Now Open"
+  - "Be Part of Seattle's Most Exciting Food Concept"
   - "Modern Asian Convenience"
-  - "Central District · U-District · Mountlake Terrace"
-  - "We Reply Within 5 Business Days"
+  - "Strong Unit Economics"
+  - "Full Training & Support Provided"
+  - "Apply Today"
 ---
 
 {% extends "base.njk" %}
@@ -17,114 +19,326 @@ tickerItems:
 
 {% block content %}
 
-<section class="fr-section fr-section--first" id="inquiry">
-  <div class="fr-mega" aria-hidden="true">Franchise</div>
-  <div class="sec-container">
-    <header class="fr-section-head reveal">
-      <div class="sec-mark sec-mark--dark">Chapter 01 / {{ franchise.chapter }}</div>
-      <h2>{{ franchise.headline }}</h2>
-      <p class="fr-section-meta">{{ franchise.meta }}</p>
-    </header>
+<section class="page-hero">
+  <div class="page-hero-bg-photo"></div>
+  <div class="page-hero-overlay"></div>
 
-    <div class="fr-panel">
+  <div class="page-hero-geo" style="width:100px;height:58px;top:15%;right:10%;opacity:0.1;animation:heroGeoFloat1 7s ease-in-out infinite;">
+    <svg viewBox="0 0 120 70"><polygon points="30,0 90,0 120,35 90,70 30,70 0,35"/></svg>
+  </div>
+  <div class="page-hero-geo" style="width:55px;height:32px;bottom:20%;left:6%;opacity:0.07;animation:heroGeoFloat2 5s ease-in-out infinite 1s;">
+    <svg viewBox="0 0 120 70"><polygon points="30,0 90,0 120,35 90,70 30,70 0,35"/></svg>
+  </div>
+  <div class="page-hero-geo page-hero-geo-ring" style="width:180px;height:180px;top:10%;right:-30px;opacity:0.05;animation:heroGeoSpin 50s linear infinite;"></div>
+  <div class="page-hero-geo page-hero-geo-ring" style="width:100px;height:100px;bottom:18%;left:10%;opacity:0.04;animation:heroGeoSpin 35s linear infinite reverse;"></div>
+  <div class="page-hero-geo page-hero-geo-diamond" style="width:30px;height:30px;top:38%;left:4%;opacity:0.06;animation:heroGeoFloat3 8s ease-in-out infinite;"></div>
 
-      <aside class="fr-aside reveal-left">
-        <div class="fr-aside-block">
-          <div class="fr-aside-label">Send Inquiries</div>
-          <a class="fr-aside-link" href="mailto:{{ franchise.emailTo }}">{{ franchise.emailTo }}</a>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow"><span class="dot"></span> Franchise Opportunity</div>
+    <h1>Bring <span class="yl">Yellow Bee</span><br>to Your Community</h1>
+    <p class="page-hero-sub">Join Seattle's fastest-growing convenience market concept. We're looking for driven operators who want to build something meaningful in their neighborhood.</p>
+    <div class="page-hero-ctas">
+      <a href="#inquiry-form" class="btn btn-yellow">Apply Now</a>
+      <a href="#why-yellow-bee" class="btn btn-outline">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal d1">
+      <div class="stat-val" data-count-up="1">0</div>
+      <div class="stat-label">Location &amp; Growing</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-val" data-count-up="10" data-prefix="$">$0</div>
+      <div class="stat-label">Starting Price Point</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-val">3-in-1</div>
+      <div class="stat-label">Deli · Boba · Grocery</div>
+    </div>
+    <div class="stat-item reveal d4">
+      <div class="stat-val" data-count-up="2026">0</div>
+      <div class="stat-label">Expansion Target</div>
+    </div>
+  </div>
+</div>
+
+<section class="why-section" id="why-yellow-bee">
+  <div class="fr-sec">
+    <div class="fr-eyebrow eye-charcoal reveal">Why Franchise With Us</div>
+    <h2 class="reveal d1">A concept built<br>to scale.</h2>
+    <p class="section-sub reveal d2">Yellow Bee combines three high-demand revenue streams &mdash; deli, boba bar, and curated grocery &mdash; into a single compact footprint with strong unit economics.</p>
+
+    <div class="why-grid">
+      <div class="why-card reveal d1">
+        <div class="why-icon">🏙️</div>
+        <h3>Untapped Market</h3>
+        <p>Modern Asian convenience is still wide open. We're first movers in Seattle with a proven concept ready to expand to new cities and neighborhoods.</p>
+      </div>
+      <div class="why-card reveal d2">
+        <div class="why-icon">💰</div>
+        <h3>Multiple Revenue Streams</h3>
+        <p>Deli, boba, and grocery under one roof means more reasons for customers to visit &mdash; and more ways for you to drive revenue all day long.</p>
+      </div>
+      <div class="why-card reveal d3">
+        <div class="why-icon">📦</div>
+        <h3>Compact Footprint</h3>
+        <p>Our model is designed for 1,000&ndash;2,500 sq ft urban storefronts, keeping rent costs competitive while maximizing throughput and sales per square foot.</p>
+      </div>
+      <div class="why-card reveal d4">
+        <div class="why-icon">📣</div>
+        <h3>Strong Brand Identity</h3>
+        <p>Yellow Bee's bold visual identity and community focus drives word-of-mouth and social media organically &mdash; customers become advocates.</p>
+      </div>
+      <div class="why-card reveal d5">
+        <div class="why-icon">🧠</div>
+        <h3>Full Playbook Provided</h3>
+        <p>From day-one training to ongoing ops support, we hand you everything we've built and learned so you can open with confidence.</p>
+      </div>
+      <div class="why-card reveal d6">
+        <div class="why-icon">🌱</div>
+        <h3>Community-First Values</h3>
+        <p>We're not just a store &mdash; we're a neighborhood staple. Our sourcing, culture, and customer relationships make Yellow Bee a place people feel at home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="support-section">
+  <div class="fr-sec">
+    <div class="fr-eyebrow eye-yellow reveal">Franchisee Support</div>
+    <h2 class="reveal d1">Everything you need<br>to open strong.</h2>
+    <p class="section-sub reveal d2">We don't hand you a license and wish you luck. You get the full playbook &mdash; operations, training, marketing, and ongoing field support.</p>
+
+    <div class="support-grid">
+      <div class="support-card reveal d1">
+        <div class="support-icon">🏗️</div>
+        <div>
+          <h3>Site Selection &amp; Build-Out Guidance</h3>
+          <p>We help you evaluate real estate, negotiate leases, and work with our approved contractors to build out your location to Yellow Bee standards.</p>
         </div>
-
-        <div class="fr-aside-block">
-          <div class="fr-aside-label">Flagship</div>
-          <p class="fr-aside-text">
-            {{ site.address.street }}<br>
-            {{ site.address.city }}, {{ site.address.state }} {{ site.address.zip }}
-          </p>
+      </div>
+      <div class="support-card reveal d2">
+        <div class="support-icon">📋</div>
+        <div>
+          <h3>Operations Manual &amp; Systems</h3>
+          <p>Access to our full operations playbook covering every process &mdash; ordering, food prep, inventory management, staffing, and customer service protocols.</p>
         </div>
-
-        <div class="fr-aside-block">
-          <div class="fr-aside-label">Phone</div>
-          <a class="fr-aside-link fr-aside-link--sm" href="tel:{{ site.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ site.phone }}</a>
+      </div>
+      <div class="support-card reveal d3">
+        <div class="support-icon">👨‍🍳</div>
+        <div>
+          <h3>Hands-On Training Program</h3>
+          <p>You and your leadership team spend time at our flagship location learning how we operate before you open your doors. No guesswork.</p>
         </div>
-
-        <div class="fr-aside-note">
-          Every inquiry is read by a person on our team. We respond within 3–5 business days.
+      </div>
+      <div class="support-card reveal d4">
+        <div class="support-icon">📱</div>
+        <div>
+          <h3>Marketing &amp; Brand Assets</h3>
+          <p>Full access to Yellow Bee's brand toolkit &mdash; photography, social templates, launch campaign support, and local marketing strategy consultation.</p>
         </div>
-      </aside>
+      </div>
+      <div class="support-card reveal d5">
+        <div class="support-icon">🔗</div>
+        <div>
+          <h3>Supplier &amp; Vendor Network</h3>
+          <p>Leverage our established supplier relationships for consistent product quality and competitive pricing on ingredients, packaging, and equipment.</p>
+        </div>
+      </div>
+      <div class="support-card reveal d6">
+        <div class="support-icon">📊</div>
+        <div>
+          <h3>Ongoing Field Support</h3>
+          <p>Regular check-ins, performance reviews, and access to our operations team as your business grows. You're never figuring it out alone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <form class="fr-form reveal-right" onsubmit="handleFranchiseSubmit(event)">
-        <div class="fr-row">
-          <div class="fr-group">
-            <label for="fname">First Name <span aria-hidden="true">*</span></label>
-            <input type="text" id="fname" name="fname" required>
+<section class="investment-section">
+  <div class="fr-sec">
+    <div class="fr-eyebrow eye-charcoal reveal">Investment Overview</div>
+    <h2 class="reveal d1">What to expect<br>financially.</h2>
+    <p class="section-sub reveal d2">Estimates vary based on location, market, and build-out scope. These ranges reflect our current operational experience and franchise development goals.</p>
+
+    <div class="invest-grid">
+      <div class="invest-card reveal d1">
+        <div class="invest-label">Initial Franchise Fee</div>
+        <div class="invest-value">$25K</div>
+        <div class="invest-note">One-time fee granting rights to operate under the Yellow Bee brand</div>
+      </div>
+      <div class="invest-card reveal d2">
+        <div class="invest-label">Total Investment Range</div>
+        <div class="invest-value">$150K&ndash;$350K</div>
+        <div class="invest-note">Includes build-out, equipment, inventory, working capital &amp; franchise fee</div>
+      </div>
+      <div class="invest-card reveal d3">
+        <div class="invest-label">Ongoing Royalty</div>
+        <div class="invest-value">6%</div>
+        <div class="invest-note">Of gross sales, covering brand use, support access, and system updates</div>
+      </div>
+    </div>
+
+    <div class="invest-disclaimer reveal">
+      <strong>Important:</strong> These figures are estimates only and are not a guarantee of financial performance. Final investment amounts depend on your specific location, real estate costs, build-out requirements, and local market conditions. We'll provide full FDD (Franchise Disclosure Document) details during the qualification process.
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="fr-sec">
+    <div class="fr-eyebrow eye-yellow reveal">How It Works</div>
+    <h2 class="reveal d1">From inquiry<br>to opening day.</h2>
+    <p class="section-sub reveal d2">Our franchise process is straightforward and designed to set you up for success from the very first conversation.</p>
+
+    <div class="process-steps">
+      <div class="process-step reveal d1">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <div class="step-tag">Week 1&ndash;2</div>
+          <h3>Submit Your Inquiry</h3>
+          <p>Fill out the form below with your background, desired market, and goals. We review every submission personally and respond within 5 business days.</p>
+        </div>
+      </div>
+      <div class="process-step reveal d2">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <div class="step-tag">Week 2&ndash;4</div>
+          <h3>Discovery Call &amp; Qualification</h3>
+          <p>We schedule a call to learn about your background, financial position, and vision. This is a two-way conversation &mdash; you're evaluating us too.</p>
+        </div>
+      </div>
+      <div class="process-step reveal d3">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <div class="step-tag">Month 2&ndash;3</div>
+          <h3>FDD Review &amp; Agreement</h3>
+          <p>Qualified candidates receive our Franchise Disclosure Document. Once you've reviewed with your attorney and are ready, we move to franchise agreement signing.</p>
+        </div>
+      </div>
+      <div class="process-step reveal d4">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <div class="step-tag">Month 3&ndash;6</div>
+          <h3>Site Selection &amp; Training</h3>
+          <p>We work together to find your location, finalize build-out, and put you and your team through our training program at the flagship store.</p>
+        </div>
+      </div>
+      <div class="process-step reveal d5">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <div class="step-tag">Month 6&ndash;12</div>
+          <h3>Grand Opening &amp; Beyond</h3>
+          <p>We support your launch with marketing assets, a pre-opening checklist, and on-site support for your first week of operations. Then we grow together.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="inquiry-form">
+  <div class="fr-sec">
+    <div class="form-layout">
+
+      <div class="form-intro reveal-left">
+        <div class="fr-eyebrow eye-yellow">Get Started</div>
+        <h2>Ready to build something?</h2>
+        <p>Tell us about yourself and your market. There's no commitment to submitting an inquiry &mdash; just a conversation to see if we're a fit.</p>
+        <p>We typically respond within 3&ndash;5 business days.</p>
+
+        <div class="form-contact-info">
+          <div class="form-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            <span><a href="mailto:franchise@shopyellowbee.com">franchise@shopyellowbee.com</a></span>
           </div>
-          <div class="fr-group">
-            <label for="lname">Last Name <span aria-hidden="true">*</span></label>
-            <input type="text" id="lname" name="lname" required>
+          <div class="form-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>{{ site.address.street }}, {{ site.address.city }}, {{ site.address.state }} {{ site.address.zip }}</span>
+          </div>
+          <div class="form-contact-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 016.19 15a19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>{{ site.phone }}</span>
           </div>
         </div>
+      </div>
 
-        <div class="fr-row">
-          <div class="fr-group">
-            <label for="email">Email <span aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" required>
+      <div class="inquiry-form reveal-right">
+        <form onsubmit="handleFranchiseSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name *</label>
+              <input type="text" id="fname" name="fname" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name *</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required>
+            </div>
           </div>
-          <div class="fr-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="(206) 555-0000">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(206) 555-0000">
+            </div>
           </div>
-        </div>
-
-        <div class="fr-row">
-          <div class="fr-group">
-            <label for="city">City / Market <span aria-hidden="true">*</span></label>
-            <input type="text" id="city" name="city" placeholder="e.g. Portland, OR" required>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City / Market of Interest *</label>
+              <input type="text" id="city" name="city" placeholder="e.g. Portland, OR" required>
+            </div>
+            <div class="form-group">
+              <label for="timeline">Desired Timeline</label>
+              <select id="timeline" name="timeline">
+                <option value="">Select a timeframe</option>
+                <option value="asap">As soon as possible</option>
+                <option value="6mo">Within 6 months</option>
+                <option value="1yr">Within 1 year</option>
+                <option value="2yr">1&ndash;2 years</option>
+                <option value="exploring">Just exploring</option>
+              </select>
+            </div>
           </div>
-          <div class="fr-group">
-            <label for="timeline">Timeline</label>
-            <select id="timeline" name="timeline">
-              <option value="">Select a timeframe</option>
-              {% for t in franchise.timelines %}
-              <option value="{{ t.value }}">{{ t.label }}</option>
-              {% endfor %}
+          <div class="form-group">
+            <label for="background">Your Background *</label>
+            <select id="background" name="background" required>
+              <option value="">Select your experience</option>
+              <option value="food">Food &amp; Beverage / Restaurant Industry</option>
+              <option value="retail">Retail / Convenience Store Operations</option>
+              <option value="business">General Business / Entrepreneurship</option>
+              <option value="franchise">Previous Franchise Owner</option>
+              <option value="other">Other</option>
             </select>
           </div>
-        </div>
-
-        <div class="fr-group">
-          <label for="background">Your Background <span aria-hidden="true">*</span></label>
-          <select id="background" name="background" required>
-            <option value="">Select your experience</option>
-            {% for b in franchise.backgrounds %}
-            <option value="{{ b.value }}">{{ b.label }}</option>
-            {% endfor %}
-          </select>
-        </div>
-
-        <div class="fr-group">
-          <label for="investment">Investment Capacity</label>
-          <select id="investment" name="investment">
-            <option value="">Select a range</option>
-            {% for i in franchise.investment %}
-            <option value="{{ i.value }}">{{ i.label }}</option>
-            {% endfor %}
-          </select>
-        </div>
-
-        <div class="fr-group">
-          <label for="message">Tell Us More</label>
-          <textarea id="message" name="message" rows="5" placeholder="Share your background, why you're interested in Yellow Bee, and what market you have in mind."></textarea>
-        </div>
-
-        <div class="fr-consent">
-          <input type="checkbox" id="consent" name="consent" required>
-          <label for="consent">I agree to be contacted by Yellow Bee about this inquiry. I understand this is not an offer to purchase a franchise.</label>
-        </div>
-
-        <button type="submit" class="btn btn-yellow fr-submit">Submit Inquiry &rarr;</button>
-
-        <p class="fr-footnote">Every inquiry is read personally. Your information stays with our team.</p>
-      </form>
+          <div class="form-group">
+            <label for="investment">Investment Capacity</label>
+            <select id="investment" name="investment">
+              <option value="">Select a range</option>
+              <option value="under150">Under $150K</option>
+              <option value="150-250">$150K &ndash; $250K</option>
+              <option value="250-350">$250K &ndash; $350K</option>
+              <option value="over350">$350K+</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Yourself &amp; Your Goals</label>
+            <textarea id="message" name="message" placeholder="Share your background, why you're interested in Yellow Bee, and what market you have in mind..."></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">I agree to be contacted by Yellow Bee regarding this franchise inquiry. I understand this is not a commitment or offer to purchase a franchise. View our <a href="/contact/">privacy policy</a>.</label>
+          </div>
+          <button type="submit" class="form-submit-btn">Submit Franchise Inquiry &rarr;</button>
+          <p class="form-note">We review every inquiry personally and respond within 3&ndash;5 business days. Your information is never shared with third parties.</p>
+        </form>
+      </div>
 
     </div>
   </div>
@@ -136,14 +350,13 @@ tickerItems:
 <script>
 function handleFranchiseSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.fr-submit');
-  const original = btn.innerHTML;
-  btn.innerHTML = '✓ Inquiry Submitted';
-  btn.classList.add('is-submitted');
+  const btn = e.target.querySelector('.form-submit-btn');
+  btn.textContent = '✓ Inquiry Submitted!';
+  btn.style.background = '#4AA84A';
   btn.style.pointerEvents = 'none';
   setTimeout(() => {
-    btn.innerHTML = original;
-    btn.classList.remove('is-submitted');
+    btn.textContent = 'Submit Franchise Inquiry →';
+    btn.style.background = '';
     btn.style.pointerEvents = '';
     e.target.reset();
   }, 4000);
