@@ -40,7 +40,7 @@ permalink: /index.html
       <p class="hero-lede">Fresh groceries, a quick bite at the café, and daily essentials &mdash; all within walking distance.</p>
       <div class="hero-ctas">
         <a href="/menu/" class="btn btn-yellow">Explore Menu</a>
-        <a href="#deals" class="btn btn-outline">View Deals</a>
+        <a href="#specials" class="btn btn-outline">See Specials</a>
       </div>
     </div>
 
@@ -57,37 +57,43 @@ permalink: /index.html
     </div>
   </div>
 
-  <a class="hero-arrow" href="#deals" aria-label="Scroll to content">
+  <a class="hero-arrow" href="#specials" aria-label="Scroll to content">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
   </a>
 </section>
 
-<!-- WEEKLY DEALS -->
-<section class="deals" id="deals">
-  <div class="deals-mega-bg" aria-hidden="true">Fresh</div>
+<!-- DAILY SPECIALS -->
+<section class="specials" id="specials">
+  <div class="specials-mega-bg" aria-hidden="true">Daily</div>
   <div class="sec-container">
-    <div class="deals-header reveal">
-      <div class="sec-mark">Chapter 01 / The Market</div>
-      <h2>This Week's Deals.</h2>
-      <div class="deals-header-meta">
-        <span>Valid through <strong>{{ deals.validThrough }}</strong></span>
+    <div class="specials-header reveal">
+      <div class="sec-mark">Chapter 01 / {{ specials.chapter }}</div>
+      <h2>{{ specials.headline }}</h2>
+      <div class="specials-header-meta">
+        <span>{{ specials.meta }}</span>
       </div>
     </div>
-    <div class="deals-grid">
-      {% for deal in deals.items %}
-      <div class="deal-card reveal d{{ loop.index }}">
-        <div class="deal-badge {{ deal.badgeType }}">{{ deal.badge }}</div>
-        <div class="deal-img"><img src="/{{ deal.image }}" alt="{{ deal.alt }}" loading="lazy"></div>
-        <div class="deal-body">
-          <div class="deal-name">{{ deal.name }}</div>
-          <div class="deal-desc">{{ deal.desc }}</div>
-          <div class="deal-pricing">
-            <span class="deal-now">{{ deal.price }}</span>
-            {% if deal.was %}<span class="deal-was">{{ deal.was }}</span>{% endif %}
+    <div class="specials-grid">
+      {% for s in specials.items %}
+      <article class="special-card reveal d{{ loop.index }}">
+        <div class="special-img">
+          <img src="/{{ s.image }}" alt="{{ s.alt }}" loading="lazy">
+          <div class="special-img-badges">
+            <span class="special-time">{{ s.time }}</span>
+            {% if s.save %}<span class="special-save">{{ s.save }}</span>{% endif %}
           </div>
-          <div class="deal-save">{{ deal.save }}</div>
         </div>
-      </div>
+        <div class="special-body">
+          <h3 class="special-name">{{ s.name }}</h3>
+          <p class="special-tagline">{{ s.tagline }}</p>
+          <ul class="special-includes">
+            {% for item in s.includes %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+          <div class="special-price">{{ s.price }}</div>
+        </div>
+      </article>
       {% endfor %}
     </div>
   </div>

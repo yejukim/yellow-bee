@@ -285,12 +285,12 @@
   50% { transform: translateX(-50%) translateY(6px); }
 }
 
-/* ─── DEALS — editorial magazine layout ─── */
-.deals {
+/* ─── DAILY SPECIALS — editorial card grid ─── */
+.specials {
   background: var(--paper); color: var(--text-dark); padding: 6rem 0 5rem;
   position: relative; overflow: hidden;
 }
-.deals::before {
+.specials::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background-image:
     linear-gradient(rgba(46,45,50,0.03) 1px, transparent 1px),
@@ -298,11 +298,11 @@
   background-size: 96px 96px;
   mask-image: radial-gradient(ellipse at top, black 0%, transparent 70%);
 }
-.deals::after {
+.specials::after {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px;
   background: var(--yellow);
 }
-.deals-mega-bg {
+.specials-mega-bg {
   position: absolute; top: 3rem; right: -2%; z-index: 0;
   font-family: var(--display); font-size: clamp(8rem, 20vw, 22rem);
   font-weight: 400; letter-spacing: -0.02em;
@@ -310,68 +310,138 @@
   pointer-events: none; line-height: 0.85; text-transform: uppercase;
   user-select: none;
 }
-.deals-header {
-  margin-bottom: 2.5rem;
+.specials-header {
+  margin-bottom: 2.75rem;
   position: relative; z-index: 2;
-  max-width: 55%;
+  max-width: 60%;
 }
-.deals-header .sec-mark { color: var(--yellow-deep); margin-bottom: 0.9rem; }
-.deals-header .sec-mark::before { background: var(--yellow-deep); }
-.deals h2 {
+.specials-header .sec-mark { color: var(--yellow-deep); margin-bottom: 0.9rem; }
+.specials-header .sec-mark::before { background: var(--yellow-deep); }
+.specials h2 {
   font-family: var(--display); font-size: clamp(3rem, 7vw, 5.5rem);
   line-height: 0.9; color: var(--text-dark); letter-spacing: -0.01em;
   text-transform: uppercase;
 }
-.deals-header-meta {
+.specials-header-meta {
   margin-top: 1rem;
-  display: inline-flex; gap: 0.6rem; align-items: baseline; flex-wrap: wrap;
-  font-family: var(--mono); font-size: 0.7rem;
-  color: var(--text-dark-muted); letter-spacing: 0.14em; text-transform: uppercase;
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+  color: var(--text-dark-muted); letter-spacing: 0.12em; text-transform: uppercase;
 }
-.deals-header-meta strong { color: var(--text-dark); font-weight: 500; }
-.deals-header-meta .sep { color: var(--yellow-deep); opacity: 0.6; }
 
-@media (max-width: 768px) {
-  .deals-header { max-width: 100%; }
+.specials-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+  position: relative; z-index: 2;
 }
-.deals-date { font-size: 0.82rem; color: var(--text-dark-muted); font-weight: 500; font-family: var(--mono); }
-.deals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; position: relative; z-index: 2; }
-.deal-card {
-  background: var(--white); border: 1px solid var(--light-border); position: relative;
-  overflow: hidden; transition: all 0.4s var(--ease-out); border-radius: 12px;
+
+/* ─── CARD ─── */
+.special-card {
+  background: var(--white); border: 1px solid var(--light-border);
+  border-radius: 12px; overflow: hidden;
   display: flex; flex-direction: column;
+  position: relative;
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
 }
-.deal-card:hover {
-  transform: translateY(-8px) rotate(-0.3deg);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.10), 0 4px 12px rgba(238,178,5,0.08);
-  border-color: rgba(238,178,5,0.2);
+.special-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1), 0 4px 12px rgba(238,178,5,0.08);
+  border-color: rgba(238,178,5,0.28);
 }
-/* Angled ribbon badge */
-.deal-badge {
-  position: absolute; top: 14px; right: -34px; z-index: 2;
-  font-family: var(--heading); font-size: 0.62rem; font-weight: 800;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  padding: 0.35rem 2.5rem;
-  transform: rotate(35deg);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-  text-shadow: 0 1px 0 rgba(0,0,0,0.04);
+
+/* Image + overlay badges */
+.special-img {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--warm-bg);
+}
+.special-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s var(--ease-out);
+}
+.special-card:hover .special-img img { transform: scale(1.05); }
+
+.special-img-badges {
+  position: absolute; inset: 0;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 0.75rem;
   pointer-events: none;
+  gap: 0.5rem;
 }
-.deal-badge.sale { background: var(--yellow); color: var(--dark); }
-.deal-badge.new { background: var(--text-dark); color: var(--yellow); }
-.deal-img { width: 100%; aspect-ratio: 1; overflow: hidden; background: var(--warm-bg); }
-.deal-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease-out); }
-.deal-card:hover .deal-img img { transform: scale(1.08); }
-.deal-body { padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; flex: 1; }
-.deal-name { font-family: var(--heading); font-size: 0.9rem; font-weight: 700; margin-bottom: 0.2rem; color: var(--text-dark); }
-.deal-desc { font-size: 0.78rem; color: var(--text-dark-muted); margin-bottom: 0.5rem; }
-.deal-pricing { display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 0.15rem; }
-.deal-now { font-family: var(--heading); font-size: 1.6rem; font-weight: 700; color: var(--yellow); }
-.deal-was { font-size: 0.85rem; color: var(--text-dark-muted); text-decoration: line-through; }
-.deal-save {
-  font-family: var(--heading); font-size: 0.7rem; font-weight: 700; color: var(--red-dark);
-  background: rgba(201,42,42,0.08); padding: 0.2rem 0.5rem; border-radius: 3px;
-  display: inline-block; margin-top: 0.15rem;
+.special-time {
+  background: rgba(46,45,50,0.88);
+  color: var(--white);
+  font-family: var(--mono); font-size: 0.56rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.3;
+  padding: 0.35rem 0.55rem;
+  border-radius: 3px;
+  border-left: 2px solid var(--yellow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  max-width: 62%;
+}
+.special-save {
+  background: var(--yellow);
+  color: var(--dark);
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.4rem 0.6rem;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+  white-space: nowrap;
+}
+
+/* Body */
+.special-body {
+  padding: 1.25rem 1.1rem 1.1rem;
+  display: flex; flex-direction: column; gap: 0.55rem;
+  flex: 1;
+}
+.special-name {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem); line-height: 1;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0;
+}
+.special-tagline {
+  font-size: 0.8rem; line-height: 1.5;
+  color: var(--text-dark-secondary);
+  margin: 0;
+}
+.special-includes {
+  list-style: none; padding: 0;
+  margin: 0.2rem 0 0;
+  display: flex; flex-direction: column; gap: 0.3rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--light-border);
+}
+.special-includes li {
+  position: relative; padding-left: 0.9rem;
+  font-size: 0.76rem; line-height: 1.4;
+  color: var(--text-dark-secondary);
+}
+.special-includes li::before {
+  content: ''; position: absolute; left: 0; top: 0.55em;
+  width: 6px; height: 1px; background: var(--yellow-deep);
+}
+.special-price {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--light-border);
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.55rem, 2vw, 1.9rem); line-height: 1;
+  color: var(--yellow-deep);
+  letter-spacing: -0.01em;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .specials-header { max-width: 100%; }
+  .specials-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+}
+@media (max-width: 560px) {
+  .specials-grid { grid-template-columns: 1fr; }
+  .specials-header { margin-bottom: 2rem; }
 }
 
 /* ─── DELI — brand concrete backdrop ─── */
@@ -826,7 +896,6 @@
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
-  .deals-grid { grid-template-columns: repeat(2, 1fr); }
   .drinks-showcase { grid-template-columns: repeat(3, 1fr); }
   .deli-menu-grid { grid-template-columns: repeat(2, 1fr); }
   .carousel-slide { flex: 0 0 calc(33.333% - 0.67rem); }
@@ -841,8 +910,6 @@
   .hero-img-wrap { max-width: 280px; margin: 0 auto; }
   .hero-price-tag { left: 50%; transform: translateX(-50%); bottom: -0.5rem; }
   .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); }
-  .deals-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
-  .deals-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
   .deli-hero { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
   .deli-content p { margin-left: auto; margin-right: auto; }
   .price-anim { justify-content: center; }
@@ -861,7 +928,6 @@
   .geo-canvas { display: none; }
 }
 @media (max-width: 480px) {
-  .deals-grid { grid-template-columns: 1fr; }
   .drinks-showcase { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
   .carousel-slide { flex: 0 0 100%; }
   .hero h1 { font-size: 1.8rem; }
