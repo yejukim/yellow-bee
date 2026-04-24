@@ -6,7 +6,7 @@
       <li><a href="{{ item.href }}"{% if item.href == ('/' + page.fileSlug + '/') or (page.fileSlug == '' and item.href == '/') %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
       {% endfor %}
     </ul>
-    <a href="/menu/" class="nav-cta nav-cta-desktop"><span class="live-dot"></span>Order Now</a>
+    <a href="/menu/" class="nav-cta nav-cta-desktop"><span class="live-dot"></span>View Menu</a>
     <button class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.mobile-drawer').classList.toggle('open'); this.setAttribute('aria-expanded', document.querySelector('.mobile-drawer').classList.contains('open'))">&#9776;</button>
   </div>
 </nav>
