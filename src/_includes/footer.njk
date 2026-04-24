@@ -6,10 +6,18 @@
       <img src="/photos/horizontallogo.png" alt="{{ site.name }}">
       <p>Fresh food. Fast service. No compromise. Your neighborhood market in the heart of Seattle.</p>
       <div class="footer-social">
-        <a href="{{ site.socials.instagram }}" aria-label="Instagram">{{ icons.instagram() }}</a>
-        <a href="{{ site.socials.facebook }}" aria-label="Facebook">{{ icons.facebook() }}</a>
-        <a href="{{ site.socials.tiktok }}" aria-label="TikTok">{{ icons.tiktok() }}</a>
-        <a href="{{ site.socials.x }}" aria-label="X">{{ icons.x() }}</a>
+        {% if site.socials.instagram and site.socials.instagram != '#' %}
+        <a href="{{ site.socials.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{{ icons.instagram() }}</a>
+        {% endif %}
+        {% if site.socials.facebook and site.socials.facebook != '#' %}
+        <a href="{{ site.socials.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">{{ icons.facebook() }}</a>
+        {% endif %}
+        {% if site.socials.tiktok and site.socials.tiktok != '#' %}
+        <a href="{{ site.socials.tiktok }}" target="_blank" rel="noopener" aria-label="TikTok">{{ icons.tiktok() }}</a>
+        {% endif %}
+        {% if site.socials.x and site.socials.x != '#' %}
+        <a href="{{ site.socials.x }}" target="_blank" rel="noopener" aria-label="X">{{ icons.x() }}</a>
+        {% endif %}
       </div>
     </div>
     {% for groupLabel, items in site.footerNav %}
