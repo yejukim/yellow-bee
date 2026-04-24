@@ -1,0 +1,24 @@
+{
+  "label": "Seasonal Drop",
+  "chapter": "Featured",
+  "eyebrow": "Now Pouring",
+  "headline": "Limited Summer Pour.",
+  "meta": "Released with every solstice — gone by the first frost.",
+  "popupId": "tamarind-summer-2026",
+  "items": [
+    {
+      "slug": "tamarind-refresher",
+      "name": "Tamarind Refresher",
+      "season": "Summer 2026",
+      "tagline": "Sweet, tangy, iced — the new summer drop.",
+      "description": "Cold-brewed tamarind, a squeeze of lime, and house simple syrup over crushed ice. Add boba for a chewy finish.",
+      "price": "5.75",
+      "addOn": {
+        "label": "Add boba",
+        "price": "+0.75"
+      },
+      "available": "Available through September",
+      "poster": "photos/seasonal/tamarind-refresher.jpg"
+    }
+  ]
+}

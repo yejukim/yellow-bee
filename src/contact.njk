@@ -1,0 +1,127 @@
+---
+title: "Contact — Yellow Bee"
+description: "Got a question about our menu, catering, wholesale, or just want to say hi? Send a note and we'll reply within a business day."
+permalink: /contact/index.html
+tickerItems:
+  - "We Read Every Message"
+  - "922 E Yesler Way · Seattle"
+  - "shopyellowbee@gmail.com"
+  - "(206) 538-0839"
+  - "Reply Within 1 Business Day"
+---
+
+{% extends "base.njk" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/page-contact.css?v={{ buildHash }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="ct-section ct-section--first" id="message">
+  <div class="ct-mega" aria-hidden="true">Contact</div>
+  <div class="sec-container">
+    <header class="ct-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 01 / {{ contact.chapter }}</div>
+      <h2>{{ contact.headline }}</h2>
+      <p class="ct-section-meta">{{ contact.meta }}</p>
+    </header>
+
+    <div class="ct-panel">
+
+      <aside class="ct-aside reveal-left">
+        <div class="ct-aside-block">
+          <div class="ct-aside-label">Email</div>
+          <a class="ct-aside-link" href="mailto:{{ site.email }}">{{ site.email }}</a>
+        </div>
+
+        <div class="ct-aside-block">
+          <div class="ct-aside-label">Flagship</div>
+          <p class="ct-aside-text">
+            {{ site.address.street }}<br>
+            {{ site.address.city }}, {{ site.address.state }} {{ site.address.zip }}
+          </p>
+        </div>
+
+        <div class="ct-aside-block">
+          <div class="ct-aside-label">Phone</div>
+          <a class="ct-aside-link ct-aside-link--sm" href="tel:{{ site.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ site.phone }}</a>
+        </div>
+
+        <div class="ct-aside-block">
+          <div class="ct-aside-label">Social</div>
+          <a class="ct-aside-link ct-aside-link--sm" href="{{ site.socials.instagram }}" target="_blank" rel="noopener">{{ site.handle }}</a>
+        </div>
+
+        <div class="ct-aside-note">
+          Every message goes to a person on our team. We usually reply within one business day.
+        </div>
+      </aside>
+
+      <form class="ct-form reveal-right" onsubmit="handleContactSubmit(event)">
+        <div class="ct-row">
+          <div class="ct-group">
+            <label for="fname">First Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="fname" name="fname" required>
+          </div>
+          <div class="ct-group">
+            <label for="lname">Last Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="lname" name="lname" required>
+          </div>
+        </div>
+
+        <div class="ct-row">
+          <div class="ct-group">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="ct-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(206) 555-0000">
+          </div>
+        </div>
+
+        <div class="ct-group">
+          <label for="subject">What's This About? <span aria-hidden="true">*</span></label>
+          <select id="subject" name="subject" required>
+            <option value="">Select a topic</option>
+            {% for s in contact.subjects %}
+            <option value="{{ s.value }}">{{ s.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="ct-group">
+          <label for="message">Your Message <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="6" placeholder="Tell us what's on your mind." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-yellow ct-submit">Send Message &rarr;</button>
+
+        <p class="ct-footnote">We reply within one business day. Your info stays with our team.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.ct-submit');
+  const original = btn.innerHTML;
+  btn.innerHTML = '✓ Message Sent';
+  btn.classList.add('is-submitted');
+  btn.style.pointerEvents = 'none';
+  setTimeout(() => {
+    btn.innerHTML = original;
+    btn.classList.remove('is-submitted');
+    btn.style.pointerEvents = '';
+    e.target.reset();
+  }, 4000);
+}
+</script>
+{% endblock %}

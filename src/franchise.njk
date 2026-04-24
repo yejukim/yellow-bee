@@ -1,0 +1,152 @@
+---
+title: "Franchise — Yellow Bee"
+description: "Bring Yellow Bee to your community. Submit a franchise inquiry and start a conversation with our team."
+permalink: /franchise/index.html
+tickerItems:
+  - "Franchise Inquiries Open"
+  - "Modern Asian Convenience"
+  - "Central District · U-District · Mountlake Terrace"
+  - "We Reply Within 5 Business Days"
+---
+
+{% extends "base.njk" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/page-franchise.css?v={{ buildHash }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="fr-section fr-section--first" id="inquiry">
+  <div class="fr-mega" aria-hidden="true">Franchise</div>
+  <div class="sec-container">
+    <header class="fr-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 01 / {{ franchise.chapter }}</div>
+      <h2>{{ franchise.headline }}</h2>
+      <p class="fr-section-meta">{{ franchise.meta }}</p>
+    </header>
+
+    <div class="fr-panel">
+
+      <aside class="fr-aside reveal-left">
+        <div class="fr-aside-block">
+          <div class="fr-aside-label">Send Inquiries</div>
+          <a class="fr-aside-link" href="mailto:{{ franchise.emailTo }}">{{ franchise.emailTo }}</a>
+        </div>
+
+        <div class="fr-aside-block">
+          <div class="fr-aside-label">Flagship</div>
+          <p class="fr-aside-text">
+            {{ site.address.street }}<br>
+            {{ site.address.city }}, {{ site.address.state }} {{ site.address.zip }}
+          </p>
+        </div>
+
+        <div class="fr-aside-block">
+          <div class="fr-aside-label">Phone</div>
+          <a class="fr-aside-link fr-aside-link--sm" href="tel:{{ site.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ site.phone }}</a>
+        </div>
+
+        <div class="fr-aside-note">
+          Every inquiry is read by a person on our team. We respond within 3–5 business days.
+        </div>
+      </aside>
+
+      <form class="fr-form reveal-right" onsubmit="handleFranchiseSubmit(event)">
+        <div class="fr-row">
+          <div class="fr-group">
+            <label for="fname">First Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="fname" name="fname" required>
+          </div>
+          <div class="fr-group">
+            <label for="lname">Last Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="lname" name="lname" required>
+          </div>
+        </div>
+
+        <div class="fr-row">
+          <div class="fr-group">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="fr-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(206) 555-0000">
+          </div>
+        </div>
+
+        <div class="fr-row">
+          <div class="fr-group">
+            <label for="city">City / Market <span aria-hidden="true">*</span></label>
+            <input type="text" id="city" name="city" placeholder="e.g. Portland, OR" required>
+          </div>
+          <div class="fr-group">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">Select a timeframe</option>
+              {% for t in franchise.timelines %}
+              <option value="{{ t.value }}">{{ t.label }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="fr-group">
+          <label for="background">Your Background <span aria-hidden="true">*</span></label>
+          <select id="background" name="background" required>
+            <option value="">Select your experience</option>
+            {% for b in franchise.backgrounds %}
+            <option value="{{ b.value }}">{{ b.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="fr-group">
+          <label for="investment">Investment Capacity</label>
+          <select id="investment" name="investment">
+            <option value="">Select a range</option>
+            {% for i in franchise.investment %}
+            <option value="{{ i.value }}">{{ i.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="fr-group">
+          <label for="message">Tell Us More</label>
+          <textarea id="message" name="message" rows="5" placeholder="Share your background, why you're interested in Yellow Bee, and what market you have in mind."></textarea>
+        </div>
+
+        <div class="fr-consent">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent">I agree to be contacted by Yellow Bee about this inquiry. I understand this is not an offer to purchase a franchise.</label>
+        </div>
+
+        <button type="submit" class="btn btn-yellow fr-submit">Submit Inquiry &rarr;</button>
+
+        <p class="fr-footnote">Every inquiry is read personally. Your information stays with our team.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function handleFranchiseSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.fr-submit');
+  const original = btn.innerHTML;
+  btn.innerHTML = '✓ Inquiry Submitted';
+  btn.classList.add('is-submitted');
+  btn.style.pointerEvents = 'none';
+  setTimeout(() => {
+    btn.innerHTML = original;
+    btn.classList.remove('is-submitted');
+    btn.style.pointerEvents = '';
+    e.target.reset();
+  }, 4000);
+}
+</script>
+{% endblock %}

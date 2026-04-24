@@ -1,0 +1,40 @@
+{
+  "name": "Yellow Bee",
+  "tagline": "Seattle's Modern Asian Convenience Market",
+  "description": "Signature banh mi on toasted bagels, handcrafted boba, and curated grocery essentials — all under one roof.",
+  "address": {
+    "street": "922 E Yesler Way",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "98122"
+  },
+  "phone": "(206) 538-0839",
+  "email": "shopyellowbee@gmail.com",
+  "handle": "@shopyellowbee",
+  "socials": {
+    "instagram": "https://www.instagram.com/shopyellowbee/",
+    "facebook": "https://www.facebook.com/shopyellowbee/",
+    "tiktok": "#",
+    "x": "#"
+  },
+  "nav": [
+    { "label": "Menu", "href": "/menu/" },
+    { "label": "Locations", "href": "/locations/" },
+    { "label": "Careers", "href": "/careers/" },
+    { "label": "About Us", "href": "/about/" },
+    { "label": "Franchise", "href": "/franchise/" },
+    { "label": "Contact Us", "href": "/contact/" }
+  ],
+  "footerNav": {
+    "Explore": [
+      { "label": "Menu", "href": "/menu/" },
+      { "label": "About Us", "href": "/about/" },
+      { "label": "Locations", "href": "/locations/" }
+    ],
+    "Company": [
+      { "label": "Careers", "href": "/careers/" },
+      { "label": "Franchise", "href": "/franchise/" },
+      { "label": "Contact", "href": "/contact/" }
+    ]
+  }
+}

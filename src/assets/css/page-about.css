@@ -1,0 +1,248 @@
+/* ─── ABOUT PAGE — editorial, concrete/paper rhythm ─── */
+
+/* ─── SECTIONS (shared) ─── */
+.about-section {
+  padding: 5.5rem 0 5rem;
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.about-section--first { padding-top: 10rem; }
+
+.about-section-head {
+  margin-bottom: 3rem; max-width: 62%;
+  position: relative; z-index: 2;
+}
+.about-section-head--center {
+  text-align: center; margin-left: auto; margin-right: auto;
+  max-width: 680px;
+}
+.about-section-head--center .sec-mark { justify-content: center; }
+.about-section-head--center .sec-mark::before { display: none; }
+.about-section-head .sec-mark { margin-bottom: 0.9rem; }
+.about-section-head h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 0.95;
+  letter-spacing: -0.005em; text-transform: uppercase;
+}
+.about-section-meta {
+  margin-top: 1rem;
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+
+/* Dark variant — concrete backdrop matching home deli */
+.about-section--dark {
+  color: var(--text-light);
+  background:
+    linear-gradient(rgba(46,45,50,0.2), rgba(46,45,50,0.2)),
+    url('/photos/backgrounds/brand-concrete.jpg') center/cover no-repeat;
+  background-color: var(--dark);
+  border-top: 1px solid rgba(253,196,4,0.22);
+  border-bottom: 1px solid rgba(253,196,4,0.22);
+}
+.about-section--dark::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 78% 28%, rgba(253,196,4,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 15% 85%, rgba(0,0,0,0.35) 0%, transparent 65%);
+}
+.about-section--dark > * { position: relative; z-index: 2; }
+.about-section--dark h2 { color: var(--white); }
+
+/* Paper variant */
+.about-section--paper {
+  background: var(--paper); color: var(--text-dark);
+}
+.about-section--paper::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(46,45,50,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,45,50,0.04) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}
+.about-section--paper > * { position: relative; z-index: 1; }
+.about-section--paper h2 { color: var(--text-dark); }
+.about-section--paper .about-section-meta--dark { color: var(--text-dark-muted); }
+.about-section--paper .sec-mark--dark { color: var(--yellow-deep); margin-bottom: 0.9rem; }
+.about-section--paper .sec-mark--dark::before { background: var(--yellow-deep); }
+
+/* Mega watermark */
+.about-mega {
+  position: absolute; top: 2.5rem; right: -2%; z-index: 0;
+  font-family: var(--display); font-size: clamp(7rem, 18vw, 18rem);
+  font-weight: 400; letter-spacing: -0.02em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(253,196,4,0.1);
+  pointer-events: none; line-height: 0.85; text-transform: uppercase;
+  user-select: none; white-space: nowrap;
+}
+.about-mega--dark { -webkit-text-stroke: 1.5px rgba(46,45,50,0.08); }
+
+/* ─── CHAPTER 01 — ORIGIN (editorial split: image + narrative) ─── */
+.about-origin {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 3rem; align-items: start;
+  position: relative; z-index: 2;
+}
+.about-origin-image {
+  margin: 0; position: relative;
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--light-border);
+  box-shadow: 0 22px 50px -22px rgba(46,45,50,0.3);
+  aspect-ratio: 4/5;
+  background: var(--dark);
+  position: sticky; top: 120px;
+}
+.about-origin-image img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.8s var(--ease-out);
+}
+.about-origin-image:hover img { transform: scale(1.02); }
+.about-origin-cap {
+  position: absolute; bottom: 0.9rem; left: 0.9rem; z-index: 2;
+  background: rgba(46,45,50,0.92); color: var(--white);
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.45rem 0.7rem;
+  border-left: 2px solid var(--yellow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.about-origin-body {
+  max-width: 56ch;
+}
+.about-p {
+  font-size: 1.02rem; line-height: 1.75;
+  color: var(--text-dark-secondary);
+  margin: 0 0 1.25rem;
+}
+.about-p:first-child::first-letter {
+  font-family: var(--display); font-weight: 400;
+  font-size: 3.5rem; line-height: 0.9;
+  color: var(--yellow-deep);
+  float: left; padding: 0.15rem 0.5rem 0 0;
+}
+.about-p:last-of-type { margin-bottom: 1.75rem; }
+
+.about-quote {
+  font-family: var(--heading); font-style: italic; font-weight: 500;
+  font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.4;
+  color: var(--text-dark);
+  position: relative;
+  padding: 1rem 0 1rem 1.75rem;
+  margin: 0.5rem 0 0;
+  border-left: 3px solid var(--yellow);
+}
+.about-quote-mark {
+  position: absolute; left: 0.35rem; top: -0.4rem;
+  font-family: var(--display); font-size: 3rem; line-height: 1;
+  color: var(--yellow); font-style: normal;
+}
+
+/* ─── CHAPTER 02 — MISSION (centered declaration) ─── */
+.about-mission .about-section-head { margin-bottom: 2.25rem; }
+.about-mission-body {
+  max-width: 780px; margin: 0 auto;
+  text-align: center;
+  position: relative; z-index: 2;
+}
+.about-mission-statement {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem); line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--white);
+  margin: 0 0 1.75rem;
+  padding: 0 0 1.75rem;
+  border-bottom: 1px solid rgba(253,196,4,0.3);
+}
+.about-mission-promise {
+  font-size: 1.05rem; line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 56ch; margin: 0 auto;
+}
+
+/* ─── CHAPTER 03 — DIFFERENCE (numbered editorial list) ─── */
+.about-pillars {
+  list-style: none; padding: 0; margin: 0;
+  position: relative; z-index: 2;
+}
+.about-pillar {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--light-border);
+  align-items: start;
+}
+.about-pillar:first-child { border-top: 1px solid var(--light-border); }
+.about-pillar-num {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 3.75rem); line-height: 0.9;
+  color: var(--yellow-deep);
+  letter-spacing: -0.01em;
+}
+.about-pillar-body { display: flex; flex-direction: column; gap: 0.5rem; }
+.about-pillar-title {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0;
+}
+.about-pillar-desc {
+  font-size: 1rem; line-height: 1.65;
+  color: var(--text-dark-secondary);
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* ─── CHAPTER 04 — STATS ─── */
+.about-stats-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative; z-index: 2;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 3rem;
+}
+.about-stat {
+  padding: 2rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  display: flex; flex-direction: column; gap: 0.5rem;
+  transition: background 0.25s var(--ease-out);
+}
+.about-stat:hover { background: rgba(253,196,4,0.04); }
+.about-stat-n {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.25rem, 4vw, 3rem); line-height: 1;
+  color: var(--yellow); letter-spacing: -0.01em;
+}
+.about-stat-l {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-muted); line-height: 1.4;
+}
+
+.about-ctas {
+  display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;
+  position: relative; z-index: 2;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .about-section-head { max-width: 100%; }
+  .about-origin { grid-template-columns: 1fr; gap: 2rem; }
+  .about-origin-image { position: static; aspect-ratio: 16/10; max-width: 560px; }
+  .about-origin-body { max-width: 68ch; }
+  .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .about-section--first { padding-top: 8rem; }
+  .about-pillar { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.5rem 0; }
+  .about-pillar-num { font-size: 2.5rem; }
+  .about-quote { padding-left: 1.5rem; }
+  .about-mission-statement { font-size: 1.5rem; }
+  .about-stats-grid { grid-template-columns: 1fr; }
+}

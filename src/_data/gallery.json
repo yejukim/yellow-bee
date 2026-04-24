@@ -1,0 +1,16 @@
+{
+  "items": [
+    { "image": "photos/gallery-web/YellowBee_Photo_BagelBanhmi.jpg", "alt": "Banh Mi" },
+    { "image": "photos/gallery-web/DSCF0051.jpg", "alt": "Interior" },
+    { "image": "photos/gallery-web/DSCF0052.jpg", "alt": "Store" },
+    { "image": "photos/gallery-web/Yellowbee_Photo_Bagel_Tower.jpg", "alt": "Bagel Tower" },
+    { "image": "photos/gallery-web/DSCF0056.jpg", "alt": "Vibes" },
+    { "image": "photos/gallery-web/DSCF0058.jpg", "alt": "Fresh" },
+    { "image": "photos/gallery-web/DSCF0064.jpg", "alt": "Market" },
+    { "image": "photos/gallery-web/DSCF0077.jpg", "alt": "Community" },
+    { "image": "photos/gallery-web/DSCF0080.jpg", "alt": "Neighborhood" },
+    { "image": "photos/gallery-web/DSCF0083.jpg", "alt": "Yellow Bee" },
+    { "image": "photos/gallery-web/DSCF0084.jpg", "alt": "Interior Shot" },
+    { "image": "photos/gallery-web/DSCF0085.jpg", "alt": "The Spot" }
+  ]
+}

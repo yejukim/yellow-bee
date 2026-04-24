@@ -1,0 +1,137 @@
+---
+title: "Careers — Yellow Bee"
+description: "Join the hive. Yellow Bee is hiring baristas, cooks, and curious humans to help run Seattle's modern Asian market & café."
+permalink: /careers/index.html
+tickerItems:
+  - "Now Hiring · Baristas · Kitchen · Floor"
+  - "Shift Leads Wanted"
+  - "Flexible Schedules"
+  - "Growth Path Across 3 Locations"
+---
+
+{% extends "base.njk" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/page-careers.css?v={{ buildHash }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- CHAPTER 01 — OPEN ROLES -->
+<section class="careers-section careers-section--paper careers-section--first" id="roles">
+  <div class="careers-mega careers-mega--dark" aria-hidden="true">Work</div>
+  <div class="sec-container">
+    <header class="careers-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 01 / {{ careers.roles.chapter }}</div>
+      <h2>{{ careers.roles.headline }}</h2>
+      <p class="careers-section-meta careers-section-meta--dark">{{ careers.roles.meta }}</p>
+    </header>
+
+    <div class="careers-roles-grid">
+      {% for r in careers.roles.items %}
+      <article class="role-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
+        <h3 class="role-title">{{ r.title }}</h3>
+        <p class="role-summary">{{ r.summary }}</p>
+        <ul class="role-bullets">
+          {% for b in r.bullets %}
+          <li>{{ b }}</li>
+          {% endfor %}
+        </ul>
+        <a href="#apply" class="role-cta">Apply for this role →</a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 02 — PERKS -->
+<section class="careers-section careers-section--dark" id="perks">
+  <div class="careers-mega" aria-hidden="true">Perks</div>
+  <div class="sec-container">
+    <header class="careers-section-head reveal">
+      <div class="sec-mark">Chapter 02 / {{ careers.perks.chapter }}</div>
+      <h2>{{ careers.perks.headline }}</h2>
+      <p class="careers-section-meta">{{ careers.perks.meta }}</p>
+    </header>
+
+    <ul class="careers-perks">
+      {% for p in careers.perks.items %}
+      <li class="perk reveal d{{ loop.index }}">
+        <div class="perk-label">{{ p.label }}</div>
+        <div class="perk-desc">{{ p.desc }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<!-- CHAPTER 03 — VALUES -->
+<section class="careers-section careers-section--paper" id="values">
+  <div class="careers-mega careers-mega--dark" aria-hidden="true">Hive</div>
+  <div class="sec-container">
+    <header class="careers-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 03 / {{ careers.values.chapter }}</div>
+      <h2>{{ careers.values.headline }}</h2>
+      <p class="careers-section-meta careers-section-meta--dark">{{ careers.values.meta }}</p>
+    </header>
+
+    <ol class="careers-values">
+      {% for v in careers.values.items %}
+      <li class="value-row reveal d{{ loop.index }}">
+        <span class="value-num">{{ v.num }}</span>
+        <div class="value-body">
+          <h3 class="value-title">{{ v.title }}</h3>
+          <p class="value-desc">{{ v.desc }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- CHAPTER 04 — APPLY -->
+<section class="careers-section careers-section--dark careers-apply" id="apply">
+  <div class="careers-mega" aria-hidden="true">Apply</div>
+  <div class="sec-container">
+    <header class="careers-section-head reveal">
+      <div class="sec-mark">Chapter 04 / {{ careers.apply.chapter }}</div>
+      <h2>{{ careers.apply.headline }}</h2>
+      <p class="careers-section-meta">{{ careers.apply.sub }}</p>
+    </header>
+
+    <div class="apply-panel reveal">
+      <div class="apply-steps">
+        <div class="apply-step">
+          <span class="apply-step-num">01</span>
+          <div>
+            <div class="apply-step-title">Write us a note</div>
+            <p class="apply-step-desc">Tell us your name, role you want, and why Yellow Bee.</p>
+          </div>
+        </div>
+        <div class="apply-step">
+          <span class="apply-step-num">02</span>
+          <div>
+            <div class="apply-step-title">Attach your resume</div>
+            <p class="apply-step-desc">PDF or Word — whatever you've got. Experience helps, hunger counts more.</p>
+          </div>
+        </div>
+        <div class="apply-step">
+          <span class="apply-step-num">03</span>
+          <div>
+            <div class="apply-step-title">We'll reply</div>
+            <p class="apply-step-desc">We read every application. If there's a fit, we'll set up a short chat.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="apply-cta-block">
+        <div class="apply-cta-label">Send it to</div>
+        <a class="apply-email" href="mailto:{{ site.email }}?subject={{ careers.apply.emailSubject | urlencode }}&body={{ careers.apply.emailBody | urlencode }}">{{ site.email }}</a>
+        <a href="mailto:{{ site.email }}?subject={{ careers.apply.emailSubject | urlencode }}&body={{ careers.apply.emailBody | urlencode }}" class="btn btn-yellow apply-btn">Email Your Application</a>
+        <p class="apply-footnote">Prefer to drop by? Come see us at {{ site.address.street }}, {{ site.address.city }}.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

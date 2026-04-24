@@ -1,0 +1,61 @@
+{
+  "origin": {
+    "chapter": "The Origin",
+    "headline": "From a family grocery, a neighborhood market.",
+    "meta": "Seattle's Central District · 2008 to now",
+    "image": "photos/gallery-web/YellowBee_Photo_InteriorSign_03252026.jpg",
+    "imageAlt": "Yellow Bee flagship interior — Yesler Way, Seattle",
+    "imageCaption": "The flagship · 922 E Yesler Way",
+    "body": [
+      "First-gen immigrant family. In 2008, we opened an Asian grocery store on Yesler Way to serve neighbors who couldn't find the flavors of home in the big chains. For fifteen years, the shop was a quiet staple — the kind of place regulars knew by smell.",
+      "In 2024, Brian Hoang reimagined what the store could be. What stayed: handpicked groceries, family recipes, Asian heritage. What changed: a coffee bar, made-to-order banh mi, bagels baked daily, handcrafted boba, and a storefront built for how neighborhoods actually live today.",
+      "Yellow Bee is the family store, updated for 2026. Still Asian. Still family. Still here for neighbors."
+    ],
+    "quote": "We're not a special-trip destination. We're where you stop on your way home."
+  },
+  "mission": {
+    "chapter": "The Mission",
+    "headline": "Asian food culture, in your everyday.",
+    "statement": "We believe Asian food culture belongs in your everyday life — not reserved for a special trip.",
+    "promise": "Our job is to curate fresh groceries, handcrafted café fare, and pantry staples in a small store that feels warm, welcoming, and walking-distance close. Quality without the fuss. Convenience without the compromise."
+  },
+  "difference": {
+    "chapter": "Why Yellow Bee",
+    "headline": "What we actually do.",
+    "meta": "Four things we hold to, every day.",
+    "pillars": [
+      {
+        "num": "01",
+        "title": "Curated, not crowded",
+        "desc": "We pick the best of what we sell. Smaller shelves, sharper choices, nothing filler."
+      },
+      {
+        "num": "02",
+        "title": "Made, not assembled",
+        "desc": "Banh mi built to order. Boba cooked fresh. Pastries pulled from the oven that morning."
+      },
+      {
+        "num": "03",
+        "title": "Heritage recipes",
+        "desc": "Vietnamese and broader Asian flavors, kept honest. Nothing watered down for the crowd."
+      },
+      {
+        "num": "04",
+        "title": "Walking-distance close",
+        "desc": "Small stores in the neighborhoods you already live in. Stop in on the way home."
+      }
+    ]
+  },
+  "stats": {
+    "chapter": "By The Numbers",
+    "headline": "A compact history.",
+    "items": [
+      { "n": "2008",     "label": "Family grocery opens" },
+      { "n": "Apr 2024", "label": "Yellow Bee launches" },
+      { "n": "1",        "label": "Flagship open" },
+      { "n": "2",        "label": "Stores coming" },
+      { "n": "15+",      "label": "Years of heritage" },
+      { "n": "20+",      "label": "Boba flavors" }
+    ]
+  }
+}

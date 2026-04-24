@@ -1,0 +1,347 @@
+---
+title: "Yellow Bee — Seattle's Modern Asian Convenience Market"
+description: "Signature banh mi on toasted bagels, handcrafted boba, and curated grocery essentials — all under one roof. Seattle's Central District."
+permalink: /index.html
+---
+
+{% extends "base.njk" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/page-home.css?v={{ buildHash }}">
+{% endblock %}
+
+{% block pre_nav %}
+{% include "geo-canvas.njk" %}
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-tint"></div>
+
+  <!-- Architectural corner brackets -->
+  <span class="hero-bracket hero-bracket-tl" aria-hidden="true"></span>
+  <span class="hero-bracket hero-bracket-tr" aria-hidden="true"></span>
+  <span class="hero-bracket hero-bracket-bl" aria-hidden="true"></span>
+  <span class="hero-bracket hero-bracket-br" aria-hidden="true"></span>
+
+  <!-- Corner coords (quiet spec marks) -->
+  <div class="hero-coord hero-coord-tr" aria-hidden="true">N 47.601° / W 122.316°</div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="hero-eyebrow">Seattle's First</span>
+        <span class="line"><span class="fill">Modern</span></span>
+        <span class="line"><span class="fill">Asian <em>Market</em>.</span></span>
+      </h1>
+      <p class="hero-lede">Fresh groceries, a quick bite at the café, and daily essentials &mdash; all within walking distance.</p>
+      <div class="hero-ctas">
+        <a href="/menu/" class="btn btn-yellow">Explore Menu</a>
+        <a href="#deals" class="btn btn-outline">View Deals</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <div class="hero-img-glow"></div>
+        <img src="/photos/YellowBee_Photo_BagelTowerTransparent.png" alt="Signature Banh Mi Bagel Tower">
+        <div class="hero-deal-stamp">
+          <div class="tag">Featured Deal</div>
+          <div class="now">$10</div>
+          <div class="label">Banh Mi Bagel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="hero-arrow" href="#deals" aria-label="Scroll to content">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>
+  </a>
+</section>
+
+<!-- WEEKLY DEALS -->
+<section class="deals" id="deals">
+  <div class="deals-mega-bg" aria-hidden="true">Fresh</div>
+  <div class="sec-container">
+    <div class="deals-header reveal">
+      <div class="sec-mark">Chapter 01 / The Market</div>
+      <h2>This Week's Deals.</h2>
+      <div class="deals-header-meta">
+        <span>Valid through <strong>{{ deals.validThrough }}</strong></span>
+      </div>
+    </div>
+    <div class="deals-grid">
+      {% for deal in deals.items %}
+      <div class="deal-card reveal d{{ loop.index }}">
+        <div class="deal-badge {{ deal.badgeType }}">{{ deal.badge }}</div>
+        <div class="deal-img"><img src="/{{ deal.image }}" alt="{{ deal.alt }}" loading="lazy"></div>
+        <div class="deal-body">
+          <div class="deal-name">{{ deal.name }}</div>
+          <div class="deal-desc">{{ deal.desc }}</div>
+          <div class="deal-pricing">
+            <span class="deal-now">{{ deal.price }}</span>
+            {% if deal.was %}<span class="deal-was">{{ deal.was }}</span>{% endif %}
+          </div>
+          <div class="deal-save">{{ deal.save }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- DELI OPTIONS -->
+<section class="deli" id="deli">
+  <div class="deli-mega-bg" aria-hidden="true">Deli</div>
+  <div class="sec-container">
+    <div class="deli-header reveal">
+      <div class="sec-mark">Chapter 02 / The Menu</div>
+      <h2 class="deli-main-h">Pick Your Protein.</h2>
+      <div class="deli-header-meta">
+        <span>Made to order daily</span>
+      </div>
+    </div>
+
+    <div class="deli-menu-grid">
+      {% for item in menu.banhmi.items %}{% if loop.index <= 3 %}
+      <div class="deli-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
+        <div class="deli-card-img"><img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy"></div>
+        <div class="deli-card-body">
+          <h4>{{ item.name }}</h4>
+          <div class="card-desc">{{ item.desc }}</div>
+          <div class="card-price">{{ item.price }}</div>
+        </div>
+      </div>
+      {% endif %}{% endfor %}
+    </div>
+    <div class="deli-full-menu-cta reveal">
+      <a href="/menu/" class="btn btn-yellow">View Full Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONAL DRINKS -->
+<section class="drinks" id="drinks">
+  <div class="drinks-mega-bg" aria-hidden="true">Sip</div>
+  <div class="drinks-header reveal">
+    <div class="sec-mark">Chapter 03 / The Bar</div>
+    <h2>Seasonal Boba &amp; More.</h2>
+    <div class="drinks-header-meta">
+      <span>House-made tapioca &mdash; new drops every season</span>
+    </div>
+  </div>
+  <div class="drinks-showcase">
+    {% for drink in drinks.items %}
+    <div class="drink-card reveal d{{ loop.index }}">
+      <div class="drink-card-img"><img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy"></div>
+      <h4>{{ drink.name }}</h4>
+      <div class="dp">{{ drink.price }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="toppings reveal">
+    <div class="toppings-label">{{ drinks.toppings.label }}</div>
+    <div class="toppings-price">{{ drinks.toppings.price }}</div>
+    <div class="toppings-list">
+      {% for t in drinks.toppings.list %}
+      <span class="top-tag">{{ t }}</span>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="drinks-cta reveal">
+    <a href="/menu/" class="btn btn-dark">View Full Menu</a>
+  </div>
+</section>
+
+<!-- OUR STORY -->
+<section class="story" id="story">
+  <div class="story-mega-bg" aria-hidden="true">The Hive</div>
+  <div class="sec-container">
+    <div class="story-inner">
+      <div class="story-img-wrap reveal-left">
+        <img src="/photos/honey-comb-w-line-1.png" alt="Yellow Bee Honeycomb Collage">
+      </div>
+      <div class="story-content reveal-right">
+        <div class="sec-mark">Chapter 04 / The Story</div>
+        <h2>Built for your everyday.</h2>
+        <p>A compact neighborhood market in Seattle's Central District. Built by first-gen dreamers who believe Asian food culture belongs in your everyday — not saved for a special trip.</p>
+        <blockquote class="story-quote">Handpicked meat, seafood, produce, and daily essentials &mdash; <em>designed for the way you actually live.</em></blockquote>
+        <div class="story-stats">
+          <div><div class="stat-n" data-count-up="3">0</div><div class="stat-l">Locations</div></div>
+          <div><div class="stat-n" data-count-up="12" data-suffix="+">0</div><div class="stat-l">Meal<br>Options</div></div>
+          <div><div class="stat-n" data-count-up="20" data-suffix="+">0</div><div class="stat-l">Boba<br>Flavors</div></div>
+        </div>
+        <div class="story-ctas">
+          <a href="/about/" class="btn btn-yellow">Read More</a>
+          <a href="/franchise/" class="btn btn-outline">Franchise</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT CTA -->
+<section class="visit">
+  <div class="sec-container visit-inner reveal">
+    <div class="visit-eyebrow"><span class="live-dot"></span>Chapter 05 / Open Now</div>
+    <h2>Come Through.</h2>
+    <p class="visit-sub">Your neighborhood spot is open. Grab a banh mi, pick up groceries, and see what's on deal this week.</p>
+    <div class="visit-btns">
+      <a href="#" class="btn btn-dark">Get Directions</a>
+      <a href="/menu/" class="btn btn-outline">View Full Menu</a>
+    </div>
+    <div class="visit-meta">
+      <span class="visit-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        {{ site.address.street }}
+      </span>
+      <span class="visit-meta-divider"></span>
+      <span class="visit-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        {{ site.phone }}
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header reveal">
+    <div class="sec-mark">Chapter 06 / The Buzz</div>
+    <h2>The Yellow Bee Feed.</h2>
+    <div class="gallery-tag">
+      <span>Follow along <strong>{{ site.handle }}</strong></span>
+    </div>
+  </div>
+  <div class="carousel-wrap">
+    <button class="carousel-btn prev" aria-label="Previous slide">&#8249;</button>
+    <div class="carousel-track" id="carouselTrack">
+      {% for g in gallery.items %}
+      <div class="carousel-slide"><img src="/{{ g.image }}" alt="{{ g.alt }}" loading="lazy"></div>
+      {% endfor %}
+    </div>
+    <button class="carousel-btn next" aria-label="Next slide">&#8250;</button>
+  </div>
+  <div class="carousel-dots" id="carouselDots"></div>
+</section>
+
+{% set promo = seasonal.items[0] %}
+<div class="seasonal-popup" id="seasonalPopup" role="dialog" aria-modal="true" aria-labelledby="seasonalPopupTitle" aria-hidden="true" data-popup-id="{{ seasonal.popupId }}">
+  <div class="seasonal-popup-backdrop" data-popup-close></div>
+  <div class="seasonal-popup-card" role="document">
+    <button class="seasonal-popup-close" type="button" aria-label="Close" data-popup-close>&times;</button>
+    <a class="seasonal-popup-poster" href="/menu/#seasonal" aria-label="{{ promo.name }} — view on menu">
+      <img src="/{{ promo.poster }}" alt="{{ promo.name }} — {{ promo.season }}">
+    </a>
+    <div class="seasonal-popup-body">
+      <div class="seasonal-popup-eyebrow">{{ seasonal.eyebrow }} · {{ promo.season }}</div>
+      <h3 id="seasonalPopupTitle" class="seasonal-popup-title">{{ promo.name }}.</h3>
+      <p class="seasonal-popup-desc">{{ promo.tagline }}</p>
+      <div class="seasonal-popup-meta">
+        <span>${{ promo.price }}</span>
+        <span class="seasonal-popup-dot" aria-hidden="true"></span>
+        <span>{{ promo.addOn.label }} {{ promo.addOn.price }}</span>
+      </div>
+      <div class="seasonal-popup-ctas">
+        <a href="/menu/#seasonal" class="btn btn-yellow">See on Menu</a>
+        <button type="button" class="seasonal-popup-dismiss" data-popup-close>No thanks</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function() {
+  const track = document.getElementById('carouselTrack');
+  if (!track) return;
+  const slides = track.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const dotsContainer = document.getElementById('carouselDots');
+  let currentIndex = 0, slidesPerView = 4;
+
+  function getSlidesPerView() {
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 1024) return 3;
+    return 4;
+  }
+  function getMaxIndex() { return Math.max(0, slides.length - slidesPerView); }
+  function updateCarousel() {
+    const gap = 16;
+    const slideWidth = (track.parentElement.clientWidth - gap * (slidesPerView - 1)) / slidesPerView;
+    track.style.transform = 'translateX(-' + currentIndex * (slideWidth + gap) + 'px)';
+    updateDots();
+  }
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i <= getMaxIndex(); i++) {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => { currentIndex = i; updateCarousel(); });
+      dotsContainer.appendChild(dot);
+    }
+  }
+  function updateDots() {
+    dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+  }
+  prevBtn.addEventListener('click', () => { currentIndex = Math.max(0, currentIndex - 1); updateCarousel(); });
+  nextBtn.addEventListener('click', () => { currentIndex = Math.min(getMaxIndex(), currentIndex + 1); updateCarousel(); });
+
+  let startX = 0, dragging = false;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; dragging = true; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    if (!dragging) return; dragging = false;
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) currentIndex = Math.min(getMaxIndex(), currentIndex + 1);
+      else currentIndex = Math.max(0, currentIndex - 1);
+      updateCarousel();
+    }
+  }, { passive: true });
+
+  function init() { slidesPerView = getSlidesPerView(); if (currentIndex > getMaxIndex()) currentIndex = getMaxIndex(); createDots(); updateCarousel(); }
+  init(); window.addEventListener('resize', init);
+
+  let auto = setInterval(() => { currentIndex = currentIndex >= getMaxIndex() ? 0 : currentIndex + 1; updateCarousel(); }, 5000);
+  track.parentElement.addEventListener('mouseenter', () => clearInterval(auto));
+  track.parentElement.addEventListener('mouseleave', () => { auto = setInterval(() => { currentIndex = currentIndex >= getMaxIndex() ? 0 : currentIndex + 1; updateCarousel(); }, 5000); });
+})();
+
+// Seasonal drop popup — one time per drop id
+(function() {
+  const popup = document.getElementById('seasonalPopup');
+  if (!popup) return;
+  const promoId = popup.getAttribute('data-popup-id') || 'seasonal';
+  const storageKey = 'yb_seasonal_seen_' + promoId;
+
+  // Respect repeat visitors who already dismissed this drop
+  try { if (localStorage.getItem(storageKey) === '1') return; } catch (e) {}
+
+  function open() {
+    popup.classList.add('is-open');
+    popup.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('popup-open');
+  }
+  function close() {
+    popup.classList.remove('is-open');
+    popup.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('popup-open');
+    try { localStorage.setItem(storageKey, '1'); } catch (e) {}
+  }
+
+  popup.querySelectorAll('[data-popup-close]').forEach(el => el.addEventListener('click', close));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && popup.classList.contains('is-open')) close(); });
+
+  // Small delay so the hero can settle before the modal pops
+  setTimeout(open, 1800);
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,103 @@
+{
+  "roles": {
+    "chapter": "Open Roles",
+    "headline": "Now Hiring.",
+    "meta": "Baristas, kitchen, floor, and shift leads. We're hiring across every station.",
+    "items": [
+      {
+        "slug": "barista-boba",
+        "title": "Barista & Boba",
+        "summary": "Pull espresso, shake fruit teas, cook tapioca. The bar runs on you.",
+        "bullets": [
+          "Craft coffee, fruit tea, handmade boba",
+          "Keep the bar clean, quick, dialed in",
+          "Know the menu and share it"
+        ]
+      },
+      {
+        "slug": "kitchen-deli",
+        "title": "Kitchen & Deli",
+        "summary": "Toast bagels, build banh mi, prep daily. Small kitchen, big care, a line that moves.",
+        "bullets": [
+          "Banh mi and bagels made to order",
+          "Prep, portion, rotate stock",
+          "Food safety first, speed close behind"
+        ]
+      },
+      {
+        "slug": "market-floor",
+        "title": "Market & Floor",
+        "summary": "Face the shelves, help neighbors find what they need, make the store feel like home.",
+        "bullets": [
+          "Stock, merchandise, rotate inventory",
+          "Greet regulars, welcome first-timers",
+          "Own the details: shelves, signs, tone"
+        ]
+      },
+      {
+        "slug": "leadership",
+        "title": "Shift Lead & Growth",
+        "summary": "Run a shift, coach a teammate, set the pace. New stores are coming. We're looking for the people who'll run them.",
+        "bullets": [
+          "Lead shifts, train new hires",
+          "Own opening and closing",
+          "Grow with us as new stores open"
+        ]
+      }
+    ]
+  },
+  "perks": {
+    "chapter": "The Perks",
+    "headline": "What You Get.",
+    "meta": "More than the paycheck.",
+    "items": [
+      { "label": "Shift Meal",         "desc": "Banh mi or bagel, on us, every shift." },
+      { "label": "Drinks On Shift",    "desc": "Coffee, tea, boba — yours while you work." },
+      { "label": "Flexible Hours",     "desc": "We build around school, second jobs, family." },
+      { "label": "Growth Path",        "desc": "Three stores by 2026. Lead one of them." },
+      { "label": "Grocery Discount",   "desc": "Staff pricing on pantry and produce." },
+      { "label": "Tips",               "desc": "Pooled and shared, every shift." },
+      { "label": "Paid Training",      "desc": "We pay you to learn espresso, boba, banh mi." },
+      { "label": "Team That Shows Up", "desc": "Small hive. We cover each other." }
+    ]
+  },
+  "values": {
+    "chapter": "Who Thrives Here",
+    "headline": "The Kind Of Human We're Looking For.",
+    "meta": "Skills we'll teach. These are the traits we hire for.",
+    "items": [
+      {
+        "num": "01",
+        "title": "Hospitality-first",
+        "desc": "You see customers as neighbors. A good morning from you makes someone's day."
+      },
+      {
+        "num": "02",
+        "title": "Curious",
+        "desc": "You want to know why, not just how. You ask about the sauces, the coffee bean, the bagel recipe."
+      },
+      {
+        "num": "03",
+        "title": "Calm under rush",
+        "desc": "Saturday lunch hits. You don't flinch. You get tighter, faster, kinder."
+      },
+      {
+        "num": "04",
+        "title": "Team over ego",
+        "desc": "The hive works together. You jump in, clean up, cover the line."
+      },
+      {
+        "num": "05",
+        "title": "Pride in craft",
+        "desc": "A banh mi made right, a latte pulled well, a shelf faced clean. Small things, done well."
+      }
+    ]
+  },
+  "apply": {
+    "chapter": "Apply",
+    "headline": "Ready To Apply?",
+    "sub": "Tell us who you are, what you want to do, and why us. Every application gets read.",
+    "emailSubject": "Yellow Bee Application",
+    "emailBody": "Hi Yellow Bee team,\n\nI'd like to apply for a role at your shop.\n\nName:\nRole interest (Barista, Kitchen, Market, Shift Lead):\nAvailability:\nWhy Yellow Bee:\n\n(Attach your resume to this email.)\n\nThanks!"
+  }
+}

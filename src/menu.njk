@@ -1,0 +1,168 @@
+---
+title: "Menu — Yellow Bee"
+description: "Fresh banh mi, handcrafted boba, bagels baked daily, and sweet pastries. Made to order at Yellow Bee."
+permalink: /menu/index.html
+tickerItems:
+  - "Menu · Made to Order Daily"
+  - "$10 Banh Mi"
+  - "Bagels Baked Fresh"
+  - "Seasonal Boba"
+  - "Danish · Cookies · Pastries"
+---
+
+{% extends "base.njk" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/page-menu.css?v={{ buildHash }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- SEASONAL DROP -->
+<section class="menu-section menu-section--paper menu-seasonal menu-section--first" id="seasonal">
+  <div class="menu-section-mega menu-section-mega--dark" aria-hidden="true">Season</div>
+  <div class="sec-container">
+    {% for item in seasonal.items %}
+    <div class="seasonal-feature reveal">
+      <figure class="seasonal-poster">
+        <img src="/{{ item.poster }}" alt="{{ item.name }} — {{ item.season }}" loading="lazy">
+        <figcaption class="seasonal-poster-cap">{{ item.season }}</figcaption>
+      </figure>
+
+      <div class="seasonal-body">
+        <div class="seasonal-eyebrow">{{ seasonal.eyebrow }}</div>
+        <h2 class="seasonal-name">{{ item.name }}.</h2>
+        <p class="seasonal-tagline">{{ item.tagline }}</p>
+        <p class="seasonal-desc">{{ item.description }}</p>
+
+        <dl class="seasonal-spec">
+          <dt>Price</dt>
+          <dd>${{ item.price }}</dd>
+          <dt>{{ item.addOn.label }}</dt>
+          <dd>{{ item.addOn.price }}</dd>
+          <dt>Window</dt>
+          <dd>{{ item.available }}</dd>
+        </dl>
+
+        <div class="seasonal-ctas">
+          <a href="#drinks-menu" class="btn btn-yellow">See Full Drinks</a>
+          <a href="/locations/" class="btn btn-outline-dark">Find A Store</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- BANH MI -->
+<section class="menu-section menu-section--dark" id="banh-mi">
+  <div class="menu-section-mega" aria-hidden="true">Banh Mi</div>
+  <div class="sec-container">
+    <header class="menu-section-head reveal">
+      <div class="sec-mark">Chapter 02 / {{ menu.banhmi.label }}</div>
+      <h2>{{ menu.banhmi.headline }}</h2>
+      <p class="menu-section-meta">{{ menu.banhmi.meta }}</p>
+    </header>
+
+    <div class="menu-grid">
+      {% for item in menu.banhmi.items %}
+      <article class="menu-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
+        <div class="menu-card-img">
+          <img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-card-head">
+            <h3 class="menu-card-name">{{ item.name }}</h3>
+            <span class="menu-card-price">{{ item.price }}</span>
+          </div>
+          <p class="menu-card-desc">{{ item.desc }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- BAGELS -->
+<section class="menu-section menu-section--paper" id="bagels">
+  <div class="menu-section-mega menu-section-mega--dark" aria-hidden="true">Bagels</div>
+  <div class="sec-container">
+    <header class="menu-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 03 / {{ menu.bagels.label }}</div>
+      <h2>{{ menu.bagels.headline }}</h2>
+      <p class="menu-section-meta menu-section-meta--dark">{{ menu.bagels.meta }}</p>
+    </header>
+
+    <ul class="menu-list reveal">
+      {% for item in menu.bagels.items %}
+      <li class="menu-list-item">
+        <span class="menu-list-name">{{ item.name }}</span>
+        <span class="menu-list-dots" aria-hidden="true"></span>
+        <span class="menu-list-price">{{ menu.bagels.price }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<!-- DRINKS -->
+<section class="menu-section menu-section--dark" id="drinks-menu">
+  <div class="menu-section-mega" aria-hidden="true">Sip</div>
+  <div class="sec-container">
+    <header class="menu-section-head reveal">
+      <div class="sec-mark">Chapter 04 / The Bar</div>
+      <h2>Seasonal Boba &amp; More.</h2>
+      <p class="menu-section-meta">Handcrafted with house-made tapioca. New flavors every season.</p>
+    </header>
+
+    <div class="menu-drinks-grid">
+      {% for drink in drinks.items %}
+      <article class="drink-menu-card reveal d{{ loop.index }}">
+        <div class="drink-menu-card-img">
+          <img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy">
+        </div>
+        <div class="drink-menu-card-name">{{ drink.name }}</div>
+        <div class="drink-menu-card-price">{{ drink.price }}</div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="menu-toppings reveal">
+      <div class="menu-toppings-head">
+        <div class="menu-toppings-label">{{ drinks.toppings.label }}</div>
+        <div class="menu-toppings-price">{{ drinks.toppings.price }}</div>
+      </div>
+      <div class="menu-toppings-list">
+        {% for t in drinks.toppings.list %}
+        <span class="menu-topping-tag">{{ t }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASTRIES -->
+<section class="menu-section menu-section--paper" id="pastries">
+  <div class="menu-section-mega menu-section-mega--dark" aria-hidden="true">Sweet</div>
+  <div class="sec-container">
+    <header class="menu-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 05 / {{ menu.pastries.label }}</div>
+      <h2>{{ menu.pastries.headline }}</h2>
+      <p class="menu-section-meta menu-section-meta--dark">{{ menu.pastries.meta }}</p>
+    </header>
+
+    <div class="menu-pastries-grid">
+      {% for item in menu.pastries.items %}
+      <article class="pastry-card reveal d{{ loop.index }}">
+        <div class="pastry-card-head">
+          <h3 class="pastry-card-name">{{ item.name }}</h3>
+          <span class="pastry-card-price">{{ item.price }}</span>
+        </div>
+        <p class="pastry-card-desc">{{ item.desc }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

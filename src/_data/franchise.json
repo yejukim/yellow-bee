@@ -1,0 +1,27 @@
+{
+  "chapter": "Franchise Inquiry",
+  "headline": "Ready to build something?",
+  "meta": "Tell us about yourself and your market. No commitment — just a conversation to see if we're a fit. We read every inquiry and typically reply within 3–5 business days.",
+  "emailTo": "franchise@shopyellowbee.com",
+  "timelines": [
+    { "value": "asap",      "label": "As soon as possible" },
+    { "value": "6mo",       "label": "Within 6 months" },
+    { "value": "1yr",       "label": "Within 1 year" },
+    { "value": "2yr",       "label": "1–2 years" },
+    { "value": "exploring", "label": "Just exploring" }
+  ],
+  "backgrounds": [
+    { "value": "food",      "label": "Food & Beverage / Restaurant" },
+    { "value": "retail",    "label": "Retail / Convenience Store" },
+    { "value": "business",  "label": "General Business / Entrepreneur" },
+    { "value": "franchise", "label": "Previous Franchise Owner" },
+    { "value": "other",     "label": "Other" }
+  ],
+  "investment": [
+    { "value": "under150", "label": "Under $150K" },
+    { "value": "150-250",  "label": "$150K – $250K" },
+    { "value": "250-350",  "label": "$250K – $350K" },
+    { "value": "over350",  "label": "$350K+" },
+    { "value": "unsure",   "label": "Not sure yet" }
+  ]
+}

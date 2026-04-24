@@ -1,0 +1,114 @@
+---
+title: "Locations — Yellow Bee"
+description: "Visit Yellow Bee in Seattle's Central District. More neighborhood locations coming soon — U-District and Mountlake Terrace."
+permalink: /locations/index.html
+tickerItems:
+  - "Now Open · Yesler Way, Seattle"
+  - "Coming Soon · U-District"
+  - "Coming Summer 2026 · Mountlake Terrace"
+  - "Franchise Inquiries Open"
+---
+
+{% extends "base.njk" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/page-locations.css?v={{ buildHash }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- OPEN LOCATIONS -->
+{% for loc in locations.open %}
+<section class="loc-section loc-section--open{% if loop.first %} loc-section--first{% endif %}" id="{{ loc.slug }}">
+  <div class="loc-mega" aria-hidden="true">{{ loc.name }}</div>
+  <div class="sec-container">
+    <header class="loc-head reveal">
+      <div class="sec-mark">Chapter 0{{ loop.index }} / {{ loc.label }}</div>
+      <h2>{{ loc.name }}.</h2>
+      <p class="loc-meta">
+        <span class="loc-status"><span class="live-dot"></span>{{ loc.status }}</span>
+      </p>
+    </header>
+
+    <div class="loc-feature">
+      <div class="loc-feature-img reveal-left">
+        <img src="/{{ loc.image }}" alt="{{ loc.name }} interior" loading="lazy">
+      </div>
+
+      <div class="loc-feature-body reveal-right">
+        <p class="loc-description">{{ loc.description }}</p>
+
+        <dl class="loc-spec">
+          <dt>Address</dt>
+          <dd>
+            {{ loc.address.street }}<br>
+            {{ loc.address.city }}, {{ loc.address.state }} {{ loc.address.zip }}
+          </dd>
+
+          <dt>Phone</dt>
+          <dd><a href="tel:{{ loc.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ loc.phone }}</a></dd>
+
+          <dt>Hours</dt>
+          <dd>
+            {% for h in loc.hours %}
+            <div class="loc-hours-row"><span>{{ h.days }}</span><span>{{ h.time }}</span></div>
+            {% endfor %}
+          </dd>
+        </dl>
+
+        <ul class="loc-features">
+          {% for feature in loc.features %}
+          <li>{{ feature }}</li>
+          {% endfor %}
+        </ul>
+
+        <div class="loc-ctas">
+          <a href="https://maps.google.com/?q={{ loc.mapQuery }}" class="btn btn-yellow" target="_blank" rel="noopener">Get Directions</a>
+          <a href="/menu/" class="btn btn-outline">View Menu</a>
+        </div>
+      </div>
+    </div>
+
+    {% if loc.mapEmbed %}
+    <div class="loc-map reveal">
+      <iframe src="{{ loc.mapEmbed }}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="{{ loc.name }} location map"></iframe>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endfor %}
+
+<!-- COMING SOON -->
+<section class="loc-section loc-section--soon" id="coming-soon">
+  <div class="loc-mega loc-mega--dark" aria-hidden="true">Next</div>
+  <div class="sec-container">
+    <header class="loc-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 02 / The Expansion</div>
+      <h2>Coming Soon.</h2>
+      <p class="loc-meta loc-meta--dark">Two new neighborhoods joining the hive.</p>
+    </header>
+
+    <div class="loc-soon-grid">
+      {% for loc in locations.soon %}
+      <article class="loc-soon-card reveal d{{ loop.index }}">
+        <div class="loc-soon-img">
+          <img src="/{{ loc.image }}" alt="{{ loc.name }}" loading="lazy">
+          <div class="loc-soon-badge">{{ loc.eta }}</div>
+        </div>
+        <div class="loc-soon-body">
+          <h3 class="loc-soon-name">{{ loc.name }}</h3>
+          <div class="loc-soon-neighborhood">{{ loc.neighborhood }}</div>
+          <p class="loc-soon-desc">{{ loc.description }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="loc-franchise-cta reveal">
+      <span class="loc-franchise-label">Want Yellow Bee in your neighborhood?</span>
+      <a href="/franchise/" class="btn btn-outline-dark">Learn About Franchising</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,412 @@
+/* ─── MENU PAGE — matches home page editorial aesthetic ─── */
+
+/* ─── PAGE HERO ─── */
+.menu-hero {
+  min-height: 60vh; padding: 160px var(--edge) 5rem;
+  display: flex; align-items: center; justify-content: flex-start;
+  position: relative; overflow: hidden; isolation: isolate;
+  color: var(--white);
+}
+.menu-hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background: url('/photos/backgrounds/visit-aisle.jpg') center/cover no-repeat;
+  filter: saturate(0.8) contrast(1.05);
+}
+.menu-hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(135deg, rgba(46,45,50,0.88) 0%, rgba(46,45,50,0.74) 50%, rgba(46,45,50,0.86) 100%);
+}
+.menu-hero-inner {
+  position: relative; z-index: 2;
+  max-width: 1280px; margin: 0 auto; width: 100%;
+}
+.menu-hero-inner .sec-mark { color: var(--yellow); margin-bottom: 1rem; }
+.menu-hero-inner .sec-mark::before { background: var(--yellow); }
+.menu-hero-h {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(3rem, 8vw, 6rem); line-height: 0.92;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--white);
+  max-width: 18ch; margin-bottom: 1.25rem;
+}
+.menu-hero-sub {
+  font-size: 1.05rem; color: var(--text-muted);
+  max-width: 540px; line-height: 1.7;
+  padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+/* ─── SECTIONS (shared) ─── */
+.menu-section {
+  padding: 5.5rem 0 5rem;
+  position: relative; overflow: hidden; isolation: isolate;
+}
+/* First section sits right below nav + ticker, needs extra top padding */
+.menu-section--first { padding-top: 10rem; }
+.menu-section-head {
+  margin-bottom: 3rem; max-width: 60%;
+  position: relative; z-index: 2;
+}
+.menu-section-head .sec-mark { margin-bottom: 0.9rem; }
+.menu-section-head h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.75rem, 6vw, 4.5rem); line-height: 0.95;
+  letter-spacing: -0.005em; text-transform: uppercase;
+}
+.menu-section-meta {
+  margin-top: 1rem;
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+/* Dark variant — concrete backdrop (identical to home page .deli) */
+.menu-section--dark {
+  color: var(--text-light);
+  background:
+    linear-gradient(rgba(46,45,50,0.2), rgba(46,45,50,0.2)),
+    url('/photos/backgrounds/brand-concrete.jpg') center/cover no-repeat;
+  background-color: var(--dark);
+  border-top: 1px solid rgba(253,196,4,0.22);
+  border-bottom: 1px solid rgba(253,196,4,0.22);
+}
+.menu-section--dark::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 78% 28%, rgba(253,196,4,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 15% 85%, rgba(0,0,0,0.35) 0%, transparent 65%);
+}
+.menu-section--dark h2 { color: var(--white); }
+.menu-section--dark > * { position: relative; z-index: 2; }
+
+/* Paper variant */
+.menu-section--paper {
+  background: var(--paper); color: var(--text-dark);
+}
+.menu-section--paper::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(46,45,50,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,45,50,0.04) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}
+.menu-section--paper h2 { color: var(--text-dark); }
+.menu-section--paper .menu-section-meta--dark { color: var(--text-dark-muted); }
+.menu-section--paper .sec-mark--dark { color: var(--yellow-deep); }
+.menu-section--paper .sec-mark--dark::before { background: var(--yellow-deep); }
+
+/* Mega watermark behind section */
+.menu-section-mega {
+  position: absolute; top: 2.5rem; right: -2%; z-index: 0;
+  font-family: var(--display); font-size: clamp(7rem, 18vw, 18rem);
+  font-weight: 400; letter-spacing: -0.02em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(253,196,4,0.1);
+  pointer-events: none; line-height: 0.85; text-transform: uppercase;
+  user-select: none;
+}
+.menu-section-mega--dark { -webkit-text-stroke: 1.5px rgba(46,45,50,0.08); }
+
+/* ─── SEASONAL DROP — full-section editorial feature ─── */
+.menu-section.menu-seasonal { padding: 3.5rem 0; }
+.menu-section.menu-seasonal.menu-section--first { padding-top: 8rem; }
+
+.seasonal-feature {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem; align-items: center;
+  position: relative; z-index: 2;
+}
+
+/* Poster */
+.seasonal-poster {
+  position: relative; margin: 0;
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--light-border);
+  box-shadow: 0 22px 50px -22px rgba(46,45,50,0.25);
+  aspect-ratio: 4/5;
+  background: var(--dark);
+  max-width: 440px;
+}
+.seasonal-poster img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.8s var(--ease-out);
+}
+.seasonal-poster:hover img { transform: scale(1.02); }
+.seasonal-poster-cap {
+  position: absolute; top: 0.9rem; left: 0.9rem; z-index: 2;
+  background: var(--yellow); color: var(--dark);
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.4rem 0.7rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Copy column */
+.seasonal-body { display: flex; flex-direction: column; gap: 0.9rem; }
+.seasonal-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--yellow-deep);
+}
+.seasonal-eyebrow::before {
+  content: ''; width: 22px; height: 1px; background: var(--yellow-deep);
+}
+.seasonal-name {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem); line-height: 0.95;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0.1rem 0 0;
+}
+.seasonal-tagline {
+  font-family: var(--heading); font-size: 1.05rem; line-height: 1.4;
+  font-style: italic; color: var(--text-dark); font-weight: 500;
+  padding-left: 0.9rem; border-left: 2px solid var(--yellow);
+  margin: 0.15rem 0 0;
+}
+.seasonal-desc {
+  font-size: 0.95rem; line-height: 1.65; color: var(--text-dark-secondary);
+  max-width: 48ch;
+  margin: 0;
+}
+
+.seasonal-spec {
+  display: grid; grid-template-columns: 110px 1fr;
+  gap: 0.55rem 1.25rem;
+  padding: 1rem 0 0.15rem;
+  border-top: 1px solid var(--light-border);
+  margin: 0.5rem 0 0;
+}
+.seasonal-spec dt {
+  font-family: var(--mono); font-size: 0.66rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--yellow-deep); align-self: start; padding-top: 2px;
+}
+.seasonal-spec dd {
+  margin: 0; font-family: var(--body); font-size: 0.9rem;
+  color: var(--text-dark); line-height: 1.5;
+}
+
+.seasonal-ctas { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.75rem; }
+
+@media (max-width: 900px) {
+  .seasonal-feature { grid-template-columns: 1fr; gap: 2rem; }
+  .seasonal-poster { max-width: 380px; margin: 0 auto; }
+}
+
+/* ─── BANH MI GRID ─── */
+.menu-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; position: relative; z-index: 2;
+}
+.menu-card {
+  background: var(--dark-card); border: 1px solid var(--dark-border);
+  border-radius: 12px; overflow: hidden;
+  display: grid; grid-template-columns: 160px 1fr;
+  transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  position: relative;
+}
+.menu-card::before {
+  content: attr(data-num); position: absolute; top: 0.6rem; left: 0.6rem; z-index: 2;
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.16em; color: var(--yellow);
+  background: rgba(46,45,50,0.85); backdrop-filter: blur(4px);
+  padding: 0.22rem 0.45rem;
+  border: 1px solid rgba(253,196,4,0.3); border-radius: 3px;
+  text-transform: uppercase;
+}
+.menu-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(253,196,4,0.35);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+}
+.menu-card-img { overflow: hidden; background: var(--dark-surface); }
+.menu-card-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+.menu-card:hover .menu-card-img img { transform: scale(1.06); }
+.menu-card-body {
+  padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;
+}
+.menu-card-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 0.8rem; flex-wrap: wrap;
+}
+.menu-card-name {
+  font-family: var(--display); font-size: 1.75rem; font-weight: 400;
+  line-height: 1; letter-spacing: 0; text-transform: uppercase;
+  color: var(--white);
+}
+.menu-card-price {
+  font-family: var(--display); font-size: 1.75rem; font-weight: 400;
+  line-height: 1; color: var(--yellow); letter-spacing: -0.01em;
+}
+.menu-card-desc {
+  font-size: 0.85rem; line-height: 1.55; color: var(--text-muted);
+}
+
+/* ─── BAGELS LIST (prix fixe style) ─── */
+.menu-list {
+  max-width: 640px; margin: 0 auto;
+  list-style: none; position: relative; z-index: 2;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(46,45,50,0.12);
+  border-bottom: 1px solid rgba(46,45,50,0.12);
+}
+.menu-list-item {
+  display: flex; align-items: baseline; gap: 0.75rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(46,45,50,0.06);
+}
+.menu-list-item:last-child { border-bottom: 0; }
+.menu-list-name {
+  font-family: var(--display); font-size: 1.5rem; font-weight: 400;
+  letter-spacing: 0; text-transform: uppercase; color: var(--text-dark);
+  line-height: 1;
+}
+.menu-list-dots {
+  flex: 1; height: 1px;
+  background: repeating-linear-gradient(to right, rgba(46,45,50,0.25) 0 2px, transparent 2px 6px);
+  align-self: center;
+}
+.menu-list-price {
+  font-family: var(--mono); font-size: 0.95rem; font-weight: 600;
+  color: var(--yellow-deep); letter-spacing: 0.02em;
+}
+
+/* ─── DRINKS GRID ─── */
+.menu-drinks-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem; position: relative; z-index: 2;
+  margin-bottom: 2.5rem;
+}
+.drink-menu-card {
+  text-align: center;
+  background: var(--dark-card); border: 1px solid var(--dark-border);
+  border-radius: 12px; padding: 1.25rem 0.9rem 1.1rem;
+  transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+}
+.drink-menu-card:hover { transform: translateY(-6px); border-color: rgba(253,196,4,0.3); }
+.drink-menu-card-img {
+  aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 0.6rem;
+}
+.drink-menu-card-img img {
+  max-height: 180px; width: auto; object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.35));
+}
+.drink-menu-card-name {
+  font-family: var(--heading); font-size: 0.85rem; font-weight: 700;
+  color: var(--white); margin-bottom: 0.2rem;
+}
+.drink-menu-card-price {
+  font-family: var(--display); font-size: 1.3rem; font-weight: 400;
+  color: var(--yellow); line-height: 1;
+}
+
+/* Toppings rail */
+.menu-toppings {
+  max-width: 920px; margin: 0 auto;
+  position: relative; z-index: 2;
+  padding: 1.75rem 2rem;
+  background: rgba(253,196,4,0.06);
+  border: 1px solid rgba(253,196,4,0.22);
+  border-radius: 10px;
+  text-align: center;
+}
+.menu-toppings-head {
+  display: inline-flex; align-items: baseline; gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--yellow);
+}
+.menu-toppings-price { color: var(--text-light); }
+.menu-toppings-list {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+}
+.menu-topping-tag {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-light); padding: 0.5rem 0.95rem;
+  font-size: 0.78rem; font-weight: 500; border-radius: 50px;
+  transition: all 0.2s;
+}
+.menu-topping-tag:hover { border-color: var(--yellow); color: var(--yellow); background: rgba(253,196,4,0.06); }
+
+/* ─── PASTRIES ─── */
+.menu-pastries-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem; max-width: 960px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.pastry-card {
+  background: var(--white); border: 1px solid var(--light-border);
+  border-radius: 10px; padding: 1.75rem 1.9rem;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.pastry-card:hover {
+  transform: translateY(-3px); box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+}
+.pastry-card-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+.pastry-card-name {
+  font-family: var(--display); font-size: 2rem; font-weight: 400;
+  letter-spacing: 0; text-transform: uppercase; color: var(--text-dark);
+  line-height: 1;
+}
+.pastry-card-price {
+  font-family: var(--display); font-size: 1.5rem; font-weight: 400;
+  color: var(--yellow-deep); line-height: 1;
+}
+.pastry-card-desc {
+  font-family: var(--body); font-size: 0.9rem; line-height: 1.55;
+  color: var(--text-dark-secondary);
+}
+
+/* ─── ORDER CTA ─── */
+.menu-cta {
+  color: var(--dark); text-align: center;
+  padding: 5rem 0 5.5rem; position: relative; overflow: hidden;
+  background:
+    linear-gradient(rgba(253,196,4,0.93), rgba(253,196,4,0.93)),
+    url('/photos/backgrounds/brand-concrete.jpg') center/cover no-repeat;
+  background-color: var(--yellow);
+  border-top: 1px solid rgba(46,45,50,0.22);
+}
+.menu-cta-h {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(3rem, 7vw, 5.5rem); line-height: 0.9;
+  letter-spacing: -0.01em; text-transform: uppercase;
+  margin-bottom: 0.5rem; color: var(--dark);
+}
+.menu-cta-sub {
+  font-size: 1rem; max-width: 500px; margin: 0 auto 2rem;
+  color: rgba(0,0,0,0.68); line-height: 1.6;
+}
+.menu-cta-btns { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; }
+.menu-cta .btn-outline { color: var(--dark); border-color: rgba(0,0,0,0.3); }
+.menu-cta .btn-outline:hover { border-color: var(--dark); background: rgba(255,255,255,0.25); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-drinks-grid { grid-template-columns: repeat(3, 1fr); }
+  .menu-section-head { max-width: 100%; }
+}
+@media (max-width: 768px) {
+  .menu-hero { min-height: 50vh; padding-top: 130px; }
+  .menu-card { grid-template-columns: 120px 1fr; }
+  .menu-card-img { height: 100%; }
+  .menu-drinks-grid { grid-template-columns: repeat(2, 1fr); }
+  .menu-pastries-grid { grid-template-columns: 1fr; }
+  .menu-toppings { padding: 1.5rem 1.25rem; }
+}
+@media (max-width: 480px) {
+  .menu-card { grid-template-columns: 1fr; }
+  .menu-card-img { aspect-ratio: 16/10; }
+  .menu-drinks-grid { grid-template-columns: 1fr 1fr; }
+  .menu-list-name { font-size: 1.2rem; }
+}

@@ -1,0 +1,93 @@
+{
+  "tagline": "Fresh banh mi. Boba. Pastries.",
+  "description": "Made to order daily. Choose from our full lineup — banh mi, bakery, and handcrafted drinks.",
+
+  "banhmi": {
+    "label": "The Deli",
+    "headline": "Banh Mi.",
+    "meta": "Served on a toasted baguette. Swap for a bagel — Everything, Jalapeno Cheddar, Cheddar, or Plain.",
+    "items": [
+      {
+        "name": "Traditional",
+        "desc": "Jambon, white ham, pâté, pickled daikon & radish, cilantro, jalapeño, cucumber, egg cream mayo.",
+        "image": "photos/banh mi/sandwich-with-ham-fresh-vegetables 3.webp",
+        "alt": "Traditional Banh Mi",
+        "price": "$10"
+      },
+      {
+        "name": "Grilled Chicken",
+        "desc": "Grilled chicken thigh, pickled daikon & radish, cilantro, jalapeño, cucumber, egg cream mayo.",
+        "image": "photos/banh mi/front-view-arrangement-delicious-sandwiches-with-copy-space 2.webp",
+        "alt": "Grilled Chicken Banh Mi",
+        "price": "$10"
+      },
+      {
+        "name": "Grilled Pork",
+        "desc": "Chargrilled lemongrass pork, pickled daikon & carrot, fresh cilantro, jalapeño, cucumber.",
+        "image": "photos/banh mi/side-view-burger-with-onion-ring-top 2.webp",
+        "alt": "Grilled Pork Banh Mi",
+        "price": "$10"
+      },
+      {
+        "name": "Pork Meatball",
+        "desc": "House-made pork meatballs, pickled daikon & radish, cilantro, jalapeño, cucumber, egg cream mayo.",
+        "image": "photos/banh mi/tasty-burger-tomatoes 1.webp",
+        "alt": "Pork Meatball Banh Mi",
+        "price": "$10"
+      },
+      {
+        "name": "Fried Tofu",
+        "desc": "Crispy fried tofu, pickled daikon & radish, cilantro, jalapeño, cucumber, hoisin sauce. Vegetarian.",
+        "image": "photos/banh mi/panini-sandwich-with-ham-cheese-tomato-arugula-isolated-white-background 2.webp",
+        "alt": "Fried Tofu Banh Mi",
+        "price": "$10"
+      },
+      {
+        "name": "Spring Mix & Avocado",
+        "desc": "Spring mix, avocado, pickled daikon, cucumber, jalapeño, cilantro, egg cream mayo. Vegetarian.",
+        "image": "photos/banh mi/side-view-club-sandwich-with-salted-cucumbers-lemon-olives-round-white-plate 1.webp",
+        "alt": "Spring Mix Avocado Banh Mi",
+        "price": "$12"
+      },
+      {
+        "name": "Beef Short Rib",
+        "desc": "Slow-braised short rib, pickled daikon & radish, cilantro, jalapeño, cucumber, egg cream mayo.",
+        "image": "photos/banh mi/bread-with-seeds-vegetables-sandwich 1.webp",
+        "alt": "Beef Short Rib Banh Mi",
+        "price": "$16"
+      }
+    ]
+  },
+
+  "bagels": {
+    "label": "Bakery",
+    "headline": "Bagels.",
+    "meta": "Baked fresh in-house every morning.",
+    "price": "$2.75",
+    "items": [
+      { "name": "Everything" },
+      { "name": "Jalapeño Cheddar" },
+      { "name": "Plain" },
+      { "name": "Cheddar" },
+      { "name": "Blueberry" }
+    ]
+  },
+
+  "pastries": {
+    "label": "Bakery",
+    "headline": "Pastries & Cookies.",
+    "meta": "Handmade. Rotating daily.",
+    "items": [
+      {
+        "name": "Danish",
+        "price": "$3.50",
+        "desc": "Raspberry · Lemon Meringue · Cream Cheese"
+      },
+      {
+        "name": "Cookies",
+        "price": "$3.50",
+        "desc": "Chocolate Chunk · White Chocolate Macadamia · Oatmeal Raisin · Royale"
+      }
+    ]
+  }
+}

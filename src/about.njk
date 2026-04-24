@@ -1,0 +1,115 @@
+---
+title: "About Us — Yellow Bee"
+description: "How a family-run Asian grocery became Seattle's modern neighborhood market. The story, the mission, and the people behind Yellow Bee."
+permalink: /about/index.html
+tickerItems:
+  - "Since 2008 · Family-Run"
+  - "Launched April 2024"
+  - "Central District · Seattle"
+  - "Three Stores by 2026"
+---
+
+{% extends "base.njk" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="/assets/css/page-about.css?v={{ buildHash }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- CHAPTER 01 — ORIGIN -->
+<section class="about-section about-section--paper about-section--first" id="origin">
+  <div class="about-mega about-mega--dark" aria-hidden="true">Origin</div>
+  <div class="sec-container">
+    <header class="about-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 01 / {{ about.origin.chapter }}</div>
+      <h2>{{ about.origin.headline }}</h2>
+      <p class="about-section-meta about-section-meta--dark">{{ about.origin.meta }}</p>
+    </header>
+
+    <div class="about-origin">
+      <figure class="about-origin-image reveal-left">
+        <img src="/{{ about.origin.image }}" alt="{{ about.origin.imageAlt }}" loading="lazy">
+        <figcaption class="about-origin-cap">{{ about.origin.imageCaption }}</figcaption>
+      </figure>
+
+      <div class="about-origin-body reveal-right">
+        {% for p in about.origin.body %}
+        <p class="about-p">{{ p | safe }}</p>
+        {% endfor %}
+
+        <blockquote class="about-quote">
+          <span class="about-quote-mark" aria-hidden="true">&ldquo;</span>
+          {{ about.origin.quote }}
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 02 — MISSION -->
+<section class="about-section about-section--dark about-mission" id="mission">
+  <div class="about-mega" aria-hidden="true">Mission</div>
+  <div class="sec-container">
+    <header class="about-section-head about-section-head--center reveal">
+      <div class="sec-mark">Chapter 02 / {{ about.mission.chapter }}</div>
+      <h2>{{ about.mission.headline }}</h2>
+    </header>
+
+    <div class="about-mission-body reveal">
+      <p class="about-mission-statement">{{ about.mission.statement }}</p>
+      <p class="about-mission-promise">{{ about.mission.promise }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 03 — DIFFERENCE -->
+<section class="about-section about-section--paper" id="why">
+  <div class="about-mega about-mega--dark" aria-hidden="true">Why</div>
+  <div class="sec-container">
+    <header class="about-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 03 / {{ about.difference.chapter }}</div>
+      <h2>{{ about.difference.headline }}</h2>
+      <p class="about-section-meta about-section-meta--dark">{{ about.difference.meta }}</p>
+    </header>
+
+    <ol class="about-pillars">
+      {% for p in about.difference.pillars %}
+      <li class="about-pillar reveal d{{ loop.index }}">
+        <span class="about-pillar-num">{{ p.num }}</span>
+        <div class="about-pillar-body">
+          <h3 class="about-pillar-title">{{ p.title }}</h3>
+          <p class="about-pillar-desc">{{ p.desc }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<!-- CHAPTER 04 — STATS -->
+<section class="about-section about-section--dark" id="numbers">
+  <div class="about-mega" aria-hidden="true">Numbers</div>
+  <div class="sec-container">
+    <header class="about-section-head reveal">
+      <div class="sec-mark">Chapter 04 / {{ about.stats.chapter }}</div>
+      <h2>{{ about.stats.headline }}</h2>
+    </header>
+
+    <div class="about-stats-grid reveal">
+      {% for s in about.stats.items %}
+      <div class="about-stat d{{ loop.index }}">
+        <div class="about-stat-n">{{ s.n }}</div>
+        <div class="about-stat-l">{{ s.label }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="about-ctas reveal">
+      <a href="/locations/" class="btn btn-yellow">Visit A Store</a>
+      <a href="/careers/" class="btn btn-outline">Join The Hive</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

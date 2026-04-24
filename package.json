@@ -1,0 +1,13 @@
+{
+  "name": "yellow-bee",
+  "version": "1.0.0",
+  "description": "Yellow Bee — Seattle's Modern Asian Convenience Market",
+  "scripts": {
+    "dev": "eleventy --serve --port=4321",
+    "build": "eleventy",
+    "watch": "eleventy --watch"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

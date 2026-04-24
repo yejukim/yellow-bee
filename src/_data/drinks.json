@@ -1,0 +1,23 @@
+{
+  "items": [
+    { "name": "Strawberry Slush", "price": "$6.50", "image": "photos/drinks/528dbd82-7d12-4d89-a243-676f64f9ba6f.webp", "alt": "Strawberry Slush" },
+    { "name": "Matcha Boba", "price": "$6.50", "image": "photos/drinks/528dbd82-7d12-4d89-a243-676f64f9ba6f-2.webp", "alt": "Matcha Boba" },
+    { "name": "Mango Passion", "price": "$7.00", "image": "photos/drinks/528dbd82-7d12-4d89-a243-676f64f9ba6f-3.webp", "alt": "Mango Passion" },
+    { "name": "Taro Milk Tea", "price": "$6.50", "image": "photos/drinks/528dbd82-7d12-4d89-a243-676f64f9ba6f-1.webp", "alt": "Taro Milk Tea" },
+    { "name": "Lemon Black Tea", "price": "$5.50", "image": "photos/drinks/528dbd82-7d12-4d89-a243-676f64f9ba6f-6.webp", "alt": "Lemon Black Tea" }
+  ],
+  "toppings": {
+    "label": "Customize Your Toppings",
+    "price": "+$0.75 per topping",
+    "list": [
+      "Boba Pearls",
+      "Coconut Jelly",
+      "Rainbow Jelly",
+      "Aloe Vera",
+      "Lychee Popping Boba",
+      "Grass Jelly",
+      "Egg Pudding",
+      "Red Bean"
+    ]
+  }
+}

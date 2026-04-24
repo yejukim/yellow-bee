@@ -1,0 +1,57 @@
+/* ─────────────────────────────────────────────────
+   YELLOW BEE — Brand tokens (per 2026 Brand Guide)
+   Aesthetic: industrial + architectural, sophisticated
+   with youthful undertones, "calm everyday habit"
+   ───────────────────────────────────────────────── */
+:root {
+  /* Brand (official) */
+  --yellow: #FDC404;
+  --yellow-hover: #E9B500;
+  --yellow-soft: #FFE68A;
+  --yellow-deep: #C59800;
+  --yellow-light: rgba(253,196,4,0.08);
+  --yellow-glow: rgba(253,196,4,0.30);
+
+  /* Neutrals (dark) — softer sophisticated charcoal */
+  --dark: #2E2D32;           /* official secondary */
+  --dark-deep: #1d1c20;      /* below dark for footers */
+  --charcoal: #3a393f;       /* slightly lifted */
+  --dark-card: #38373c;
+  --dark-surface: #424148;
+  --dark-border: rgba(255,255,255,0.07);
+  --dark-border-warm: rgba(253,196,4,0.12);
+
+  /* Neutrals (light) */
+  --white: #FFFFFF;
+  --off-white: #FAFAF5;
+  --paper: #F2EFE6;          /* warmer paper tone */
+  --warm-bg: #F5F2EA;
+  --concrete: #E5E1D6;       /* concrete/cement tone */
+  --light-border: rgba(46,45,50,0.1);
+
+  /* Text */
+  --text-dark: #2E2D32;
+  --text-dark-secondary: #5a5960;
+  --text-dark-muted: #8a8991;
+  --text-light: rgba(255,255,255,0.88);
+  --text-muted: rgba(255,255,255,0.52);
+  --text-dim: rgba(255,255,255,0.28);
+
+  /* Accents */
+  --red: #ff4444;
+  --red-dark: #C92A2A;
+  --green: #4AA84A;
+
+  /* Type — display is condensed industrial (Bebas Neue as free New Amsterdam substitute) */
+  --display: 'Bebas Neue', 'Oswald', 'Impact', sans-serif;
+  --heading: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+  --body: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', 'Menlo', monospace;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Layout */
+  --edge: clamp(1.25rem, 4vw, 3rem);
+}

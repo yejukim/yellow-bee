@@ -1,0 +1,49 @@
+{
+  "open": [
+    {
+      "slug": "yesler",
+      "label": "Flagship",
+      "name": "Yesler Way",
+      "status": "Open Now",
+      "address": {
+        "street": "922 E Yesler Way",
+        "city": "Seattle",
+        "state": "WA",
+        "zip": "98122"
+      },
+      "phone": "(206) 538-0839",
+      "hours": [
+        { "days": "Mon – Fri", "time": "7am – 8pm" },
+        { "days": "Sat – Sun", "time": "8am – 8pm" }
+      ],
+      "description": "A neighborhood market and café designed for quick stops and everyday needs. Serving commuters, students, medical staff, and Central District residents with fast, friendly access to the food and essentials you rely on.",
+      "features": [
+        "Fresh banh mi — made to order",
+        "Hot & iced coffee, bubble tea",
+        "Grab-and-go snacks & bottled drinks",
+        "Asian grocery staples & pantry items"
+      ],
+      "image": "photos/gallery-web/YellowBee_Photo_InteriorSign_03252026.jpg",
+      "mapQuery": "922+E+Yesler+Way,+Seattle,+WA+98122",
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2690.5396095684046!2d-122.31665492388027!3d47.60101007119049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906ab8b7c9ffe3%3A0xb4a576af8060fce0!2s922%20E%20Yesler%20Way%2C%20Seattle%2C%20WA%2098122!5e0!3m2!1sen!2sus!4v1713390000000!5m2!1sen!2sus"
+    }
+  ],
+  "soon": [
+    {
+      "slug": "u-district",
+      "name": "U-District",
+      "neighborhood": "Seattle, WA",
+      "eta": "Coming Soon",
+      "description": "Our next neighborhood home — bringing banh mi, boba, and pantry essentials within walking distance of campus life.",
+      "image": "photos/gallery-web/YellowBee_Photo_InteriorMenu_03252026.jpg"
+    },
+    {
+      "slug": "mountlake-terrace",
+      "name": "Mountlake Terrace",
+      "neighborhood": "TRAXX Apartments · 23905 Van Ry Blvd",
+      "eta": "Coming Summer 2026",
+      "description": "4,500 sq ft market and café adjacent to the Mountlake Terrace light rail station. A new stop on your daily commute.",
+      "image": "photos/gallery-web/YellowBee_Photo_Interiorv1_03252026.jpg"
+    }
+  ]
+}

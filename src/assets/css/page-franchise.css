@@ -1,0 +1,230 @@
+/* ─── FRANCHISE PAGE — inquiry form only, editorial paper aesthetic ─── */
+
+/* ─── SECTION SHELL ─── */
+.fr-section {
+  background: var(--paper); color: var(--text-dark);
+  padding: 5.5rem 0 5rem;
+  position: relative; overflow: hidden; isolation: isolate;
+}
+.fr-section--first { padding-top: 10rem; }
+
+/* Subtle architectural grid behind content (matches other paper sections) */
+.fr-section::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(46,45,50,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,45,50,0.04) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}
+.fr-section > * { position: relative; z-index: 1; }
+
+/* Mega watermark */
+.fr-mega {
+  position: absolute; top: 3rem; right: -2%; z-index: 0;
+  font-family: var(--display); font-size: clamp(7rem, 18vw, 18rem);
+  font-weight: 400; letter-spacing: -0.02em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(46,45,50,0.08);
+  pointer-events: none; line-height: 0.85; text-transform: uppercase;
+  user-select: none; white-space: nowrap;
+}
+
+/* ─── SECTION HEAD ─── */
+.fr-section-head {
+  margin-bottom: 3rem;
+  max-width: 62%;
+  position: relative; z-index: 2;
+}
+.fr-section-head .sec-mark--dark {
+  color: var(--yellow-deep); margin-bottom: 0.9rem;
+}
+.fr-section-head .sec-mark--dark::before { background: var(--yellow-deep); }
+.fr-section-head h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4.25rem); line-height: 0.95;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--text-dark);
+}
+.fr-section-meta {
+  margin-top: 1.1rem;
+  font-size: 1rem; line-height: 1.65;
+  color: var(--text-dark-secondary);
+  max-width: 58ch;
+}
+
+/* ─── 2-COL PANEL: aside + form ─── */
+.fr-panel {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr);
+  gap: 3rem;
+  align-items: start;
+  position: relative; z-index: 2;
+}
+
+/* ─── ASIDE (contact info) ─── */
+.fr-aside {
+  display: flex; flex-direction: column; gap: 1.6rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--light-border);
+  position: sticky; top: 120px;
+}
+.fr-aside-block {
+  display: flex; flex-direction: column; gap: 0.35rem;
+  padding-bottom: 1.3rem;
+  border-bottom: 1px dashed var(--light-border);
+}
+.fr-aside-block:last-of-type { border-bottom: none; }
+.fr-aside-label {
+  font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--yellow-deep);
+}
+.fr-aside-link {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.1;
+  color: var(--text-dark); letter-spacing: -0.005em;
+  word-break: break-word;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.15rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.fr-aside-link:hover { color: var(--yellow-deep); border-bottom-color: var(--yellow-deep); }
+.fr-aside-link--sm { font-size: 1.1rem; }
+.fr-aside-text {
+  font-size: 0.95rem; line-height: 1.5;
+  color: var(--text-dark); margin: 0;
+}
+.fr-aside-note {
+  margin-top: 0.25rem;
+  padding: 1rem 1.1rem;
+  background: rgba(253,196,4,0.08);
+  border-left: 2px solid var(--yellow);
+  border-radius: 0 4px 4px 0;
+  font-family: var(--body); font-size: 0.88rem; line-height: 1.55;
+  color: var(--text-dark-secondary);
+}
+
+/* ─── FORM ─── */
+.fr-form {
+  background: var(--white);
+  border: 1px solid var(--light-border);
+  border-radius: 14px;
+  padding: 2.25rem 2.25rem 2rem;
+  box-shadow: 0 22px 50px -24px rgba(46,45,50,0.2);
+  display: flex; flex-direction: column; gap: 1.1rem;
+}
+
+.fr-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+
+.fr-group {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  min-width: 0;
+}
+.fr-group label {
+  font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--yellow-deep);
+}
+.fr-group label span { color: var(--yellow); margin-left: 0.2rem; }
+
+/* Inputs, selects, textarea — shared baseline */
+.fr-form input[type="text"],
+.fr-form input[type="email"],
+.fr-form input[type="tel"],
+.fr-form select,
+.fr-form textarea {
+  width: 100%;
+  font-family: var(--body); font-size: 0.95rem; line-height: 1.4;
+  color: var(--text-dark);
+  background: var(--white);
+  border: 1px solid var(--light-border);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.fr-form input::placeholder,
+.fr-form textarea::placeholder {
+  color: var(--text-dark-muted); opacity: 0.7;
+}
+.fr-form input:focus,
+.fr-form select:focus,
+.fr-form textarea:focus {
+  outline: none;
+  border-color: var(--yellow-deep);
+  box-shadow: 0 0 0 3px rgba(253,196,4,0.18);
+}
+
+/* Custom select chevron */
+.fr-form select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--yellow-deep) 50%),
+    linear-gradient(135deg, var(--yellow-deep) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 13px) 50%;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+
+.fr-form textarea {
+  resize: vertical; min-height: 110px;
+  font-family: var(--body);
+}
+
+/* Consent checkbox */
+.fr-consent {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 0.7rem; align-items: start;
+  margin-top: 0.4rem;
+  padding: 0.8rem 0;
+  border-top: 1px dashed var(--light-border);
+}
+.fr-consent input[type="checkbox"] {
+  margin-top: 0.2rem;
+  width: 16px; height: 16px;
+  accent-color: var(--yellow-deep);
+  cursor: pointer;
+}
+.fr-consent label {
+  font-size: 0.82rem; line-height: 1.55;
+  color: var(--text-dark-secondary);
+  cursor: pointer;
+}
+
+/* Submit */
+.fr-submit {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  transition: background 0.3s var(--ease-out), color 0.3s var(--ease-out), transform 0.2s;
+}
+.fr-submit.is-submitted {
+  background: #4AA84A !important;
+  color: var(--white) !important;
+}
+
+.fr-footnote {
+  font-family: var(--mono); font-size: 0.66rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-dark-muted); line-height: 1.5;
+  margin: 0.5rem 0 0;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .fr-section-head { max-width: 100%; }
+  .fr-panel { grid-template-columns: 1fr; gap: 2rem; }
+  .fr-aside {
+    position: static;
+    padding: 1.25rem 0;
+  }
+}
+@media (max-width: 640px) {
+  .fr-section--first { padding-top: 8rem; }
+  .fr-form { padding: 1.5rem 1.5rem 1.4rem; border-radius: 10px; }
+  .fr-row { grid-template-columns: 1fr; gap: 1.1rem; }
+}

@@ -1,0 +1,17 @@
+<nav class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/photos/horizontallogo.png" alt="{{ site.name }}"></a>
+    <ul class="nav-links">
+      {% for item in site.nav %}
+      <li><a href="{{ item.href }}"{% if item.href == ('/' + page.fileSlug + '/') or (page.fileSlug == '' and item.href == '/') %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {% endfor %}
+    </ul>
+    <a href="/menu/" class="nav-cta nav-cta-desktop"><span class="live-dot"></span>Order Now</a>
+    <button class="mobile-menu-btn" aria-label="Open menu" onclick="document.querySelector('.mobile-drawer').classList.toggle('open'); this.setAttribute('aria-expanded', document.querySelector('.mobile-drawer').classList.contains('open'))">&#9776;</button>
+  </div>
+</nav>
+<div class="mobile-drawer" role="navigation" aria-label="Mobile menu">
+  {% for item in site.nav %}
+  <a href="{{ item.href }}" onclick="document.querySelector('.mobile-drawer').classList.remove('open')">{{ item.label }}</a>
+  {% endfor %}
+</div>

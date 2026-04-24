@@ -1,0 +1,278 @@
+/* ─── CAREERS PAGE — editorial, concrete/paper rhythm ─── */
+
+/* ─── SECTIONS (shared) ─── */
+.careers-section {
+  padding: 5.5rem 0 5rem;
+  position: relative; overflow: hidden; isolation: isolate;
+}
+/* First section sits right below nav + ticker, needs extra top padding */
+.careers-section--first { padding-top: 10rem; }
+
+.careers-section-head {
+  margin-bottom: 3rem; max-width: 60%;
+  position: relative; z-index: 2;
+}
+.careers-section-head .sec-mark { margin-bottom: 0.9rem; }
+.careers-section-head h2 {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.5rem, 6vw, 4rem); line-height: 0.95;
+  letter-spacing: -0.005em; text-transform: uppercase;
+}
+.careers-section-meta {
+  margin-top: 1rem;
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+
+/* Dark variant — concrete backdrop (matches home deli) */
+.careers-section--dark {
+  color: var(--text-light);
+  background:
+    linear-gradient(rgba(46,45,50,0.2), rgba(46,45,50,0.2)),
+    url('/photos/backgrounds/brand-concrete.jpg') center/cover no-repeat;
+  background-color: var(--dark);
+  border-top: 1px solid rgba(253,196,4,0.22);
+  border-bottom: 1px solid rgba(253,196,4,0.22);
+}
+.careers-section--dark::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 78% 28%, rgba(253,196,4,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 15% 85%, rgba(0,0,0,0.35) 0%, transparent 65%);
+}
+.careers-section--dark > * { position: relative; z-index: 2; }
+.careers-section--dark h2 { color: var(--white); }
+
+/* Paper variant */
+.careers-section--paper {
+  background: var(--paper); color: var(--text-dark);
+}
+.careers-section--paper::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(46,45,50,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,45,50,0.04) 1px, transparent 1px);
+  background-size: 96px 96px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}
+.careers-section--paper > * { position: relative; z-index: 1; }
+.careers-section--paper h2 { color: var(--text-dark); }
+.careers-section--paper .careers-section-meta--dark { color: var(--text-dark-muted); }
+.careers-section--paper .sec-mark--dark { color: var(--yellow-deep); margin-bottom: 0.9rem; }
+.careers-section--paper .sec-mark--dark::before { background: var(--yellow-deep); }
+
+/* Mega watermark */
+.careers-mega {
+  position: absolute; top: 2.5rem; right: -2%; z-index: 0;
+  font-family: var(--display); font-size: clamp(7rem, 18vw, 18rem);
+  font-weight: 400; letter-spacing: -0.02em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(253,196,4,0.1);
+  pointer-events: none; line-height: 0.85; text-transform: uppercase;
+  user-select: none; white-space: nowrap;
+}
+.careers-mega--dark { -webkit-text-stroke: 1.5px rgba(46,45,50,0.08); }
+
+/* ─── CHAPTER 01 — ROLES (2x2 grid) ─── */
+.careers-roles-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  position: relative; z-index: 2;
+}
+.role-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--light-border);
+  border-radius: 12px;
+  padding: 2rem 1.75rem 1.75rem;
+  transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.role-card::before {
+  content: attr(data-num);
+  position: absolute; top: 1rem; right: 1.1rem;
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.14em; color: var(--yellow-deep);
+}
+.role-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(253,196,4,0.4);
+  box-shadow: 0 20px 40px -20px rgba(46,45,50,0.2);
+}
+.role-title {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.65rem, 2.8vw, 2.1rem); line-height: 1;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0;
+}
+.role-summary {
+  font-size: 0.95rem; line-height: 1.6; color: var(--text-dark-secondary);
+  margin: 0; max-width: 48ch;
+}
+.role-bullets {
+  list-style: none; padding: 0; margin: 0.25rem 0 0;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  padding-top: 1rem; border-top: 1px dashed var(--light-border);
+}
+.role-bullets li {
+  position: relative; padding-left: 1.25rem;
+  font-size: 0.88rem; color: var(--text-dark-secondary); line-height: 1.5;
+}
+.role-bullets li::before {
+  content: ''; position: absolute; left: 0; top: 0.65em;
+  width: 10px; height: 1px; background: var(--yellow-deep);
+}
+.role-cta {
+  margin-top: auto; padding-top: 1rem;
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--yellow-deep);
+  align-self: flex-start;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.role-cta:hover { border-bottom-color: var(--yellow-deep); }
+
+/* ─── CHAPTER 02 — PERKS ─── */
+.careers-perks {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  position: relative; z-index: 2;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+.perk {
+  padding: 1.5rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: background 0.25s var(--ease-out);
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.perk:hover { background: rgba(253,196,4,0.04); }
+.perk-label {
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--yellow);
+}
+.perk-desc {
+  font-size: 0.92rem; line-height: 1.55; color: var(--text-light);
+}
+
+/* ─── CHAPTER 03 — VALUES (numbered editorial list) ─── */
+.careers-values {
+  list-style: none; padding: 0; margin: 0;
+  position: relative; z-index: 2;
+}
+.value-row {
+  display: grid; grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--light-border);
+  align-items: start;
+}
+.value-row:first-child { border-top: 1px solid var(--light-border); }
+.value-num {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 3.75rem); line-height: 0.9;
+  color: var(--yellow-deep);
+  letter-spacing: -0.01em;
+}
+.value-body { display: flex; flex-direction: column; gap: 0.5rem; }
+.value-title {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0;
+}
+.value-desc {
+  font-size: 1rem; line-height: 1.65;
+  color: var(--text-dark-secondary);
+  max-width: 62ch;
+  margin: 0;
+}
+
+/* ─── CHAPTER 04 — APPLY ─── */
+.apply-panel {
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  position: relative; z-index: 2;
+  margin-top: 1rem;
+}
+
+.apply-steps {
+  display: flex; flex-direction: column; gap: 1.75rem;
+}
+.apply-step {
+  display: grid; grid-template-columns: 64px 1fr;
+  gap: 1.25rem; align-items: start;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px dashed rgba(255,255,255,0.12);
+}
+.apply-step:last-child { border-bottom: none; padding-bottom: 0; }
+.apply-step-num {
+  font-family: var(--display); font-weight: 400;
+  font-size: 2.4rem; line-height: 0.9;
+  color: var(--yellow); letter-spacing: -0.01em;
+}
+.apply-step-title {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.3rem, 2vw, 1.6rem); line-height: 1;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.35rem;
+}
+.apply-step-desc {
+  font-size: 0.92rem; line-height: 1.55;
+  color: var(--text-muted); max-width: 46ch; margin: 0;
+}
+
+.apply-cta-block {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(253,196,4,0.3);
+  border-radius: 14px;
+  padding: 2rem 1.75rem;
+  display: flex; flex-direction: column; gap: 1rem;
+  align-self: start;
+}
+.apply-cta-label {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--yellow);
+}
+.apply-email {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem); line-height: 1.1;
+  color: var(--white); word-break: break-all;
+  text-decoration: none; border-bottom: 1px solid var(--yellow);
+  padding-bottom: 0.25rem;
+  transition: color 0.2s;
+}
+.apply-email:hover { color: var(--yellow); }
+.apply-btn { align-self: flex-start; margin-top: 0.5rem; }
+.apply-footnote {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-muted); line-height: 1.5;
+  margin: 0.75rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .careers-roles-grid { grid-template-columns: 1fr; }
+  .careers-section-head { max-width: 100%; }
+  .apply-panel { grid-template-columns: 1fr; gap: 2rem; }
+  .careers-perks { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .careers-section--first { padding-top: 8rem; }
+  .value-row { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.5rem 0; }
+  .value-num { font-size: 2.5rem; }
+  .apply-step { grid-template-columns: 48px 1fr; gap: 1rem; }
+  .apply-step-num { font-size: 1.9rem; }
+}

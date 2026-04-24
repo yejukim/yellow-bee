@@ -1,0 +1,10 @@
+{% set tickerList = tickerItems if tickerItems else ticker.items %}
+<div class="ticker">
+  <div class="ticker-track">
+    {% for _ in range(0, 2) %}
+    <div class="ticker-item">
+      {% for item in tickerList %}{{ item }}{% if not loop.last %} <span class="ticker-sep">/</span> {% endif %}{% endfor %} <span class="ticker-sep">/</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
