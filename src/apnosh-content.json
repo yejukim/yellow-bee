@@ -3,6 +3,18 @@
   "_doc": "Apnosh content schema -- declares which copy on this site is editable from portal.apnosh.com. Length limits prevent layout breaks. Voice rules are advisory.",
   "fields": [
     {
+      "key": "hero.eyebrow",
+      "page": "Home",
+      "label": "Hero eyebrow",
+      "description": "The small line above the big headline (currently 'Seattle's First'). Short, punchy.",
+      "default": "Seattle's First",
+      "constraints": {
+        "minChars": 4,
+        "maxChars": 24,
+        "multiline": false
+      }
+    },
+    {
       "key": "hero.lede",
       "page": "Home",
       "label": "Hero subhead",
@@ -12,6 +24,30 @@
         "minChars": 60,
         "maxChars": 160,
         "multiline": false
+      }
+    },
+    {
+      "key": "hero.deal_label",
+      "page": "Home",
+      "label": "Featured deal item",
+      "description": "Item name shown next to the $10 price stamp on the hero image.",
+      "default": "Banh Mi Bagel",
+      "constraints": {
+        "minChars": 4,
+        "maxChars": 28,
+        "multiline": false
+      }
+    },
+    {
+      "key": "footer.tagline",
+      "page": "Footer",
+      "label": "Footer tagline",
+      "description": "The descriptive sentence under your logo in the footer.",
+      "default": "Fresh food. Fast service. No compromise. Your neighborhood market in the heart of Seattle.",
+      "constraints": {
+        "minChars": 40,
+        "maxChars": 200,
+        "multiline": true
       }
     }
   ]

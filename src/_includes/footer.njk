@@ -4,7 +4,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <img src="/photos/horizontallogo.png" alt="{{ site.name }}">
-      <p>Fresh food. Fast service. No compromise. Your neighborhood market in the heart of Seattle.</p>
+      <p>{{ apnosh.content['footer.tagline'] or "Fresh food. Fast service. No compromise. Your neighborhood market in the heart of Seattle." }}</p>
       <div class="footer-social">
         {% if site.socials.instagram and site.socials.instagram != '#' %}
         <a href="{{ site.socials.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">{{ icons.instagram() }}</a>

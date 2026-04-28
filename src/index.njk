@@ -33,7 +33,7 @@ permalink: /index.html
   <div class="hero-inner">
     <div class="hero-content">
       <h1 class="hero-title">
-        <span class="hero-eyebrow">Seattle's First</span>
+        <span class="hero-eyebrow">{{ apnosh.content['hero.eyebrow'] or "Seattle's First" }}</span>
         <span class="line"><span class="fill">Modern</span></span>
         <span class="line"><span class="fill">Asian <em>Market</em>.</span></span>
       </h1>
@@ -51,7 +51,7 @@ permalink: /index.html
         <div class="hero-deal-stamp">
           <div class="tag">Featured Deal</div>
           <div class="now">$10</div>
-          <div class="label">Banh Mi Bagel</div>
+          <div class="label">{{ apnosh.content['hero.deal_label'] or "Banh Mi Bagel" }}</div>
         </div>
       </div>
     </div>
