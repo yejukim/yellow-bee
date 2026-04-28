@@ -37,6 +37,9 @@ const EMPTY = {
   upcomingEvents: [],
   social: {},
   heroPhotoUrl: null,
+  // Content overrides keyed by field key (e.g. 'hero.lede') from
+  // apnosh-content.json. Empty until clients edit copy in the portal.
+  content: {},
   meta: { siteType: 'unknown', generatedAt: null, error: null },
 }
 
@@ -57,7 +60,10 @@ module.exports = async function () {
       return { ...EMPTY, meta: { ...EMPTY.meta, error: `${res.status}: ${body.slice(0, 100)}` } }
     }
     const data = await res.json()
-    console.log(`[apnosh] fetched ok -- siteType=${data.meta?.siteType}, promo=${!!data.activePromo}, events=${data.upcomingEvents?.length ?? 0}`)
+    // Ensure content is always an object so templates can use the `or` fallback safely
+    data.content = data.content || {}
+    const contentCount = Object.keys(data.content).length
+    console.log(`[apnosh] fetched ok -- siteType=${data.meta?.siteType}, promo=${!!data.activePromo}, events=${data.upcomingEvents?.length ?? 0}, contentOverrides=${contentCount}`)
     return data
   } catch (e) {
     console.warn('[apnosh] fetch failed:', e.message)

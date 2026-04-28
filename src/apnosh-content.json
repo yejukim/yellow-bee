@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "_doc": "Apnosh content schema -- declares which copy on this site is editable from portal.apnosh.com. Length limits prevent layout breaks. Voice rules are advisory.",
+  "fields": [
+    {
+      "key": "hero.lede",
+      "page": "Home",
+      "label": "Hero subhead",
+      "description": "The line under the big headline. Sets the tone of the home page.",
+      "default": "Fresh groceries, a quick bite at the café, and daily essentials — all within walking distance.",
+      "constraints": {
+        "minChars": 60,
+        "maxChars": 160,
+        "multiline": false
+      }
+    }
+  ]
+}
