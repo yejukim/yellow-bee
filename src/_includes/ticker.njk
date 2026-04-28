@@ -1,4 +1,21 @@
-{% set tickerList = tickerItems if tickerItems else ticker.items %}
+{#
+  Marquee at top of every page.
+
+  Composition (in order):
+    1. The active Apnosh promotion if one is currently published. Pulled at
+       build time via src/_data/apnosh.js -> apnosh.activePromo. Renders as
+       a single ticker item so it feels native to the design.
+    2. Any per-page tickerItems override.
+    3. The default static items in src/_data/ticker.json.
+#}
+{% set baseList = tickerItems if tickerItems else ticker.items %}
+{% if apnosh.activePromo %}
+  {% set apnoshLabel = "Now On · " + apnosh.activePromo.name %}
+  {% if apnosh.activePromo.code %}{% set apnoshLabel = apnoshLabel + " · Code: " + apnosh.activePromo.code %}{% endif %}
+  {% set tickerList = [apnoshLabel].concat(baseList) %}
+{% else %}
+  {% set tickerList = baseList %}
+{% endif %}
 <div class="ticker">
   <div class="ticker-track">
     {% for _ in range(0, 2) %}
