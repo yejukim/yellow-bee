@@ -117,50 +117,117 @@ tickerItems:
   </div>
 </section>
 
-<!-- BAGELS -->
+<!-- SAUCES (modifiers under Banh Mi, managed via Apnosh menu_items) -->
+{% if apnosh.menu and apnosh.menu['Sauces'] and apnosh.menu['Sauces'].modifiers.length > 0 %}
+<section class="menu-section menu-section--dark" id="sauces" style="padding-top:0;">
+  <div class="sec-container">
+    <div class="menu-toppings reveal">
+      <div class="menu-toppings-head">
+        <div class="menu-toppings-label">Sauce options</div>
+        <div class="menu-toppings-price">House made</div>
+      </div>
+      <div class="menu-toppings-list">
+        {% for s in apnosh.menu['Sauces'].modifiers %}
+        <span class="menu-topping-tag">
+          {{ s.name }}{% if s.price %} <em style="opacity:.7">({{ s.price }})</em>{% endif %}
+        </span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- BAGELS -- "Make It a Bagel Banh Mi". Bread choices come from
+     apnosh.menu['Bagel options'] (modifiers). Yellow Bee staff add new
+     bagel types in the dashboard. -->
 <section class="menu-section menu-section--paper" id="bagels">
   <div class="menu-section-mega menu-section-mega--dark" aria-hidden="true">Bagels</div>
   <div class="sec-container">
     <header class="menu-section-head reveal">
       <div class="sec-mark sec-mark--dark">Chapter 03 / {{ menu.bagels.label }}</div>
-      <h2>{{ menu.bagels.headline }}</h2>
-      <p class="menu-section-meta menu-section-meta--dark">{{ menu.bagels.meta }}</p>
+      <h2>Make it a Bagel Banh Mi.</h2>
+      <p class="menu-section-meta menu-section-meta--dark"><em>Same price as banh mi.</em></p>
     </header>
 
     <ul class="menu-list reveal">
-      {% for item in menu.bagels.items %}
-      <li class="menu-list-item">
-        <span class="menu-list-name">{{ item.name }}</span>
-        <span class="menu-list-dots" aria-hidden="true"></span>
-        <span class="menu-list-price">{{ menu.bagels.price }}</span>
-      </li>
-      {% endfor %}
+      {% if apnosh.menu and apnosh.menu['Bagel options'] %}
+        {% for item in apnosh.menu['Bagel options'].modifiers %}
+        <li class="menu-list-item">
+          <span class="menu-list-name">{{ item.name }}</span>
+          <span class="menu-list-dots" aria-hidden="true"></span>
+          <span class="menu-list-price">same as banh mi</span>
+        </li>
+        {% endfor %}
+      {% else %}
+        {% for item in menu.bagels.items %}
+        <li class="menu-list-item">
+          <span class="menu-list-name">{{ item.name }}</span>
+          <span class="menu-list-dots" aria-hidden="true"></span>
+          <span class="menu-list-price">{{ menu.bagels.price }}</span>
+        </li>
+        {% endfor %}
+      {% endif %}
     </ul>
   </div>
 </section>
 
-<!-- DRINKS -->
+<!--
+  BOBA (formerly "Seasonal Boba" -- renamed per change-request PDF).
+  Drinks come from apnosh.menu['Boba'].items. Yellow Bee staff add new
+  drinks in the dashboard. Photos still come from local _data/drinks.json
+  by name match where available; new drinks render as clean name+price tiles.
+  Toppings come from apnosh.menu['Toppings'].modifiers.
+-->
 <section class="menu-section menu-section--dark" id="drinks-menu">
   <div class="menu-section-mega" aria-hidden="true">Sip</div>
   <div class="sec-container">
     <header class="menu-section-head reveal">
       <div class="sec-mark">Chapter 04 / The Bar</div>
-      <h2>Seasonal Boba &amp; More.</h2>
-      <p class="menu-section-meta">Handcrafted with house-made tapioca. New flavors every season.</p>
+      <h2>Boba.</h2>
+      <p class="menu-section-meta">Handcrafted milk teas, fruit teas, and smoothies.</p>
     </header>
 
     <div class="menu-drinks-grid">
-      {% for drink in drinks.items %}
-      <article class="drink-menu-card reveal d{{ loop.index }}">
-        <div class="drink-menu-card-img">
-          <img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy">
-        </div>
-        <div class="drink-menu-card-name">{{ drink.name }}</div>
-        <div class="drink-menu-card-price">{{ drink.price }}</div>
-      </article>
-      {% endfor %}
+      {% if apnosh.menu and apnosh.menu['Boba'] %}
+        {% for item in apnosh.menu['Boba'].items %}
+          {%- set legacy = drinks.items | selectattr('name', 'equalto', item.name) | first -%}
+          <article class="drink-menu-card reveal d{{ loop.index }}">
+            {% if legacy and legacy.image %}
+            <div class="drink-menu-card-img">
+              <img src="/{{ legacy.image }}" alt="{{ legacy.alt or item.name }}" loading="lazy">
+            </div>
+            {% endif %}
+            <div class="drink-menu-card-name">{{ item.name }}</div>
+            <div class="drink-menu-card-price">{{ item.price }}</div>
+          </article>
+        {% endfor %}
+      {% else %}
+        {% for drink in drinks.items %}
+        <article class="drink-menu-card reveal d{{ loop.index }}">
+          <div class="drink-menu-card-img">
+            <img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy">
+          </div>
+          <div class="drink-menu-card-name">{{ drink.name }}</div>
+          <div class="drink-menu-card-price">{{ drink.price }}</div>
+        </article>
+        {% endfor %}
+      {% endif %}
     </div>
 
+    {% if apnosh.menu and apnosh.menu['Toppings'] and apnosh.menu['Toppings'].modifiers.length > 0 %}
+    <div class="menu-toppings reveal">
+      <div class="menu-toppings-head">
+        <div class="menu-toppings-label">Toppings</div>
+        <div class="menu-toppings-price">House-made</div>
+      </div>
+      <div class="menu-toppings-list">
+        {% for t in apnosh.menu['Toppings'].modifiers %}
+        <span class="menu-topping-tag">{{ t.name }}{% if t.price %} <em style="opacity:.7">({{ t.price }})</em>{% endif %}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
     <div class="menu-toppings reveal">
       <div class="menu-toppings-head">
         <div class="menu-toppings-label">{{ drinks.toppings.label }}</div>
@@ -172,8 +239,69 @@ tickerItems:
         {% endfor %}
       </div>
     </div>
+    {% endif %}
   </div>
 </section>
+
+<!--
+  ESPRESSO -- new section per change-request PDF. Items from
+  apnosh.menu['Espresso']. Featured items (currently Pandan Matcha
+  Delight) get a highlight treatment. Milk options from
+  apnosh.menu['Milk options'].modifiers.
+-->
+{% if apnosh.menu and apnosh.menu['Espresso'] and apnosh.menu['Espresso'].items.length > 0 %}
+<section class="menu-section menu-section--paper" id="espresso">
+  <div class="menu-section-mega menu-section-mega--dark" aria-hidden="true">Espresso</div>
+  <div class="sec-container">
+    <header class="menu-section-head reveal">
+      <div class="sec-mark sec-mark--dark">Chapter 05 / The Roast</div>
+      <h2>Coffee &amp; Espresso.</h2>
+      <p class="menu-section-meta menu-section-meta--dark">All available in hot, iced, or blended.</p>
+    </header>
+
+    {% set featuredEspresso = apnosh.menu['Espresso'].items | selectattr('isFeatured') | first %}
+    {% if featuredEspresso %}
+    <article class="seasonal-feature reveal" style="margin-bottom:2rem;">
+      <div class="seasonal-body" style="padding:1.5rem 0;">
+        <div class="seasonal-eyebrow">Featured</div>
+        <h2 class="seasonal-name">{{ featuredEspresso.name }}.</h2>
+        <p class="seasonal-tagline">Our signature drink.</p>
+        <dl class="seasonal-spec">
+          <dt>Price</dt>
+          <dd>{{ featuredEspresso.price }}</dd>
+        </dl>
+      </div>
+    </article>
+    {% endif %}
+
+    <ul class="menu-list reveal">
+      {% for item in apnosh.menu['Espresso'].items %}
+        {% if not item.isFeatured %}
+        <li class="menu-list-item">
+          <span class="menu-list-name">{{ item.name }}</span>
+          <span class="menu-list-dots" aria-hidden="true"></span>
+          <span class="menu-list-price">{{ item.price }}</span>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% if apnosh.menu['Milk options'] and apnosh.menu['Milk options'].modifiers.length > 0 %}
+    <div class="menu-toppings reveal" style="margin-top:1.5rem;">
+      <div class="menu-toppings-head">
+        <div class="menu-toppings-label">Milk options</div>
+        <div class="menu-toppings-price">No surcharge</div>
+      </div>
+      <div class="menu-toppings-list">
+        {% for m in apnosh.menu['Milk options'].modifiers %}
+        <span class="menu-topping-tag">{{ m.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
 
 <!-- PASTRIES -->
 <section class="menu-section menu-section--paper" id="pastries">
