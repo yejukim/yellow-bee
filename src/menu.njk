@@ -180,22 +180,45 @@ tickerItems:
       <p class="menu-section-meta">Handcrafted milk teas, fruit teas, and smoothies.</p>
     </header>
 
-    <div class="menu-drinks-grid">
-      {% if apnosh.menu and apnosh.menu['Boba'] %}
-        {% for item in apnosh.menu['Boba'].items %}
-          {%- set legacy = drinks.items | selectattr('name', 'equalto', item.name) | first -%}
-          {%- set photoSrc = item.photoUrl or (legacy and legacy.image and ('/' + legacy.image)) -%}
-          <article class="drink-menu-card reveal d{{ loop.index }}">
-            {% if photoSrc %}
-            <div class="drink-menu-card-img">
-              <img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy">
-            </div>
-            {% endif %}
-            <div class="drink-menu-card-name">{{ item.name }}</div>
-            <div class="drink-menu-card-price">{{ item.price }}</div>
-          </article>
+    {% if apnosh.menu and apnosh.menu['Boba'] %}
+      {# Split into two groups: items with portal photos get the card grid;
+         everything else gets a clean dotted-line list. Per Yellow Bee PDF
+         "you don't need to add photos for all the drinks, just some". #}
+      {%- set bobaWithPhotos = apnosh.menu['Boba'].items | selectattr('photoUrl') | list -%}
+      {%- set bobaWithoutPhotos = [] -%}
+      {%- for item in apnosh.menu['Boba'].items -%}
+        {%- if not item.photoUrl -%}
+          {%- set bobaWithoutPhotos = bobaWithoutPhotos.concat([item]) -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {% if bobaWithPhotos.length > 0 %}
+      <div class="menu-drinks-grid">
+        {% for item in bobaWithPhotos %}
+        <article class="drink-menu-card reveal d{{ loop.index }}">
+          <div class="drink-menu-card-img">
+            <img src="{{ item.photoUrl }}" alt="{{ item.name }}" loading="lazy">
+          </div>
+          <div class="drink-menu-card-name">{{ item.name }}</div>
+          <div class="drink-menu-card-price">{{ item.price }}</div>
+        </article>
         {% endfor %}
-      {% else %}
+      </div>
+      {% endif %}
+
+      {% if bobaWithoutPhotos.length > 0 %}
+      <ul class="menu-list reveal" style="margin-top:{% if bobaWithPhotos.length > 0 %}2.5rem{% else %}0{% endif %};">
+        {% for item in bobaWithoutPhotos %}
+        <li class="menu-list-item">
+          <span class="menu-list-name">{{ item.name }}</span>
+          <span class="menu-list-dots" aria-hidden="true"></span>
+          <span class="menu-list-price">{{ item.price }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    {% else %}
+      <div class="menu-drinks-grid">
         {% for drink in drinks.items %}
         <article class="drink-menu-card reveal d{{ loop.index }}">
           <div class="drink-menu-card-img">
@@ -205,8 +228,8 @@ tickerItems:
           <div class="drink-menu-card-price">{{ drink.price }}</div>
         </article>
         {% endfor %}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
 
     {% if apnosh.menu and apnosh.menu['Toppings'] and apnosh.menu['Toppings'].modifiers.length > 0 %}
     <div class="menu-toppings reveal">
