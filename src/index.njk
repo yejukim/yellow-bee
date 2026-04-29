@@ -48,11 +48,13 @@ permalink: /index.html
       <div class="hero-img-wrap">
         <div class="hero-img-glow"></div>
         <img src="{{ apnosh.content['home.hero_image'] or '/photos/YellowBee_Photo_BagelTowerTransparent.png' }}" alt="Signature Banh Mi Bagel Tower">
+        {% if apnosh.content['home.featured_deal_visible'] != 'false' %}
         <div class="hero-deal-stamp">
           <div class="tag">Featured Deal</div>
           <div class="now">$10</div>
           <div class="label">{{ apnosh.content['hero.deal_label'] or "Banh Mi Bagel" }}</div>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -175,11 +177,13 @@ permalink: /index.html
         <h2>Built for your everyday.</h2>
         <p>A compact neighborhood market in Seattle's Central District. Built by first-gen dreamers who believe Asian food culture belongs in your everyday — not saved for a special trip.</p>
         <blockquote class="story-quote">Handpicked meat, seafood, produce, and daily essentials &mdash; <em>designed for the way you actually live.</em></blockquote>
+        {% if apnosh.content['home.statistics_visible'] != 'false' %}
         <div class="story-stats">
           <div><div class="stat-n" data-count-up="3">0</div><div class="stat-l">Locations</div></div>
           <div><div class="stat-n" data-count-up="12" data-suffix="+">0</div><div class="stat-l">Meal<br>Options</div></div>
           <div><div class="stat-n" data-count-up="20" data-suffix="+">0</div><div class="stat-l">Boba<br>Flavors</div></div>
         </div>
+        {% endif %}
         <div class="story-ctas">
           <a href="/about/" class="btn btn-yellow">Read More</a>
           <a href="/franchise/" class="btn btn-outline">Franchise</a>

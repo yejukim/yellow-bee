@@ -75,6 +75,22 @@
       }
     },
     {
+      "key": "home.featured_deal_visible",
+      "page": "Home",
+      "label": "Featured deal stamp on hero",
+      "description": "Show or hide the $10 price stamp on the hero photo.",
+      "type": "toggle",
+      "default": "true"
+    },
+    {
+      "key": "home.statistics_visible",
+      "page": "Home",
+      "label": "Statistics block (Built for Everyday)",
+      "description": "Show or hide the '3 Locations / 12+ Meal Options / 20+ Boba Flavors' counters.",
+      "type": "toggle",
+      "default": "true"
+    },
+    {
       "key": "footer.tagline",
       "page": "Footer",
       "label": "Footer tagline",
