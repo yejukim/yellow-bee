@@ -1,7 +1,7 @@
 {
   "chapter": "Contact",
   "headline": "Send us a note.",
-  "meta": "General questions, catering, wholesale, feedback — we read every message and usually reply within one business day.",
+  "meta": "General questions, catering, wholesale, feedback — send us a note.",
   "subjects": [
     { "value": "general",   "label": "General Question" },
     { "value": "menu",      "label": "Menu & Food" },

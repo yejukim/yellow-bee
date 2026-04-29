@@ -1,13 +1,12 @@
 ---
 title: "Contact — Yellow Bee"
-description: "Got a question about our menu, catering, wholesale, or just want to say hi? Send a note and we'll reply within a business day."
+description: "Got a question about our menu, catering, wholesale, or just want to say hi? Send a note."
 permalink: /contact/index.html
 tickerItems:
-  - "We Read Every Message"
+  - "Get In Touch"
   - "922 E Yesler Way · Seattle"
   - "shopyellowbee@gmail.com"
   - "(206) 538-0839"
-  - "Reply Within 1 Business Day"
 ---
 
 {% extends "base.njk" %}
@@ -53,9 +52,6 @@ tickerItems:
           <a class="ct-aside-link ct-aside-link--sm" href="{{ site.socials.instagram }}" target="_blank" rel="noopener">{{ site.handle }}</a>
         </div>
 
-        <div class="ct-aside-note">
-          Every message goes to a person on our team. We usually reply within one business day.
-        </div>
       </aside>
 
       <form class="ct-form reveal-right" onsubmit="handleContactSubmit(event)">
@@ -98,7 +94,7 @@ tickerItems:
 
         <button type="submit" class="btn btn-yellow ct-submit">Send Message &rarr;</button>
 
-        <p class="ct-footnote">We reply within one business day. Your info stays with our team.</p>
+        <p class="ct-footnote">Your info stays with our team.</p>
       </form>
 
     </div>
@@ -109,19 +105,42 @@ tickerItems:
 
 {% block scripts %}
 <script>
+// Open the user's email client pre-filled with their inquiry, addressed to
+// {{ site.email }}. No backend service required.
 function handleContactSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.ct-submit');
+  const f = e.target;
+  const v = id => (f.querySelector('#' + id) || {}).value || '';
+  const subjectMap = {
+    general: 'General Question', menu: 'Menu & Food',
+    catering: 'Catering & Events', wholesale: 'Wholesale / Vendors',
+    feedback: 'Feedback',
+  };
+  const subjectLabel = subjectMap[v('subject')] || v('subject') || 'General';
+  const fullName = (v('fname') + ' ' + v('lname')).trim();
+  const fields = [
+    ['Name', fullName],
+    ['Email', v('email')],
+    ['Phone', v('phone')],
+    ['Topic', subjectLabel],
+    ['', ''],
+    ['Message', v('message')],
+  ];
+  const body = fields.map(([k, val]) => k ? (k + ': ' + val) : '').join('\n');
+  const subject = 'Yellow Bee — ' + subjectLabel + (fullName ? ' (' + fullName + ')' : '');
+  const url = 'mailto:{{ site.email }}'
+    + '?subject=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(body);
+  window.location.href = url;
+
+  const btn = f.querySelector('.ct-submit');
   const original = btn.innerHTML;
-  btn.innerHTML = '✓ Message Sent';
+  btn.innerHTML = '✓ Email opened — send to complete';
   btn.classList.add('is-submitted');
-  btn.style.pointerEvents = 'none';
   setTimeout(() => {
     btn.innerHTML = original;
     btn.classList.remove('is-submitted');
-    btn.style.pointerEvents = '';
-    e.target.reset();
-  }, 4000);
+  }, 6000);
 }
 </script>
 {% endblock %}
