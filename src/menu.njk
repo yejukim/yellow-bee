@@ -80,10 +80,11 @@ tickerItems:
         {% for item in apnosh.menu['Banh Mi'].items %}
           {%- set legacy = (menu.banhmi.items | selectattr('name', 'equalto', item.name) | first)
               or (menu.banhmi.items | selectattr('name', 'equalto', item.name | replace('The ', '')) | first) -%}
+          {%- set photoSrc = item.photoUrl or (legacy and legacy.image and ('/' + legacy.image)) -%}
           <article class="menu-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
-            {% if legacy and legacy.image %}
+            {% if photoSrc %}
             <div class="menu-card-img">
-              <img src="/{{ legacy.image }}" alt="{{ legacy.alt or item.name }}" loading="lazy">
+              <img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy">
             </div>
             {% endif %}
             <div class="menu-card-body">
@@ -192,10 +193,11 @@ tickerItems:
       {% if apnosh.menu and apnosh.menu['Boba'] %}
         {% for item in apnosh.menu['Boba'].items %}
           {%- set legacy = drinks.items | selectattr('name', 'equalto', item.name) | first -%}
+          {%- set photoSrc = item.photoUrl or (legacy and legacy.image and ('/' + legacy.image)) -%}
           <article class="drink-menu-card reveal d{{ loop.index }}">
-            {% if legacy and legacy.image %}
+            {% if photoSrc %}
             <div class="drink-menu-card-img">
-              <img src="/{{ legacy.image }}" alt="{{ legacy.alt or item.name }}" loading="lazy">
+              <img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy">
             </div>
             {% endif %}
             <div class="drink-menu-card-name">{{ item.name }}</div>
@@ -261,11 +263,17 @@ tickerItems:
 
     {% set featuredEspresso = apnosh.menu['Espresso'].items | selectattr('isFeatured') | first %}
     {% if featuredEspresso %}
-    <article class="seasonal-feature reveal" style="margin-bottom:2rem;">
-      <div class="seasonal-body" style="padding:1.5rem 0;">
-        <div class="seasonal-eyebrow">Featured</div>
+    <article class="seasonal-feature reveal" style="margin-bottom:2.5rem;">
+      {% if featuredEspresso.photoUrl %}
+      <figure class="seasonal-poster">
+        <span class="seasonal-poster-cap">Featured</span>
+        <img src="{{ featuredEspresso.photoUrl }}" alt="{{ featuredEspresso.name }}" loading="lazy">
+      </figure>
+      {% endif %}
+      <div class="seasonal-body">
+        {% if not featuredEspresso.photoUrl %}<div class="seasonal-eyebrow">Featured</div>{% endif %}
         <h2 class="seasonal-name">{{ featuredEspresso.name }}.</h2>
-        <p class="seasonal-tagline">Our signature drink.</p>
+        <p class="seasonal-tagline">{{ featuredEspresso.description or "Our signature drink." }}</p>
         <dl class="seasonal-spec">
           <dt>Price</dt>
           <dd>{{ featuredEspresso.price }}</dd>
