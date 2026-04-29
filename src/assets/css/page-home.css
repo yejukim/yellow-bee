@@ -376,10 +376,7 @@
   transform-origin: center center;
 }
 .special-card[data-slug="break-your-fast-combo"]:hover .special-img img {
-  transform: scale(1.65) translateY(5%);
-}
-.special-card[data-slug="break-your-fast-combo"]:hover .special-img img {
-  transform: scale(1.03);
+  transform: scale(1.68) translateY(5%);
 }
 .special-card:hover .special-img img { transform: scale(1.05); }
 
