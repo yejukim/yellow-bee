@@ -153,16 +153,36 @@ permalink: /index.html
     </div>
 
     <div class="deli-menu-grid">
-      {% for item in menu.banhmi.items %}{% if loop.index <= 3 %}
-      <div class="deli-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
-        <div class="deli-card-img"><img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy"></div>
-        <div class="deli-card-body">
-          <h4>{{ item.name }}</h4>
-          <div class="card-desc">{{ item.desc }}</div>
-          <div class="card-price">{{ item.price }}</div>
+      {% if apnosh.menu and apnosh.menu['Banh Mi'] and apnosh.menu['Banh Mi'].items.length > 0 %}
+        {%- for item in apnosh.menu['Banh Mi'].items -%}{%- if loop.index <= 3 -%}
+          {%- set legacy = (menu.banhmi.items | selectattr('name', 'equalto', item.name) | first)
+              or (menu.banhmi.items | selectattr('name', 'equalto', item.name | replace('The ', '')) | first) -%}
+          {%- set photoSrc = item.photoUrl or (legacy and legacy.image and ('/' + legacy.image)) -%}
+          <div class="deli-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
+            {% if photoSrc %}
+            <div class="deli-card-img"><img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy"></div>
+            {% endif %}
+            <div class="deli-card-body">
+              <h4>{{ item.name }}</h4>
+              {% if item.description or (legacy and legacy.desc) %}
+              <div class="card-desc">{{ item.description or legacy.desc }}</div>
+              {% endif %}
+              <div class="card-price">{{ item.price }}</div>
+            </div>
+          </div>
+        {%- endif -%}{%- endfor -%}
+      {% else %}
+        {% for item in menu.banhmi.items %}{% if loop.index <= 3 %}
+        <div class="deli-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
+          <div class="deli-card-img"><img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy"></div>
+          <div class="deli-card-body">
+            <h4>{{ item.name }}</h4>
+            <div class="card-desc">{{ item.desc }}</div>
+            <div class="card-price">{{ item.price }}</div>
+          </div>
         </div>
-      </div>
-      {% endif %}{% endfor %}
+        {% endif %}{% endfor %}
+      {% endif %}
     </div>
     <div class="deli-full-menu-cta reveal">
       <a href="/menu/" class="btn btn-yellow">View Full Menu</a>
