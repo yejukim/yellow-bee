@@ -15,7 +15,6 @@
   {% set specialsTickerItems = [] %}
   {% for s in apnosh.specials %}
     {%- set parts = [s.title] -%}
-    {%- if s.price -%}{%- set parts = parts.concat([s.price]) -%}{%- endif -%}
     {%- if s.timeWindow -%}{%- set parts = parts.concat([s.timeWindow]) -%}{%- endif -%}
     {% set specialsTickerItems = specialsTickerItems.concat([parts | join(' · ')]) %}
   {% endfor %}
