@@ -85,7 +85,8 @@ permalink: /index.html
     <div class="specials-grid">
       {% if hasPortalSpecials %}
         {% for s in apnosh.specials %}
-        <article class="special-card reveal d{{ loop.index }}">
+        {%- set slug = s.title | lower | replace(' ', '-') | replace('--', '-') -%}
+        <article class="special-card reveal d{{ loop.index }}" data-slug="{{ slug }}">
           <div class="special-img">
             {% if s.photoUrl %}
             <img src="{{ s.photoUrl }}" alt="{{ s.title }}" loading="lazy">

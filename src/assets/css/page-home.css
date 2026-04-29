@@ -350,14 +350,22 @@
 /* Image + overlay badges */
 .special-img {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1;
   overflow: hidden;
   background: var(--warm-bg);
 }
 .special-img img {
-  width: 100%; height: 100%; object-fit: contain; display: block;
-  padding: 0.75rem;
+  width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.5s var(--ease-out);
+}
+/* Per-card override: shrink Grocery Boba Bonus photo so the milk tea
+   doesn't fill the whole frame like the other (food) photos do. */
+.special-card[data-slug="grocery-boba-bonus"] .special-img img {
+  object-fit: contain;
+  padding: 1.5rem;
+}
+.special-card[data-slug="grocery-boba-bonus"]:hover .special-img img {
+  transform: scale(1.03);
 }
 .special-card:hover .special-img img { transform: scale(1.05); }
 
