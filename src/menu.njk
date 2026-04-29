@@ -109,14 +109,11 @@ tickerItems:
         {% endfor %}
       {% endif %}
     </div>
-  </div>
-</section>
 
-<!-- SAUCES (modifiers under Banh Mi, managed via Apnosh menu_items) -->
-{% if apnosh.menu and apnosh.menu['Sauces'] and apnosh.menu['Sauces'].modifiers.length > 0 %}
-<section class="menu-section menu-section--dark" id="sauces" style="padding-top:0;">
-  <div class="sec-container">
-    <div class="menu-toppings reveal">
+    {# SAUCES -- modifiers under Banh Mi, rendered inline so it visually
+       belongs to this section (mirrors the Toppings treatment under Boba). #}
+    {% if apnosh.menu and apnosh.menu['Sauces'] and apnosh.menu['Sauces'].modifiers.length > 0 %}
+    <div class="menu-toppings reveal" style="margin-top:1.5rem;" id="sauces">
       <div class="menu-toppings-head">
         <div class="menu-toppings-label">Sauce options</div>
         <div class="menu-toppings-price">House made</div>
@@ -129,9 +126,9 @@ tickerItems:
         {% endfor %}
       </div>
     </div>
+    {% endif %}
   </div>
 </section>
-{% endif %}
 
 <!-- BAGELS -- "Make It a Bagel Banh Mi". Bread choices come from
      apnosh.menu['Bagel options'] (modifiers). Yellow Bee staff add new
