@@ -371,8 +371,12 @@
    that gets clipped by the time/save badges at the top. Shrink slightly
    and push down so it clears the badges. */
 .special-card[data-slug="break-your-fast-combo"] .special-img img {
-  object-fit: cover;
-  object-position: 50% 80%;
+  object-fit: contain;
+  transform: scale(1.6) translateY(5%);
+  transform-origin: center center;
+}
+.special-card[data-slug="break-your-fast-combo"]:hover .special-img img {
+  transform: scale(1.65) translateY(5%);
 }
 .special-card[data-slug="break-your-fast-combo"]:hover .special-img img {
   transform: scale(1.03);
