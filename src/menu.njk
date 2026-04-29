@@ -181,14 +181,19 @@ tickerItems:
     </header>
 
     {% if apnosh.menu and apnosh.menu['Boba'] %}
-      {# Split into two groups: items with portal photos get the card grid;
-         everything else gets a clean dotted-line list. Per Yellow Bee PDF
-         "you don't need to add photos for all the drinks, just some". #}
-      {%- set bobaWithPhotos = apnosh.menu['Boba'].items | selectattr('photoUrl') | list -%}
-      {%- set bobaWithoutPhotos = [] -%}
+      {# Featured card grid for the few drinks with portal photos; rest split
+         into Teas vs Smoothies columns. Items with "Smoothie" in the name
+         go to the smoothies column; everything else is a tea. #}
+      {%- set bobaWithPhotos = [] -%}
+      {%- set bobaTeas = [] -%}
+      {%- set bobaSmoothies = [] -%}
       {%- for item in apnosh.menu['Boba'].items -%}
-        {%- if not item.photoUrl -%}
-          {%- set bobaWithoutPhotos = bobaWithoutPhotos.concat([item]) -%}
+        {%- if item.photoUrl -%}
+          {%- set bobaWithPhotos = bobaWithPhotos.concat([item]) -%}
+        {%- elif 'Smoothie' in item.name -%}
+          {%- set bobaSmoothies = bobaSmoothies.concat([item]) -%}
+        {%- else -%}
+          {%- set bobaTeas = bobaTeas.concat([item]) -%}
         {%- endif -%}
       {%- endfor -%}
 
@@ -206,16 +211,37 @@ tickerItems:
       </div>
       {% endif %}
 
-      {% if bobaWithoutPhotos.length > 0 %}
-      <ul class="menu-list menu-list--dark reveal" style="margin-top:{% if bobaWithPhotos.length > 0 %}2.5rem{% else %}0{% endif %};">
-        {% for item in bobaWithoutPhotos %}
-        <li class="menu-list-item">
-          <span class="menu-list-name">{{ item.name }}</span>
-          <span class="menu-list-dots" aria-hidden="true"></span>
-          <span class="menu-list-price">{{ item.price }}</span>
-        </li>
-        {% endfor %}
-      </ul>
+      {% if bobaTeas.length > 0 or bobaSmoothies.length > 0 %}
+      <div class="boba-list-cols reveal" style="margin-top:{% if bobaWithPhotos.length > 0 %}2.5rem{% else %}0{% endif %};">
+        {% if bobaTeas.length > 0 %}
+        <div class="boba-list-col">
+          <h3 class="boba-list-heading">Teas</h3>
+          <ul class="menu-list menu-list--dark">
+            {% for item in bobaTeas %}
+            <li class="menu-list-item">
+              <span class="menu-list-name">{{ item.name }}</span>
+              <span class="menu-list-dots" aria-hidden="true"></span>
+              <span class="menu-list-price">{{ item.price }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% if bobaSmoothies.length > 0 %}
+        <div class="boba-list-col">
+          <h3 class="boba-list-heading">Smoothies</h3>
+          <ul class="menu-list menu-list--dark">
+            {% for item in bobaSmoothies %}
+            <li class="menu-list-item">
+              <span class="menu-list-name">{{ item.name }}</span>
+              <span class="menu-list-dots" aria-hidden="true"></span>
+              <span class="menu-list-price">{{ item.price }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
       {% endif %}
     {% else %}
       <div class="menu-drinks-grid">

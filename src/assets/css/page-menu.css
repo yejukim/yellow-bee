@@ -379,6 +379,24 @@
 }
 .menu-list--dark .menu-list-price { color: var(--yellow); }
 
+/* ─── Boba: Teas vs Smoothies two-column lists ─── */
+.boba-list-cols {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem;
+  max-width: 1080px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.boba-list-col .menu-list { max-width: none; margin: 0; }
+.boba-list-heading {
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--yellow);
+  margin: 0 0 0.75rem; padding: 0 1.5rem;
+}
+@media (max-width: 720px) {
+  .boba-list-cols { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
 /* ─── DRINKS GRID ─── */
 .menu-drinks-grid {
   display: grid; grid-template-columns: repeat(5, 1fr);
