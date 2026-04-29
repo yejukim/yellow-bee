@@ -376,7 +376,10 @@
   transform-origin: center center;
 }
 .special-card[data-slug="break-your-fast-combo"]:hover .special-img img {
-  transform: scale(1.68) translateY(5%);
+  /* Keep the image steady on hover -- the card itself still lifts via the
+     generic .special-card:hover rule, but the photo shouldn't grow/shrink
+     since starting scale is already 1.6. */
+  transform: scale(1.6) translateY(5%);
 }
 .special-card:hover .special-img img { transform: scale(1.05); }
 
