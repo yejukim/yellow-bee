@@ -190,25 +190,56 @@ permalink: /index.html
   </div>
 </section>
 
-<!-- SEASONAL DRINKS -->
+<!-- BOBA -->
 <section class="drinks" id="drinks">
   <div class="drinks-mega-bg" aria-hidden="true">Sip</div>
   <div class="drinks-header reveal">
     <div class="sec-mark">Chapter 03 / The Bar</div>
-    <h2>Seasonal Boba &amp; More.</h2>
+    <h2>Boba.</h2>
     <div class="drinks-header-meta">
-      <span>House-made tapioca &mdash; new drops every season</span>
+      <span>Handcrafted milk teas, fruit teas, and smoothies</span>
     </div>
   </div>
-  <div class="drinks-showcase">
-    {% for drink in drinks.items %}
-    <div class="drink-card reveal d{{ loop.index }}">
-      <div class="drink-card-img"><img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy"></div>
-      <h4>{{ drink.name }}</h4>
-      <div class="dp">{{ drink.price }}</div>
+
+  {% if apnosh.menu and apnosh.menu['Boba'] %}
+    {%- set bobaWithPhotos = [] -%}
+    {%- for item in apnosh.menu['Boba'].items -%}
+      {%- if item.photoUrl -%}
+        {%- set bobaWithPhotos = bobaWithPhotos.concat([item]) -%}
+      {%- endif -%}
+    {%- endfor -%}
+    <div class="drinks-showcase">
+      {% for item in bobaWithPhotos %}
+      <div class="drink-card reveal d{{ loop.index }}">
+        <div class="drink-card-img"><img src="{{ item.photoUrl }}" alt="{{ item.name }}" loading="lazy"></div>
+        <h4>{{ item.name }}</h4>
+        <div class="dp">{{ item.price }}</div>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+  {% else %}
+    <div class="drinks-showcase">
+      {% for drink in drinks.items %}
+      <div class="drink-card reveal d{{ loop.index }}">
+        <div class="drink-card-img"><img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy"></div>
+        <h4>{{ drink.name }}</h4>
+        <div class="dp">{{ drink.price }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if apnosh.menu and apnosh.menu['Toppings'] and apnosh.menu['Toppings'].modifiers.length > 0 %}
+  <div class="toppings reveal">
+    <div class="toppings-label">Toppings</div>
+    <div class="toppings-price">House-made</div>
+    <div class="toppings-list">
+      {% for t in apnosh.menu['Toppings'].modifiers %}
+      <span class="top-tag">{{ t.name }}{% if t.price %} <em style="opacity:.7">({{ t.price }})</em>{% endif %}</span>
+      {% endfor %}
+    </div>
   </div>
+  {% else %}
   <div class="toppings reveal">
     <div class="toppings-label">{{ drinks.toppings.label }}</div>
     <div class="toppings-price">{{ drinks.toppings.price }}</div>
@@ -218,8 +249,10 @@ permalink: /index.html
       {% endfor %}
     </div>
   </div>
+  {% endif %}
+
   <div class="drinks-cta reveal">
-    <a href="/menu/" class="btn btn-dark">View Full Menu</a>
+    <a href="/menu/#drinks-menu" class="btn btn-dark">See All Drinks</a>
   </div>
 </section>
 
