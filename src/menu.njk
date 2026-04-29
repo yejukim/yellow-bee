@@ -75,35 +75,29 @@ tickerItems:
       <p class="menu-section-meta">{{ menu.banhmi.meta }}</p>
     </header>
 
-    <div class="menu-grid">
+    {# Text-only treatment for the full Banh Mi list. Keeps descriptions
+       and prices but drops photos -- cleaner showcase since stock photos
+       can mislead and real photos aren't always available. #}
+    <div class="menu-grid menu-grid--text">
       {% if apnosh.menu and apnosh.menu['Banh Mi'] %}
         {% for item in apnosh.menu['Banh Mi'].items %}
           {%- set legacy = (menu.banhmi.items | selectattr('name', 'equalto', item.name) | first)
               or (menu.banhmi.items | selectattr('name', 'equalto', item.name | replace('The ', '')) | first) -%}
-          {%- set photoSrc = item.photoUrl or (legacy and legacy.image and ('/' + legacy.image)) -%}
-          <article class="menu-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
-            {% if photoSrc %}
-            <div class="menu-card-img">
-              <img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy">
-            </div>
-            {% endif %}
+          <article class="menu-card menu-card--text reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
             <div class="menu-card-body">
               <div class="menu-card-head">
                 <h3 class="menu-card-name">{{ item.name }}</h3>
                 <span class="menu-card-price">{{ item.price }}</span>
               </div>
-              {% if legacy and legacy.desc %}
-              <p class="menu-card-desc">{{ legacy.desc }}</p>
+              {% if item.description or (legacy and legacy.desc) %}
+              <p class="menu-card-desc">{{ item.description or legacy.desc }}</p>
               {% endif %}
             </div>
           </article>
         {% endfor %}
       {% else %}
         {% for item in menu.banhmi.items %}
-        <article class="menu-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
-          <div class="menu-card-img">
-            <img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy">
-          </div>
+        <article class="menu-card menu-card--text reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
           <div class="menu-card-body">
             <div class="menu-card-head">
               <h3 class="menu-card-name">{{ item.name }}</h3>

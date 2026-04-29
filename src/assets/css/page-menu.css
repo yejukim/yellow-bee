@@ -230,6 +230,10 @@
 .menu-card-body {
   padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;
 }
+/* Text-only variant: no image column, single-column body. Used for the
+   full Banh Mi list where individual photos aren't available. */
+.menu-card--text { grid-template-columns: 1fr; }
+.menu-card--text .menu-card-body { padding: 1.5rem 1.75rem; }
 .menu-card-head {
   display: flex; justify-content: space-between; align-items: baseline;
   gap: 0.8rem; flex-wrap: wrap;
