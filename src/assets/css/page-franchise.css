@@ -243,6 +243,9 @@
 
 /* ─── FORM SECTION (dark surface) ─── */
 .form-section { background: var(--dark); padding: 6rem 0; }
+/* Standalone variant: extra top space so it sits below the fixed nav comfortably
+   when it's the only section on the page (no hero above). */
+.form-section--standalone { padding-top: 9rem; min-height: calc(100vh - 4rem); }
 .form-layout {
   display: grid; grid-template-columns: 1fr 1.4fr;
   gap: 5rem; align-items: flex-start;
