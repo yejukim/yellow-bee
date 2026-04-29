@@ -3,7 +3,7 @@
   <div class="footer-topline" aria-hidden="true"></div>
   <div class="footer-grid">
     <div class="footer-brand">
-      <img src="/photos/horizontallogo.png" alt="{{ site.name }}">
+      <img src="{{ apnosh.content['header.logo'] or '/photos/horizontallogo.png' }}" alt="{{ site.name }}">
       <p>{{ apnosh.content['footer.tagline'] or "Fresh food. Fast service. No compromise. Your neighborhood market in the heart of Seattle." }}</p>
       <div class="footer-social">
         {% if site.socials.instagram and site.socials.instagram != '#' %}

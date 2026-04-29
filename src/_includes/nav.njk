@@ -1,6 +1,6 @@
 <nav class="nav" id="siteNav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/photos/horizontallogo.png" alt="{{ site.name }}"></a>
+    <a href="/" class="nav-logo"><img src="{{ apnosh.content['header.logo'] or '/photos/horizontallogo.png' }}" alt="{{ site.name }}"></a>
     <ul class="nav-links">
       {% for item in site.nav %}
       <li><a href="{{ item.href }}"{% if item.href == ('/' + page.fileSlug + '/') or (page.fileSlug == '' and item.href == '/') %} aria-current="page"{% endif %}>{{ item.label }}</a></li>

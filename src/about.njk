@@ -29,7 +29,8 @@ tickerItems:
 
     <div class="about-origin">
       <figure class="about-origin-image reveal-left">
-        <img src="/{{ about.origin.image }}" alt="{{ about.origin.imageAlt }}" loading="lazy">
+        {%- set aboutImg = apnosh.content['about.image'] -%}
+        <img src="{% if aboutImg %}{{ aboutImg }}{% else %}/{{ about.origin.image }}{% endif %}" alt="{{ about.origin.imageAlt }}" loading="lazy">
         <figcaption class="about-origin-cap">{{ about.origin.imageCaption }}</figcaption>
       </figure>
 

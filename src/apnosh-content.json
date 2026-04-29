@@ -39,6 +39,42 @@
       }
     },
     {
+      "key": "header.logo",
+      "page": "Site-wide",
+      "label": "Logo",
+      "description": "Shown in the header and footer. Use a transparent PNG for best results.",
+      "type": "asset",
+      "default": "/photos/horizontallogo.png",
+      "constraints": {
+        "recommendedSize": "600x180",
+        "aspect": "wide"
+      }
+    },
+    {
+      "key": "home.hero_image",
+      "page": "Home",
+      "label": "Hero photo",
+      "description": "Big photo on the right of the home page (currently the bagel tower).",
+      "type": "asset",
+      "default": "/photos/YellowBee_Photo_BagelTowerTransparent.png",
+      "constraints": {
+        "recommendedSize": "920x920",
+        "aspect": "1:1"
+      }
+    },
+    {
+      "key": "about.image",
+      "page": "About",
+      "label": "About Us photo",
+      "description": "The photo next to the origin story on the About page.",
+      "type": "asset",
+      "default": "/photos/gallery/Yellowbee_Photo_Bagel_Tower.jpg",
+      "constraints": {
+        "recommendedSize": "1200x900",
+        "aspect": "4:3"
+      }
+    },
+    {
       "key": "footer.tagline",
       "page": "Footer",
       "label": "Footer tagline",
