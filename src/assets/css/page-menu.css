@@ -481,6 +481,24 @@
 }
 .menu-topping-tag:hover { border-color: var(--yellow); color: var(--yellow); background: rgba(253,196,4,0.06); }
 
+/* Light variant — for use on paper/cream sections (Banh Mi, Espresso). */
+.menu-toppings--light {
+  background: rgba(46,45,50,0.03);
+  border-color: rgba(46,45,50,0.14);
+}
+.menu-toppings--light .menu-toppings-head { color: var(--yellow-deep); }
+.menu-toppings--light .menu-toppings-price { color: var(--text-dark-secondary); }
+.menu-toppings--light .menu-topping-tag {
+  background: #fff;
+  border-color: rgba(46,45,50,0.18);
+  color: var(--text-dark);
+}
+.menu-toppings--light .menu-topping-tag:hover {
+  border-color: var(--yellow-deep);
+  color: var(--yellow-deep);
+  background: rgba(253,196,4,0.08);
+}
+
 /* ─── PASTRIES ─── */
 .menu-pastries-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
