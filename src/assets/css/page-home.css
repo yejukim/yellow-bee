@@ -367,6 +367,16 @@
 .special-card[data-slug="grocery-boba-bonus"]:hover .special-img img {
   transform: scale(1.03);
 }
+/* Per-card override: Break Your Fast Combo photo has a tall coffee cup
+   that gets clipped by the time/save badges at the top. Shrink slightly
+   and push down so it clears the badges. */
+.special-card[data-slug="break-your-fast-combo"] .special-img img {
+  object-fit: contain;
+  padding: 2.75rem 0.75rem 0.5rem;
+}
+.special-card[data-slug="break-your-fast-combo"]:hover .special-img img {
+  transform: scale(1.03);
+}
 .special-card:hover .special-img img { transform: scale(1.05); }
 
 .special-img-badges {
