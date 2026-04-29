@@ -193,7 +193,7 @@ tickerItems:
       {%- endfor -%}
 
       {% if bobaWithPhotos.length > 0 %}
-      <div class="menu-drinks-grid">
+      <div class="menu-drinks-grid menu-drinks-grid--featured">
         {% for item in bobaWithPhotos %}
         <article class="drink-menu-card reveal d{{ loop.index }}">
           <div class="drink-menu-card-img">
@@ -207,7 +207,7 @@ tickerItems:
       {% endif %}
 
       {% if bobaWithoutPhotos.length > 0 %}
-      <ul class="menu-list reveal" style="margin-top:{% if bobaWithPhotos.length > 0 %}2.5rem{% else %}0{% endif %};">
+      <ul class="menu-list menu-list--dark reveal" style="margin-top:{% if bobaWithPhotos.length > 0 %}2.5rem{% else %}0{% endif %};">
         {% for item in bobaWithoutPhotos %}
         <li class="menu-list-item">
           <span class="menu-list-name">{{ item.name }}</span>
