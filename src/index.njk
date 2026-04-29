@@ -64,7 +64,14 @@ permalink: /index.html
   </a>
 </section>
 
-<!-- DAILY SPECIALS -->
+<!-- DAILY SPECIALS
+     Renders from apnosh.specials (managed in the portal). When the
+     client has zero active specials the section auto-hides. Falls
+     back to the local _data/specials.json when the portal is
+     unreachable so the site never goes blank during build issues. -->
+{%- set hasPortalSpecials = apnosh.specials and apnosh.specials.length > 0 -%}
+{%- set hasLocalSpecials = (not apnosh.meta or not apnosh.meta.generatedAt) and specials.items and specials.items.length > 0 -%}
+{% if hasPortalSpecials or hasLocalSpecials %}
 <section class="specials" id="specials">
   <div class="specials-mega-bg" aria-hidden="true">Daily</div>
   <div class="sec-container">
@@ -76,30 +83,61 @@ permalink: /index.html
       </div>
     </div>
     <div class="specials-grid">
-      {% for s in specials.items %}
-      <article class="special-card reveal d{{ loop.index }}">
-        <div class="special-img">
-          <img src="/{{ s.image }}" alt="{{ s.alt }}" loading="lazy">
-          <div class="special-img-badges">
-            <span class="special-time">{{ s.time }}</span>
-            {% if s.save %}<span class="special-save">{{ s.save }}</span>{% endif %}
+      {% if hasPortalSpecials %}
+        {% for s in apnosh.specials %}
+        <article class="special-card reveal d{{ loop.index }}">
+          <div class="special-img">
+            {% if s.photoUrl %}
+            <img src="{{ s.photoUrl }}" alt="{{ s.title }}" loading="lazy">
+            {% else %}
+            <img src="/photos/placeholders/special-placeholder.svg" alt="{{ s.title }}" loading="lazy">
+            {% endif %}
+            <div class="special-img-badges">
+              {% if s.timeWindow %}<span class="special-time">{{ s.timeWindow }}</span>{% endif %}
+              {% if s.saveLabel %}<span class="special-save">{{ s.saveLabel }}</span>{% endif %}
+            </div>
           </div>
-        </div>
-        <div class="special-body">
-          <h3 class="special-name">{{ s.name }}</h3>
-          <p class="special-tagline">{{ s.tagline }}</p>
-          <ul class="special-includes">
-            {% for item in s.includes %}
-            <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
-          <div class="special-price">{{ s.price }}</div>
-        </div>
-      </article>
-      {% endfor %}
+          <div class="special-body">
+            <h3 class="special-name">{{ s.title }}</h3>
+            {% if s.tagline %}<p class="special-tagline">{{ s.tagline }}</p>{% endif %}
+            {% if s.includes and s.includes.length > 0 %}
+            <ul class="special-includes">
+              {% for item in s.includes %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+            {% if s.price %}<div class="special-price">{{ s.price }}</div>{% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      {% else %}
+        {% for s in specials.items %}
+        <article class="special-card reveal d{{ loop.index }}">
+          <div class="special-img">
+            <img src="/{{ s.image }}" alt="{{ s.alt }}" loading="lazy">
+            <div class="special-img-badges">
+              <span class="special-time">{{ s.time }}</span>
+              {% if s.save %}<span class="special-save">{{ s.save }}</span>{% endif %}
+            </div>
+          </div>
+          <div class="special-body">
+            <h3 class="special-name">{{ s.name }}</h3>
+            <p class="special-tagline">{{ s.tagline }}</p>
+            <ul class="special-includes">
+              {% for item in s.includes %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+            <div class="special-price">{{ s.price }}</div>
+          </div>
+        </article>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 </section>
+{% endif %}
 
 <!-- DELI OPTIONS -->
 <section class="deli" id="deli">

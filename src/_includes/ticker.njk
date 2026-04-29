@@ -8,7 +8,21 @@
     2. Any per-page tickerItems override.
     3. The default static items in src/_data/ticker.json.
 #}
-{% set baseList = tickerItems if tickerItems else ticker.items %}
+{# When the client has portal-managed specials, derive ticker items from them
+   so the marquee stays in sync with the Daily Specials section automatically.
+   Falls back to the per-page or static list when there are none. #}
+{% if apnosh.specials and apnosh.specials.length > 0 %}
+  {% set specialsTickerItems = [] %}
+  {% for s in apnosh.specials %}
+    {%- set parts = [s.title] -%}
+    {%- if s.price -%}{%- set parts = parts.concat([s.price]) -%}{%- endif -%}
+    {%- if s.timeWindow -%}{%- set parts = parts.concat([s.timeWindow]) -%}{%- endif -%}
+    {% set specialsTickerItems = specialsTickerItems.concat([parts | join(' · ')]) %}
+  {% endfor %}
+  {% set baseList = ['Daily Specials · Every Day'].concat(specialsTickerItems) %}
+{% else %}
+  {% set baseList = tickerItems if tickerItems else ticker.items %}
+{% endif %}
 {% if apnosh.activePromo %}
   {% set apnoshLabel = "Now On · " + apnosh.activePromo.name %}
   {% if apnosh.activePromo.code %}{% set apnoshLabel = apnoshLabel + " · Code: " + apnosh.activePromo.code %}{% endif %}
