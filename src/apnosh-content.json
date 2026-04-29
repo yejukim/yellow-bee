@@ -1,6 +1,9 @@
 {
   "version": 1,
   "_doc": "Apnosh content schema -- declares which copy on this site is editable from portal.apnosh.com. Length limits prevent layout breaks. Voice rules are advisory.",
+  "vertical": "restaurant",
+  "displayName": "Yellow Bee",
+  "features": ["menu", "specials", "copy", "photos"],
   "fields": [
     {
       "key": "hero.eyebrow",
