@@ -252,7 +252,9 @@ permalink: /index.html
   {% endif %}
 
   <div class="drinks-cta reveal">
-    <a href="/menu/#drinks-menu" class="btn btn-dark">See All Drinks</a>
+    {%- set bobaTotal = (apnosh.menu and apnosh.menu['Boba'] and apnosh.menu['Boba'].items.length) or drinks.items.length -%}
+    {% if bobaTotal %}<div class="drinks-cta-meta">{{ bobaTotal }} drinks total</div>{% endif %}
+    <a href="/menu/#drinks-menu" class="btn btn-dark">See the full menu</a>
   </div>
 </section>
 
