@@ -197,26 +197,71 @@ tickerItems:
       <p class="menu-section-meta">Handcrafted milk teas, fruit teas, and smoothies.</p>
     </header>
 
-    {# Unified card grid for all boba items. Photo source priority:
-       1. portal photoUrl (if uploaded in dashboard)
-       2. local drinks.json photo by name match (legacy stock photos)
-       3. brand placeholder SVG
-       Keeps the section feeling like a single coherent menu instead of
-       splitting into multiple sub-layouts. #}
-    <div class="menu-drinks-grid">
-      {% if apnosh.menu and apnosh.menu['Boba'] %}
-        {% for item in apnosh.menu['Boba'].items %}
-          {%- set legacy = (drinks.items | selectattr('name', 'equalto', item.name) | first) -%}
-          {%- set photoSrc = item.photoUrl or (legacy and legacy.image and ('/' + legacy.image)) or '/photos/placeholders/special-placeholder.svg' -%}
-          <article class="drink-menu-card reveal d{{ loop.index }}">
-            <div class="drink-menu-card-img">
-              <img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy">
-            </div>
-            <div class="drink-menu-card-name">{{ item.name }}</div>
-            <div class="drink-menu-card-price">{{ item.price }}</div>
-          </article>
+    {% if apnosh.menu and apnosh.menu['Boba'] %}
+      {# Featured card grid for the few drinks with portal photos; rest split
+         into Teas vs Smoothies columns. Items with "Smoothie" in the name
+         go to the smoothies column; everything else is a tea. #}
+      {%- set bobaWithPhotos = [] -%}
+      {%- set bobaTeas = [] -%}
+      {%- set bobaSmoothies = [] -%}
+      {%- for item in apnosh.menu['Boba'].items -%}
+        {%- if item.photoUrl -%}
+          {%- set bobaWithPhotos = bobaWithPhotos.concat([item]) -%}
+        {%- elif 'Smoothie' in item.name -%}
+          {%- set bobaSmoothies = bobaSmoothies.concat([item]) -%}
+        {%- else -%}
+          {%- set bobaTeas = bobaTeas.concat([item]) -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {% if bobaWithPhotos.length > 0 %}
+      <div class="menu-drinks-grid menu-drinks-grid--featured">
+        {% for item in bobaWithPhotos %}
+        <article class="drink-menu-card reveal d{{ loop.index }}">
+          <div class="drink-menu-card-img">
+            <img src="{{ item.photoUrl }}" alt="{{ item.name }}" loading="lazy">
+          </div>
+          <div class="drink-menu-card-name">{{ item.name }}</div>
+          <div class="drink-menu-card-price">{{ item.price }}</div>
+        </article>
         {% endfor %}
-      {% else %}
+      </div>
+      {% endif %}
+
+      {% if bobaTeas.length > 0 or bobaSmoothies.length > 0 %}
+      <div class="boba-list-cols reveal" style="margin-top:{% if bobaWithPhotos.length > 0 %}2.5rem{% else %}0{% endif %};">
+        {% if bobaTeas.length > 0 %}
+        <div class="boba-list-col">
+          <h3 class="boba-list-heading">Teas</h3>
+          <ul class="menu-list menu-list--dark">
+            {% for item in bobaTeas %}
+            <li class="menu-list-item">
+              <span class="menu-list-name">{{ item.name }}</span>
+              <span class="menu-list-dots" aria-hidden="true"></span>
+              <span class="menu-list-price">{{ item.price }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% if bobaSmoothies.length > 0 %}
+        <div class="boba-list-col">
+          <h3 class="boba-list-heading">Smoothies</h3>
+          <ul class="menu-list menu-list--dark">
+            {% for item in bobaSmoothies %}
+            <li class="menu-list-item">
+              <span class="menu-list-name">{{ item.name }}</span>
+              <span class="menu-list-dots" aria-hidden="true"></span>
+              <span class="menu-list-price">{{ item.price }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+    {% else %}
+      <div class="menu-drinks-grid">
         {% for drink in drinks.items %}
         <article class="drink-menu-card reveal d{{ loop.index }}">
           <div class="drink-menu-card-img">
@@ -226,8 +271,8 @@ tickerItems:
           <div class="drink-menu-card-price">{{ drink.price }}</div>
         </article>
         {% endfor %}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
 
     {% if apnosh.menu and apnosh.menu['Toppings'] and apnosh.menu['Toppings'].modifiers.length > 0 %}
     <div class="menu-toppings reveal">
@@ -273,21 +318,36 @@ tickerItems:
       <p class="menu-section-meta menu-section-meta--dark">All available in hot, iced, or blended.</p>
     </header>
 
-    {# Unified card grid for espresso items, mirroring the Boba section.
-       Photo source: portal photoUrl, fallback to brand placeholder.
-       Featured items get a small "Featured" pill on the photo. #}
-    <div class="menu-drinks-grid">
-      {% for item in apnosh.menu['Espresso'].items %}
-        {%- set photoSrc = item.photoUrl or '/photos/placeholders/special-placeholder.svg' -%}
-        <article class="drink-menu-card reveal d{{ loop.index }}">
-          <div class="drink-menu-card-img">
-            <img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy">
-            {% if item.isFeatured %}<span class="drink-menu-card-tag">Featured</span>{% endif %}
-          </div>
-          <div class="drink-menu-card-name">{{ item.name }}</div>
-          <div class="drink-menu-card-price">{{ item.price }}</div>
-        </article>
-      {% endfor %}
+    {% set featuredEspresso = apnosh.menu['Espresso'].items | selectattr('isFeatured') | first %}
+    <div class="espresso-layout reveal">
+      {% if featuredEspresso %}
+      <article class="menu-feature menu-feature--vertical">
+        {% if featuredEspresso.photoUrl %}
+        <figure class="menu-feature-img">
+          <span class="menu-feature-tag">Featured</span>
+          <img src="{{ featuredEspresso.photoUrl }}" alt="{{ featuredEspresso.name }}" loading="lazy">
+        </figure>
+        {% endif %}
+        <div class="menu-feature-body">
+          {% if not featuredEspresso.photoUrl %}<div class="menu-feature-eyebrow">Featured</div>{% endif %}
+          <h3 class="menu-feature-name">{{ featuredEspresso.name }}</h3>
+          <p class="menu-feature-tagline">{{ featuredEspresso.description or "Our signature drink." }}</p>
+          <div class="menu-feature-price">{{ featuredEspresso.price }}</div>
+        </div>
+      </article>
+      {% endif %}
+
+      <ul class="menu-list">
+        {% for item in apnosh.menu['Espresso'].items %}
+          {% if not item.isFeatured %}
+          <li class="menu-list-item">
+            <span class="menu-list-name">{{ item.name }}</span>
+            <span class="menu-list-dots" aria-hidden="true"></span>
+            <span class="menu-list-price">{{ item.price }}</span>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
     </div>
 
     {% if apnosh.menu['Milk options'] and apnosh.menu['Milk options'].modifiers.length > 0 %}
@@ -312,7 +372,7 @@ tickerItems:
   <div class="menu-section-mega menu-section-mega--dark" aria-hidden="true">Sweet</div>
   <div class="sec-container">
     <header class="menu-section-head reveal">
-      <div class="sec-mark sec-mark--dark">Chapter 06 / {{ menu.pastries.label }}</div>
+      <div class="sec-mark sec-mark--dark">Chapter 05 / {{ menu.pastries.label }}</div>
       <h2>{{ menu.pastries.headline }}</h2>
       <p class="menu-section-meta menu-section-meta--dark">{{ menu.pastries.meta }}</p>
     </header>
