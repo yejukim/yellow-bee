@@ -71,7 +71,7 @@
       "label": "About Us photo",
       "description": "The photo next to the origin story on the About page.",
       "type": "asset",
-      "default": "/photos/gallery/Yellowbee_Photo_Bagel_Tower.jpg",
+      "default": "/photos/gallery-web/Yellowbee_Photo_Bagel_Tower.jpg",
       "constraints": {
         "recommendedSize": "1200x900",
         "aspect": "4:3"

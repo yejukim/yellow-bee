@@ -47,7 +47,7 @@ permalink: /index.html
     <div class="hero-visual">
       <div class="hero-img-wrap">
         <div class="hero-img-glow"></div>
-        <img src="{{ apnosh.content['home.hero_image'] or '/photos/YellowBee_Photo_BagelTowerTransparent.png' }}" alt="Signature Banh Mi Bagel Tower">
+        <img src="{{ apnosh.content['home.hero_image'] or '/photos/YellowBee_Photo_BagelTowerTransparent.png' }}" alt="Signature Banh Mi Bagel Tower" fetchpriority="high" decoding="async" width="720" height="720">
         {% if apnosh.content['home.featured_deal_visible'] != 'false' %}
         <div class="hero-deal-stamp">
           <div class="tag">Featured Deal</div>
