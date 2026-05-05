@@ -142,25 +142,42 @@ tickerItems:
       <p class="menu-section-meta menu-section-meta--dark"><em>Same price as banh mi.</em></p>
     </header>
 
-    <ul class="menu-list reveal">
+    {# Visual card grid. Bagel name+price comes from apnosh.menu when
+       available (modifier list managed in the portal). Photos and flavor
+       descriptions are pulled from the local _data/menu.json by name
+       match — gives portal-managed bagels their card art automatically.
+       Falls back fully to local data if apnosh is unreachable. #}
+    <div class="bagel-grid reveal">
       {% if apnosh.menu and apnosh.menu['Bagel options'] %}
         {% for item in apnosh.menu['Bagel options'].modifiers %}
-        <li class="menu-list-item">
-          <span class="menu-list-name">{{ item.name }}</span>
-          <span class="menu-list-dots" aria-hidden="true"></span>
-          <span class="menu-list-price">same as banh mi</span>
-        </li>
+          {%- set legacy = (menu.bagels.items | selectattr('name', 'equalto', item.name) | first) -%}
+          {%- set photoSrc = (legacy and legacy.image and ('/' + legacy.image)) or '/photos/placeholders/special-placeholder.svg' -%}
+          <article class="bagel-card d{{ loop.index }}">
+            <div class="bagel-card-img">
+              <img src="{{ photoSrc }}" alt="{{ item.name }} bagel" loading="lazy">
+            </div>
+            <div class="bagel-card-body">
+              <h3 class="bagel-card-name">{{ item.name }}</h3>
+              {% if legacy and legacy.desc %}
+              <p class="bagel-card-desc">{{ legacy.desc }}</p>
+              {% endif %}
+            </div>
+          </article>
         {% endfor %}
       {% else %}
         {% for item in menu.bagels.items %}
-        <li class="menu-list-item">
-          <span class="menu-list-name">{{ item.name }}</span>
-          <span class="menu-list-dots" aria-hidden="true"></span>
-          <span class="menu-list-price">{{ menu.bagels.price }}</span>
-        </li>
+        <article class="bagel-card d{{ loop.index }}">
+          <div class="bagel-card-img">
+            <img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy">
+          </div>
+          <div class="bagel-card-body">
+            <h3 class="bagel-card-name">{{ item.name }}</h3>
+            <p class="bagel-card-desc">{{ item.desc }}</p>
+          </div>
+        </article>
         {% endfor %}
       {% endif %}
-    </ul>
+    </div>
   </div>
 </section>
 

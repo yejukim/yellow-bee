@@ -337,33 +337,58 @@
   font-size: 0.85rem; line-height: 1.55; color: var(--text-muted);
 }
 
-/* ─── BAGELS LIST (prix fixe style) ─── */
-.menu-list {
-  max-width: 640px; margin: 0 auto;
-  list-style: none; position: relative; z-index: 2;
-  padding: 1rem 1.5rem;
-  border-top: 1px solid rgba(46,45,50,0.12);
-  border-bottom: 1px solid rgba(46,45,50,0.12);
+/* ─── BAGELS — visual card grid ─── */
+.bagel-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  position: relative; z-index: 2;
 }
-.menu-list-item {
-  display: flex; align-items: baseline; gap: 0.75rem;
-  padding: 0.85rem 0;
-  border-bottom: 1px solid rgba(46,45,50,0.06);
+.bagel-card {
+  background: var(--white); border: 1px solid var(--light-border);
+  border-radius: 14px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
 }
-.menu-list-item:last-child { border-bottom: 0; }
-.menu-list-name {
-  font-family: var(--display); font-size: 1.5rem; font-weight: 400;
-  letter-spacing: 0; text-transform: uppercase; color: var(--text-dark);
-  line-height: 1;
+.bagel-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 4px 12px rgba(238,178,5,0.08);
+  border-color: rgba(238,178,5,0.25);
 }
-.menu-list-dots {
-  flex: 1; height: 1px;
-  background: repeating-linear-gradient(to right, rgba(46,45,50,0.25) 0 2px, transparent 2px 6px);
-  align-self: center;
+.bagel-card-img {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--warm-bg);
 }
-.menu-list-price {
-  font-family: var(--mono); font-size: 0.95rem; font-weight: 600;
-  color: var(--yellow-deep); letter-spacing: 0.02em;
+.bagel-card-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.5s var(--ease-out);
+}
+.bagel-card:hover .bagel-card-img img { transform: scale(1.05); }
+
+.bagel-card-body {
+  padding: 1.1rem 1.15rem 1.25rem;
+  display: flex; flex-direction: column; gap: 0.4rem;
+  flex: 1;
+}
+.bagel-card-name {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.35rem, 1.8vw, 1.65rem); line-height: 1;
+  letter-spacing: -0.005em; text-transform: uppercase;
+  color: var(--text-dark);
+  margin: 0;
+}
+.bagel-card-desc {
+  font-size: 0.85rem; line-height: 1.5;
+  color: var(--text-dark-secondary);
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .bagel-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+}
+@media (max-width: 480px) {
+  .bagel-grid { grid-template-columns: 1fr; }
 }
 
 /* ─── DARK variant of the prix-fixe list ─── */
@@ -591,5 +616,4 @@
   .menu-card { grid-template-columns: 1fr; }
   .menu-card-img { aspect-ratio: 16/10; }
   .menu-drinks-grid { grid-template-columns: 1fr 1fr; }
-  .menu-list-name { font-size: 1.2rem; }
 }
