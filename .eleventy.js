@@ -1,6 +1,8 @@
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "photos": "photos" });
   eleventyConfig.addPassthroughCopy("src/assets");
+  // Favicon at site root (/favicon.ico) so browsers auto-fetch it
+  eleventyConfig.addPassthroughCopy({ "src/assets/icons/favicon.ico": "favicon.ico" });
   // Apnosh integration: schema declaring which copy is editable from the portal
   eleventyConfig.addPassthroughCopy({ "src/apnosh-content.json": "apnosh-content.json" });
 
