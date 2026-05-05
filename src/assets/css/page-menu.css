@@ -391,6 +391,38 @@
   .bagel-grid { grid-template-columns: 1fr; }
 }
 
+/* ─── PRIX-FIXE LIST (name … dotted leader … price) ─── */
+/* Editorial menu-list pattern: used by Boba (Teas/Smoothies columns)
+   and Espresso (drink list under featured card). Restored after the
+   bagel redesign moved bagels off this pattern. */
+.menu-list {
+  max-width: 640px; margin: 0 auto;
+  list-style: none; position: relative; z-index: 2;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(46,45,50,0.12);
+  border-bottom: 1px solid rgba(46,45,50,0.12);
+}
+.menu-list-item {
+  display: flex; align-items: baseline; gap: 0.75rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(46,45,50,0.06);
+}
+.menu-list-item:last-child { border-bottom: 0; }
+.menu-list-name {
+  font-family: var(--display); font-size: 1.5rem; font-weight: 400;
+  letter-spacing: 0; text-transform: uppercase; color: var(--text-dark);
+  line-height: 1;
+}
+.menu-list-dots {
+  flex: 1; height: 1px;
+  background: repeating-linear-gradient(to right, rgba(46,45,50,0.25) 0 2px, transparent 2px 6px);
+  align-self: center;
+}
+.menu-list-price {
+  font-family: var(--mono); font-size: 0.95rem; font-weight: 600;
+  color: var(--yellow-deep); letter-spacing: 0.02em;
+}
+
 /* ─── DARK variant of the prix-fixe list ─── */
 /* For use on dark-section backgrounds (e.g. Boba's "rest of the drinks"). */
 .menu-list--dark {
