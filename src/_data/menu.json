@@ -69,32 +69,28 @@
         "slug": "plain",
         "name": "Plain",
         "desc": "Classic crust, lightly toasted. The everyday pick.",
-        "image": "photos/placeholders/special-placeholder.svg",
-        "_realImage": "photos/bagels/plain.png",
+        "image": "photos/bagels/plain.jpg",
         "alt": "Plain bagel"
       },
       {
         "slug": "everything",
         "name": "Everything",
         "desc": "Sesame, poppy, garlic, onion, flake salt. Big flavor.",
-        "image": "photos/placeholders/special-placeholder.svg",
-        "_realImage": "photos/bagels/everything.png",
+        "image": "photos/bagels/everything.jpg",
         "alt": "Everything bagel"
       },
       {
         "slug": "asiago",
         "name": "Asiago",
         "desc": "Baked with aged asiago on top. Sharp and savory.",
-        "image": "photos/placeholders/special-placeholder.svg",
-        "_realImage": "photos/bagels/asiago.png",
+        "image": "photos/bagels/asiago.jpg",
         "alt": "Asiago bagel"
       },
       {
         "slug": "jalapeno-cheddar",
         "name": "Jalapeño Cheddar",
         "desc": "Melted cheddar crust with sliced jalapeño. A kick of heat.",
-        "image": "photos/placeholders/special-placeholder.svg",
-        "_realImage": "photos/bagels/jalapeno-cheddar.png",
+        "image": "photos/bagels/jalapeno-cheddar.jpg",
         "alt": "Jalapeño Cheddar bagel"
       }
     ]
