@@ -356,14 +356,13 @@
 }
 .bagel-card-img {
   position: relative;
-  aspect-ratio: 4/3;
+  aspect-ratio: 9/7; /* matches the 900x700 source crop */
   overflow: hidden;
-  background: var(--warm-bg);
+  background: var(--white);
 }
 .bagel-card-img img {
-  width: 100%; height: 100%; object-fit: contain; display: block;
+  width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.5s var(--ease-out);
-  padding: 0.5rem;
 }
 .bagel-card:hover .bagel-card-img img { transform: scale(1.05); }
 
