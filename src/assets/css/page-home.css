@@ -964,14 +964,25 @@
   /* Hide the bagel + everything in the visual column on mobile. */
   .hero-visual { display: none; }
 
-  /* Big, bold poster headline — fills the screen as the focal point. */
+  /* Massive poster headline — three lines on mobile (MODERN / ASIAN /
+     MARKET.) so each word can be huge without horizontal wrapping. */
   .hero-title {
-    font-size: clamp(3.25rem, 15vw, 4.75rem);
-    line-height: 0.85;
-    letter-spacing: -0.015em;
+    font-size: clamp(4rem, 19vw, 5.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
     margin-bottom: 1.75rem;
   }
-  .hero-title em { -webkit-text-stroke-width: 3px; }
+  /* Drop "MARKET." to its own line, remove .line's overflow clip
+     so the wrapped block isn't hidden. Slight letter-spacing on the
+     outlined em keeps strokes from merging at large sizes. */
+  .hero-title em {
+    display: block;
+    -webkit-text-stroke-width: 2.5px;
+    letter-spacing: 0.04em;
+    margin-top: 0.05em;
+  }
+  .hero-title .line { overflow: visible; }
+  .hero-title .line .fill { display: block; }
 
   /* Eyebrow: presence without competing with the headline. */
   .hero-eyebrow {
