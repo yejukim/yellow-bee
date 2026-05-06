@@ -950,52 +950,100 @@
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-ctas { justify-content: center; gap: 0.8rem; flex-wrap: nowrap; }
   .hero-ctas .btn { padding: 0.8rem 1.5rem; font-size: 0.82rem; }
-  /* Mobile hero: text first, image as a smaller accent below.
-     Was reversed (image-first) which made the bagel tower dominate
-     the viewport and push the headline below the fold. */
-  .hero-visual { order: 0; }
-  .hero-img-wrap { max-width: 180px; margin: 0.75rem auto 0; }
-  .hero-price-tag { left: 50%; transform: translateX(-50%); bottom: -0.5rem; }
-  /* Bolder, bigger headline that lands with impact at thumb-sized screens.
-     Also tighten the line-height for a more poster-feeling stack. */
-  .hero-title {
-    font-size: clamp(2.75rem, 13vw, 4rem);
-    line-height: 0.86;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
+  /* Mobile hero: editorial poster layout.
+     Left-aligned (matches the rest of the site), oversized hammer
+     headline that fills the screen, and the bagel tower bleeds in
+     from the right edge as a dramatic asymmetric accent rather than
+     sitting centered as decoration. */
+  .hero { padding: 125px 0 3rem; min-height: auto; position: relative; overflow: hidden; }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 1.5rem;
+    text-align: left;
+    position: relative;
   }
-  /* "MARKET." outlined accent gets a thicker stroke at small sizes
-     so the open letterforms still read clearly. */
-  .hero-title em { -webkit-text-stroke-width: 2.5px; }
-  /* Eyebrow: bigger + bolder + more letter-spacing for presence. */
+  /* Bagel as a positioned accent — bleeds off the right edge,
+     sized large enough to feel intentional but tucked behind the text. */
+  .hero-visual {
+    position: absolute;
+    top: 38%;
+    right: -3rem;
+    width: 240px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-img-wrap { max-width: 100%; margin: 0; opacity: 0.45; }
+  .hero-img-wrap img { filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4)); }
+
+  /* Text content sits above the bagel. */
+  .hero-content { position: relative; z-index: 2; }
+
+  /* Eyebrow with a clean leading rule (matches the section-mark
+     pattern used throughout the site). */
   .hero-eyebrow {
-    font-size: 0.92rem;
-    font-weight: 600;
-    letter-spacing: 0.28em;
-    margin-bottom: 1.4rem;
+    display: inline-flex; align-items: center; gap: 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    margin-bottom: 1.25rem;
+    padding-left: 0;
   }
-  /* Lede: slightly tighter and aligned to the rule. */
-  .hero-lede {
-    font-size: 1.05rem;
-    line-height: 1.55;
-    max-width: 38ch;
+  .hero-eyebrow::before {
+    content: '';
+    width: 1.5rem;
+    height: 1px;
+    background: var(--yellow);
+    flex-shrink: 0;
+  }
+
+  /* Hammer headline — fills the screen for poster impact. */
+  .hero-title {
+    font-size: clamp(3.5rem, 16vw, 5rem);
+    line-height: 0.84;
+    letter-spacing: -0.015em;
     margin-bottom: 1.75rem;
   }
-  /* CTAs: roomier, more tappable. */
-  .hero-ctas { gap: 0.65rem; margin-bottom: 0.5rem; }
-  .hero-ctas .btn {
-    padding: 0.95rem 1.35rem;
-    font-size: 0.85rem;
-    letter-spacing: 0.06em;
+  .hero-title em { -webkit-text-stroke-width: 3px; }
+
+  /* Lede: left-aligned, hairline-on-top instead of border-left.
+     Reads as a quiet caption under the headline rather than a quote. */
+  .hero-lede {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.55;
+    max-width: 30ch;
+    margin: 0 0 1.75rem;
+    padding: 1rem 0 0;
+    border-left: 0;
+    border-top: 1px solid rgba(253,196,4,0.4);
+    color: rgba(255,255,255,0.78);
   }
-  /* Deal stamp is absolutely positioned to the right of the bagel image —
-     overflows off-screen on mobile and sits on top of the headline.
-     Hide it; the deals section below carries the same offer. */
+
+  /* CTAs: left-aligned, full-width primary, ghost secondary.
+     Bigger tap targets, weightier type. */
+  .hero-ctas {
+    justify-content: flex-start;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+  }
+  .hero-ctas .btn {
+    padding: 1rem 1.5rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+
+  /* Suppress the auto-scroll arrow on mobile — adds visual noise
+     and the bagel + ticker already signal more content below. */
+  .hero-arrow { display: none; }
+
+  /* Deal stamp / brackets / coords still hidden on mobile. */
   .hero-deal-stamp { display: none; }
-  /* Architectural decorations are heavy on a 375px-wide viewport. */
   .hero-bracket, .hero-coord { display: none; }
-  /* Keep top padding tight so the headline lands close to the nav. */
-  .hero { padding-top: 130px; padding-bottom: 2.5rem; }
+  .hero-price-tag { display: none; }
   .deli-hero { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
   .deli-content p { margin-left: auto; margin-right: auto; }
   .price-anim { justify-content: center; }
