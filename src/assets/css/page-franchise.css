@@ -406,6 +406,9 @@
   .investment-section,
   .process-section,
   .form-section { padding: 4rem 0; }
+  /* Standalone form is the FIRST section on /franchise/ — needs extra
+     top padding to clear the nav (~80px) + ticker (~36px) on mobile. */
+  .form-section--standalone { padding-top: 8rem; }
 }
 @media (max-width: 480px) {
   .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }

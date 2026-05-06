@@ -47,7 +47,7 @@ permalink: /index.html
     <div class="hero-visual">
       <div class="hero-img-wrap">
         <div class="hero-img-glow"></div>
-        <img src="{{ apnosh.content['home.hero_image'] or '/photos/YellowBee_Photo_BagelTowerTransparent.png' }}" alt="Signature Banh Mi Bagel Tower" fetchpriority="high" decoding="async" width="720" height="720">
+        <img src="{{ apnosh.content['home.hero_image'] or '/photos/YellowBee_Photo_BagelTowerTransparent.png' }}" alt="Signature Banh Mi Bagel Tower" fetchpriority="high" decoding="async" width="720" height="900">
         {% if apnosh.content['home.featured_deal_visible'] != 'false' %}
         <div class="hero-deal-stamp">
           <div class="tag">Featured Deal</div>
@@ -89,9 +89,9 @@ permalink: /index.html
         <article class="special-card reveal d{{ loop.index }}" data-slug="{{ slug }}">
           <div class="special-img">
             {% if s.photoUrl %}
-            <img src="{{ s.photoUrl }}" alt="{{ s.title }}" loading="lazy">
+            <img src="{{ s.photoUrl }}" alt="{{ s.title }}" loading="lazy" decoding="async">
             {% else %}
-            <img src="/photos/placeholders/special-placeholder.svg" alt="{{ s.title }}" loading="lazy">
+            <img src="/photos/placeholders/special-placeholder.svg" alt="{{ s.title }}" loading="lazy" decoding="async">
             {% endif %}
             <div class="special-img-badges">
               {% if s.timeWindow %}<span class="special-time">{{ s.timeWindow }}</span>{% endif %}
@@ -115,7 +115,7 @@ permalink: /index.html
         {% for s in specials.items %}
         <article class="special-card reveal d{{ loop.index }}">
           <div class="special-img">
-            <img src="/{{ s.image }}" alt="{{ s.alt }}" loading="lazy">
+            <img src="/{{ s.image }}" alt="{{ s.alt }}" loading="lazy" decoding="async">
             <div class="special-img-badges">
               <span class="special-time">{{ s.time }}</span>
               {% if s.save %}<span class="special-save">{{ s.save }}</span>{% endif %}
@@ -159,7 +159,7 @@ permalink: /index.html
           {%- set photoSrc = item.photoUrl or (legacy and legacy.image and ('/' + legacy.image)) -%}
           <div class="deli-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
             {% if photoSrc %}
-            <div class="deli-card-img"><img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy"></div>
+            <div class="deli-card-img"><img src="{{ photoSrc }}" alt="{{ item.name }}" loading="lazy" decoding="async"></div>
             {% endif %}
             <div class="deli-card-body">
               <h4>{{ item.name }}</h4>
@@ -173,7 +173,7 @@ permalink: /index.html
       {% else %}
         {% for item in menu.banhmi.items %}{% if loop.index <= 3 %}
         <div class="deli-card reveal d{{ loop.index }}" data-num="№ 0{{ loop.index }}">
-          <div class="deli-card-img"><img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy"></div>
+          <div class="deli-card-img"><img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy" decoding="async"></div>
           <div class="deli-card-body">
             <h4>{{ item.name }}</h4>
             <div class="card-desc">{{ item.desc }}</div>
@@ -210,7 +210,7 @@ permalink: /index.html
     <div class="drinks-showcase">
       {% for item in bobaWithPhotos %}
       <div class="drink-card reveal d{{ loop.index }}">
-        <div class="drink-card-img"><img src="{{ item.photoUrl }}" alt="{{ item.name }}" loading="lazy"></div>
+        <div class="drink-card-img"><img src="{{ item.photoUrl }}" alt="{{ item.name }}" loading="lazy" decoding="async"></div>
         <h4>{{ item.name }}</h4>
         <div class="dp">{{ item.price }}</div>
       </div>
@@ -220,7 +220,7 @@ permalink: /index.html
     <div class="drinks-showcase">
       {% for drink in drinks.items %}
       <div class="drink-card reveal d{{ loop.index }}">
-        <div class="drink-card-img"><img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy"></div>
+        <div class="drink-card-img"><img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy" decoding="async"></div>
         <h4>{{ drink.name }}</h4>
         <div class="dp">{{ drink.price }}</div>
       </div>
@@ -323,7 +323,7 @@ permalink: /index.html
     <button class="carousel-btn prev" aria-label="Previous slide">&#8249;</button>
     <div class="carousel-track" id="carouselTrack">
       {% for g in gallery.items %}
-      <div class="carousel-slide"><img src="/{{ g.image }}" alt="{{ g.alt }}" loading="lazy"></div>
+      <div class="carousel-slide"><img src="/{{ g.image }}" alt="{{ g.alt }}" loading="lazy" decoding="async"></div>
       {% endfor %}
     </div>
     <button class="carousel-btn next" aria-label="Next slide">&#8250;</button>

@@ -32,7 +32,7 @@ tickerItems:
 
     <div class="loc-feature">
       <div class="loc-feature-img reveal-left">
-        <img src="/{{ loc.image }}" alt="{{ loc.name }} interior" loading="lazy">
+        <img src="/{{ loc.image }}" alt="{{ loc.name }} interior" loading="lazy" decoding="async">
       </div>
 
       <div class="loc-feature-body reveal-right">
@@ -92,7 +92,7 @@ tickerItems:
       {% for loc in locations.soon %}
       <article class="loc-soon-card reveal d{{ loop.index }}">
         <div class="loc-soon-img">
-          <img src="/{{ loc.image }}" alt="{{ loc.name }}" loading="lazy">
+          <img src="/{{ loc.image }}" alt="{{ loc.name }}" loading="lazy" decoding="async">
           <div class="loc-soon-badge">{{ loc.eta }}</div>
         </div>
         <div class="loc-soon-body">

@@ -25,7 +25,7 @@ tickerItems:
     {% for item in seasonal.items %}
     <div class="seasonal-feature reveal">
       <figure class="seasonal-poster">
-        <img src="/{{ item.poster }}" alt="{{ item.name }} — {{ item.season }}" loading="lazy">
+        <img src="/{{ item.poster }}" alt="{{ item.name }} — {{ item.season }}" loading="lazy" decoding="async">
         <figcaption class="seasonal-poster-cap">{{ item.season }}</figcaption>
       </figure>
 
@@ -153,7 +153,7 @@ tickerItems:
       {% for item in menu.bagels.items %}
       <article class="bagel-card d{{ loop.index }}">
         <div class="bagel-card-img">
-          <img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy">
+          <img src="/{{ item.image }}" alt="{{ item.alt }}" loading="lazy" decoding="async">
         </div>
         <div class="bagel-card-body">
           <h3 class="bagel-card-name">{{ item.name }}</h3>
@@ -203,7 +203,7 @@ tickerItems:
         {% for item in bobaWithPhotos %}
         <article class="drink-menu-card reveal d{{ loop.index }}">
           <div class="drink-menu-card-img">
-            <img src="{{ item.photoUrl }}" alt="{{ item.name }}" loading="lazy">
+            <img src="{{ item.photoUrl }}" alt="{{ item.name }}" loading="lazy" decoding="async">
           </div>
           <div class="drink-menu-card-name">{{ item.name }}</div>
           <div class="drink-menu-card-price">{{ item.price }}</div>
@@ -249,7 +249,7 @@ tickerItems:
         {% for drink in drinks.items %}
         <article class="drink-menu-card reveal d{{ loop.index }}">
           <div class="drink-menu-card-img">
-            <img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy">
+            <img src="/{{ drink.image }}" alt="{{ drink.alt }}" loading="lazy" decoding="async">
           </div>
           <div class="drink-menu-card-name">{{ drink.name }}</div>
           <div class="drink-menu-card-price">{{ drink.price }}</div>
@@ -309,7 +309,7 @@ tickerItems:
         {% if featuredEspresso.photoUrl %}
         <figure class="menu-feature-img">
           <span class="menu-feature-tag">Featured</span>
-          <img src="{{ featuredEspresso.photoUrl }}" alt="{{ featuredEspresso.name }}" loading="lazy">
+          <img src="{{ featuredEspresso.photoUrl }}" alt="{{ featuredEspresso.name }}" loading="lazy" decoding="async">
         </figure>
         {% endif %}
         <div class="menu-feature-body">
