@@ -954,11 +954,40 @@
      Was reversed (image-first) which made the bagel tower dominate
      the viewport and push the headline below the fold. */
   .hero-visual { order: 0; }
-  .hero-img-wrap { max-width: 180px; margin: 0.5rem auto 0; }
+  .hero-img-wrap { max-width: 180px; margin: 0.75rem auto 0; }
   .hero-price-tag { left: 50%; transform: translateX(-50%); bottom: -0.5rem; }
-  .hero h1 { font-size: clamp(2rem, 8vw, 2.6rem); }
-  .hero-title { margin-bottom: 1.25rem; }
-  .hero-lede { margin-bottom: 1.5rem; max-width: 36ch; }
+  /* Bolder, bigger headline that lands with impact at thumb-sized screens.
+     Also tighten the line-height for a more poster-feeling stack. */
+  .hero-title {
+    font-size: clamp(2.75rem, 13vw, 4rem);
+    line-height: 0.86;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  /* "MARKET." outlined accent gets a thicker stroke at small sizes
+     so the open letterforms still read clearly. */
+  .hero-title em { -webkit-text-stroke-width: 2.5px; }
+  /* Eyebrow: bigger + bolder + more letter-spacing for presence. */
+  .hero-eyebrow {
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    margin-bottom: 1.4rem;
+  }
+  /* Lede: slightly tighter and aligned to the rule. */
+  .hero-lede {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 38ch;
+    margin-bottom: 1.75rem;
+  }
+  /* CTAs: roomier, more tappable. */
+  .hero-ctas { gap: 0.65rem; margin-bottom: 0.5rem; }
+  .hero-ctas .btn {
+    padding: 0.95rem 1.35rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
   /* Deal stamp is absolutely positioned to the right of the bagel image —
      overflows off-screen on mobile and sits on top of the headline.
      Hide it; the deals section below carries the same offer. */
