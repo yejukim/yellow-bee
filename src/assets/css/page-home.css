@@ -950,97 +950,54 @@
   .hero-sub { margin-left: auto; margin-right: auto; }
   .hero-ctas { justify-content: center; gap: 0.8rem; flex-wrap: nowrap; }
   .hero-ctas .btn { padding: 0.8rem 1.5rem; font-size: 0.82rem; }
-  /* Mobile hero: editorial poster layout.
-     Left-aligned (matches the rest of the site), oversized hammer
-     headline that fills the screen, and the bagel tower bleeds in
-     from the right edge as a dramatic asymmetric accent rather than
-     sitting centered as decoration. */
-  .hero { padding: 125px 0 3rem; min-height: auto; position: relative; overflow: hidden; }
+  /* Mobile hero: bagel image hidden entirely — the big bold
+     "MODERN ASIAN MARKET." headline carries the section on its own. */
+  .hero { padding: 130px 0 3rem; min-height: auto; }
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 0;
     padding: 0 1.5rem;
-    text-align: left;
-    position: relative;
+    text-align: center;
   }
-  /* Bagel as a positioned accent — bleeds off the right edge,
-     sized large enough to feel intentional but tucked behind the text. */
-  .hero-visual {
-    position: absolute;
-    top: 38%;
-    right: -3rem;
-    width: 240px;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .hero-img-wrap { max-width: 100%; margin: 0; opacity: 0.45; }
-  .hero-img-wrap img { filter: drop-shadow(0 10px 30px rgba(0,0,0,0.4)); }
+  .hero-sub { margin-left: auto; margin-right: auto; }
 
-  /* Text content sits above the bagel. */
-  .hero-content { position: relative; z-index: 2; }
+  /* Hide the bagel + everything in the visual column on mobile. */
+  .hero-visual { display: none; }
 
-  /* Eyebrow with a clean leading rule (matches the section-mark
-     pattern used throughout the site). */
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 0.65rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    margin-bottom: 1.25rem;
-    padding-left: 0;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    width: 1.5rem;
-    height: 1px;
-    background: var(--yellow);
-    flex-shrink: 0;
-  }
-
-  /* Hammer headline — fills the screen for poster impact. */
+  /* Big, bold poster headline — fills the screen as the focal point. */
   .hero-title {
-    font-size: clamp(3.5rem, 16vw, 5rem);
-    line-height: 0.84;
+    font-size: clamp(3.25rem, 15vw, 4.75rem);
+    line-height: 0.85;
     letter-spacing: -0.015em;
     margin-bottom: 1.75rem;
   }
   .hero-title em { -webkit-text-stroke-width: 3px; }
 
-  /* Lede: left-aligned, hairline-on-top instead of border-left.
-     Reads as a quiet caption under the headline rather than a quote. */
-  .hero-lede {
-    text-align: left;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.55;
-    max-width: 30ch;
-    margin: 0 0 1.75rem;
-    padding: 1rem 0 0;
-    border-left: 0;
-    border-top: 1px solid rgba(253,196,4,0.4);
-    color: rgba(255,255,255,0.78);
+  /* Eyebrow: presence without competing with the headline. */
+  .hero-eyebrow {
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    margin-bottom: 1.4rem;
   }
 
-  /* CTAs: left-aligned, full-width primary, ghost secondary.
-     Bigger tap targets, weightier type. */
-  .hero-ctas {
-    justify-content: flex-start;
-    gap: 0.55rem;
-    flex-wrap: wrap;
-    margin-bottom: 0;
+  /* Lede stays centered with its yellow left rule. */
+  .hero-lede {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 36ch;
+    margin: 0 auto 1.75rem;
   }
+
+  .hero-ctas { gap: 0.65rem; justify-content: center; flex-wrap: wrap; }
   .hero-ctas .btn {
-    padding: 1rem 1.5rem;
-    font-size: 0.82rem;
-    letter-spacing: 0.08em;
+    padding: 0.95rem 1.4rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
     font-weight: 700;
   }
 
-  /* Suppress the auto-scroll arrow on mobile — adds visual noise
-     and the bagel + ticker already signal more content below. */
-  .hero-arrow { display: none; }
-
-  /* Deal stamp / brackets / coords still hidden on mobile. */
+  /* Decorations + accents hidden on mobile. */
   .hero-deal-stamp { display: none; }
   .hero-bracket, .hero-coord { display: none; }
   .hero-price-tag { display: none; }
