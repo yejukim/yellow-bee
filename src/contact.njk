@@ -42,10 +42,34 @@ tickerItems:
           </p>
         </div>
 
+        {% set phone = apnosh.client.phone or site.phone %}
         <div class="ct-aside-block">
           <div class="ct-aside-label">Phone</div>
-          <a class="ct-aside-link ct-aside-link--sm" href="tel:{{ site.phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ site.phone }}</a>
+          <a class="ct-aside-link ct-aside-link--sm" href="tel:{{ phone | replace('(','') | replace(')','') | replace(' ','') | replace('-','') }}">{{ phone }}</a>
         </div>
+
+        {# Hours — managed in the Apnosh portal (apnosh.hours). Updates
+           there trigger a rebuild and refresh this block automatically. #}
+        {% if apnosh.hours %}
+        <div class="ct-aside-block">
+          <div class="ct-aside-label">Hours</div>
+          <ul class="ct-hours">
+            {% for key in ['mon','tue','wed','thu','fri','sat','sun'] %}
+              {% set periods = apnosh.hours[key] %}
+              <li class="ct-hours-row">
+                <span class="ct-hours-day">{{ key | dayLabel }}</span>
+                <span class="ct-hours-time">
+                  {%- if periods and periods.length -%}
+                    {{ periods[0].open | time12 }} – {{ periods[0].close | time12 }}
+                  {%- else -%}
+                    Closed
+                  {%- endif -%}
+                </span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
 
         <div class="ct-aside-block">
           <div class="ct-aside-label">Social</div>

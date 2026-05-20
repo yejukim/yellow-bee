@@ -9,6 +9,26 @@ module.exports = function (eleventyConfig) {
   // Cache-busting hash that changes every build
   eleventyConfig.addGlobalData("buildHash", String(Date.now()));
 
+  // Format a 24h "HH:MM" string as "8 AM" / "8:30 PM". Renders the
+  // Apnosh-managed hours (apnosh.hours) in a friendly way.
+  eleventyConfig.addFilter("time12", function (hhmm) {
+    if (!hhmm || typeof hhmm !== "string") return hhmm;
+    const [hStr, mStr] = hhmm.split(":");
+    let h = parseInt(hStr, 10);
+    const m = (mStr || "00").padStart(2, "0");
+    if (isNaN(h)) return hhmm;
+    const period = h >= 12 ? "PM" : "AM";
+    h = h % 12;
+    if (h === 0) h = 12;
+    return m === "00" ? `${h} ${period}` : `${h}:${m} ${period}`;
+  });
+
+  // Full day name from a short key ("mon" -> "Monday").
+  eleventyConfig.addFilter("dayLabel", function (key) {
+    const map = { mon: "Monday", tue: "Tuesday", wed: "Wednesday", thu: "Thursday", fri: "Friday", sat: "Saturday", sun: "Sunday" };
+    return map[key] || key;
+  });
+
   return {
     dir: {
       input: "src",
